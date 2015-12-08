@@ -10,7 +10,7 @@
     <property name="version">1.0</property>
     <property name="comments" translatable="yes">Programa educativo para aprendizado de máquina conexionista. Por meio de dados de um arquivo .ods é possível treinar e classificar redes adaline e perceptron de uma só camada. O programa irá escrever no próprio arquivo (.ods). </property>
     <property name="authors">Taylan Branco Meurer</property>
-    <property name="logo">neuroIFC.png</property>
+    <property name="logo">neuroIFC3.png</property>
     <property name="license_type">gpl-3-0</property>
     <child internal-child="vbox">
       <object class="GtkBox" id="aboutdialog-vbox2">
@@ -39,7 +39,8 @@
   </object>
   <object class="GtkWindow" id="window1">
     <property name="can_focus">False</property>
-    <property name="icon">neuroIFC.png</property>
+    <property name="title" translatable="yes">neuroIFC</property>
+    <property name="icon">neuroIFC3.png</property>
     <signal name="destroy" handler="gtk_main_quit" swapped="no"/>
     <child>
       <object class="GtkBox" id="box1">
@@ -81,6 +82,7 @@
                         <property name="label">gtk-quit</property>
                         <property name="visible">True</property>
                         <property name="can_focus">False</property>
+                        <property name="use_underline">True</property>
                         <property name="use_stock">True</property>
                         <signal name="activate" handler="on_sair_activate" swapped="no"/>
                       </object>
