@@ -1,0 +1,25 @@
+neuro-ifc
+=====
+Original author:   Taylan Branco Meurer <tbmeurer@gmail.com>
+                    
+
+Current maintainer:  Taylan Branco Meurer <tbmeurer@gmail.com>
+
+
+O neuro-ifc é uma ferramenta gráfica para ensino de redes neurais artificiais com uma ou mais camadas de neurônios. Ela é capaz de simular e interpretar dados conforme API neurolab. 
+
+Se identificar algum bug, envie o arquivo trace.log para o email do autor.
+
+
+Requirements
+============
+  * C compiler (GCC and MSVC supported)
+  * python 2.7 
+  * python-gi
+  * python-matplotlib
+  * pyexcel_ods 0.1.1
+  * pygame
+  * python-numpy
+
+
+

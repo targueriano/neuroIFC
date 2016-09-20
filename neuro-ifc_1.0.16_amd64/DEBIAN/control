@@ -1,0 +1,12 @@
+source: src
+Section: misc
+Priority: optional
+Standards-Version: 1.0.16
+Package: neuro-ifc
+Version: 1.0.16
+Maintainer: Taylan Branco Meurer <tbmeurer@gmail.com>
+Depends: python, python-matplotlib, python-pygame, python-numpy
+Architecture: amd64
+Copyright: GPL2
+Description: Ferramenta de ensino para aprendizado de redes neurais artificiais com uma ou mais camadas, capaz de simular e interpretar graficamente os dados.
+

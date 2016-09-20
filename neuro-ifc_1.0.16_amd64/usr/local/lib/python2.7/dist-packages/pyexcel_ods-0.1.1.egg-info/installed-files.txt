@@ -1,0 +1,9 @@
+../pyexcel_ods/__init__.py
+../pyexcel_ods/__init__.pyc
+./
+top_level.txt
+requires.txt
+PKG-INFO
+not-zip-safe
+SOURCES.txt
+dependency_links.txt

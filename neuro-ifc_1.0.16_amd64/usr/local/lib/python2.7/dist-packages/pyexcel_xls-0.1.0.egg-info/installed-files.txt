@@ -1,0 +1,10 @@
+../pyexcel_xls/__init__.py
+../pyexcel_xls/__init__.pyc
+./
+top_level.txt
+pbr.json
+requires.txt
+PKG-INFO
+not-zip-safe
+SOURCES.txt
+dependency_links.txt

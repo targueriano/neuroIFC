@@ -1,0 +1,11 @@
+MANIFEST.in
+README.rst
+setup.cfg
+setup.py
+pyexcel_ods/__init__.py
+pyexcel_ods.egg-info/PKG-INFO
+pyexcel_ods.egg-info/SOURCES.txt
+pyexcel_ods.egg-info/dependency_links.txt
+pyexcel_ods.egg-info/not-zip-safe
+pyexcel_ods.egg-info/requires.txt
+pyexcel_ods.egg-info/top_level.txt

@@ -1,0 +1,14 @@
+MANIFEST.in
+README.rst
+VERSION
+requirements.txt
+setup.cfg
+setup.py
+pyexcel_xls/__init__.py
+pyexcel_xls.egg-info/PKG-INFO
+pyexcel_xls.egg-info/SOURCES.txt
+pyexcel_xls.egg-info/dependency_links.txt
+pyexcel_xls.egg-info/not-zip-safe
+pyexcel_xls.egg-info/pbr.json
+pyexcel_xls.egg-info/requires.txt
+pyexcel_xls.egg-info/top_level.txt
