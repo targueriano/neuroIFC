@@ -57,7 +57,10 @@ class Interface (object):
         self.t = terminal.Terminal()
         box.add(self.t)
 
-        #variaveis 1 Fase
+        #variaveis da 1 fase
+        self.butOpenEntradas = builder.get_object("butOpenEntradas")
+
+        #variaveis 2 Fase
         self.listaNeuronios = builder.get_object("listaNeurons")
         self.epocas = builder.get_object("spinEpocas")
         self.objetivo = builder.get_object("spinObjetivo")
@@ -68,7 +71,7 @@ class Interface (object):
         self.taxaIncremento = builder.get_object("spinTaxaIncremento")
         self.taxaDecremento = builder.get_object("spinTaxaDecremento")
 
-        #variaveis da 2 Fase
+        #variaveis da 3 Fase
         self.delta = builder.get_object("radioDelta")
         self.gd = builder.get_object("radioGD")
         self.gdm = builder.get_object("radioGDM")
@@ -76,14 +79,13 @@ class Interface (object):
         self.gda = builder.get_object("radioGDA")
         self.rprop = builder.get_object("radioRPROP")
 
-        #variaveis da 3 Fase
+        #variaveis da 4 Fase
         self.heaviside = builder.get_object("radioHeaviside")
         self.linear = builder.get_object("radioLinear")
         self.tangente = builder.get_object("radioTangente")
         self.sigmoide = builder.get_object("radioSigmoide")
 
-        #variaveis 4 e 5 e 6 Fase
-        self.butOpenEntradas = builder.get_object("butOpenEntradas")
+        #variaveis 6 Fase
         self.switchAnimacao = builder.get_object("switch1")
 
         #variaveis 7 Fase

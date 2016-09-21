@@ -461,6 +461,49 @@
                     <property name="vexpand">True</property>
                     <property name="scrollable">True</property>
                     <child>
+                      <object class="GtkGrid" id="grid12">
+                        <property name="visible">True</property>
+                        <property name="can_focus">False</property>
+                        <child>
+                          <object class="GtkFileChooserButton" id="butOpenEntradas">
+                            <property name="visible">True</property>
+                            <property name="can_focus">False</property>
+                            <property name="tooltip_text" translatable="yes">Esse botão gera o evento para a seleção do arquivo (.ods) que deverá fornecer entradas e alvos.  </property>
+                            <property name="margin_left">15</property>
+                            <property name="margin_top">15</property>
+                            <signal name="file-set" handler="on_butOpenEntradas_file_set" swapped="no"/>
+                          </object>
+                          <packing>
+                            <property name="left_attach">0</property>
+                            <property name="top_attach">0</property>
+                          </packing>
+                        </child>
+                        <child>
+                          <object class="GtkLabel" id="label27">
+                            <property name="visible">True</property>
+                            <property name="can_focus">False</property>
+                            <property name="margin_left">15</property>
+                            <property name="margin_top">15</property>
+                            <property name="label" translatable="yes">Entradas + alvo (.ods)</property>
+                          </object>
+                          <packing>
+                            <property name="left_attach">1</property>
+                            <property name="top_attach">0</property>
+                          </packing>
+                        </child>
+                      </object>
+                    </child>
+                    <child type="tab">
+                      <object class="GtkLabel" id="label26">
+                        <property name="visible">True</property>
+                        <property name="can_focus">False</property>
+                        <property name="label" translatable="yes">1º Fase</property>
+                      </object>
+                      <packing>
+                        <property name="tab_fill">False</property>
+                      </packing>
+                    </child>
+                    <child>
                       <object class="GtkScrolledWindow" id="scrolledwindow1">
                         <property name="visible">True</property>
                         <property name="can_focus">True</property>
@@ -816,15 +859,19 @@
                           </object>
                         </child>
                       </object>
+                      <packing>
+                        <property name="position">1</property>
+                      </packing>
                     </child>
                     <child type="tab">
                       <object class="GtkLabel" id="label1">
                         <property name="visible">True</property>
                         <property name="can_focus">False</property>
                         <property name="tooltip_text" translatable="yes">Definir atributos para a RNA e para o treinamento. </property>
-                        <property name="label" translatable="yes">1º Fase</property>
+                        <property name="label" translatable="yes">2º Fase</property>
                       </object>
                       <packing>
+                        <property name="position">1</property>
                         <property name="tab_fill">False</property>
                       </packing>
                     </child>
@@ -976,7 +1023,7 @@
                         </child>
                       </object>
                       <packing>
-                        <property name="position">1</property>
+                        <property name="position">2</property>
                       </packing>
                     </child>
                     <child type="tab">
@@ -984,10 +1031,10 @@
                         <property name="visible">True</property>
                         <property name="can_focus">False</property>
                         <property name="tooltip_text" translatable="yes">Definir a regra de treinamento. </property>
-                        <property name="label" translatable="yes">2º Fase</property>
+                        <property name="label" translatable="yes">3º Fase</property>
                       </object>
                       <packing>
-                        <property name="position">1</property>
+                        <property name="position">2</property>
                         <property name="tab_fill">False</property>
                       </packing>
                     </child>
@@ -1105,7 +1152,7 @@
                         </child>
                       </object>
                       <packing>
-                        <property name="position">2</property>
+                        <property name="position">3</property>
                       </packing>
                     </child>
                     <child type="tab">
@@ -1113,54 +1160,6 @@
                         <property name="visible">True</property>
                         <property name="can_focus">False</property>
                         <property name="tooltip_text" translatable="yes">Definir a função de ativação.</property>
-                        <property name="label" translatable="yes">3º Fase</property>
-                      </object>
-                      <packing>
-                        <property name="position">2</property>
-                        <property name="tab_fill">False</property>
-                      </packing>
-                    </child>
-                    <child>
-                      <object class="GtkGrid" id="grid7">
-                        <property name="visible">True</property>
-                        <property name="can_focus">False</property>
-                        <child>
-                          <object class="GtkFileChooserButton" id="butOpenEntradas">
-                            <property name="visible">True</property>
-                            <property name="can_focus">False</property>
-                            <property name="tooltip_text" translatable="yes">Esse botão gera o evento para a seleção do arquivo (.ods) que deverá fornecer entradas e alvos.  </property>
-                            <property name="margin_left">15</property>
-                            <property name="margin_top">15</property>
-                            <signal name="file-set" handler="on_butOpenEntradas_file_set" swapped="no"/>
-                          </object>
-                          <packing>
-                            <property name="left_attach">0</property>
-                            <property name="top_attach">0</property>
-                          </packing>
-                        </child>
-                        <child>
-                          <object class="GtkLabel" id="label14">
-                            <property name="visible">True</property>
-                            <property name="can_focus">False</property>
-                            <property name="margin_left">15</property>
-                            <property name="margin_top">15</property>
-                            <property name="label" translatable="yes">Entradas + alvo (.ods)</property>
-                          </object>
-                          <packing>
-                            <property name="left_attach">1</property>
-                            <property name="top_attach">0</property>
-                          </packing>
-                        </child>
-                      </object>
-                      <packing>
-                        <property name="position">3</property>
-                      </packing>
-                    </child>
-                    <child type="tab">
-                      <object class="GtkLabel" id="label12">
-                        <property name="visible">True</property>
-                        <property name="can_focus">False</property>
-                        <property name="tooltip_text" translatable="yes">Fase para inserir os dados de entrada.</property>
                         <property name="label" translatable="yes">4º Fase</property>
                       </object>
                       <packing>
@@ -1299,6 +1298,7 @@
                             <property name="visible">True</property>
                             <property name="can_focus">True</property>
                             <property name="receives_default">True</property>
+                            <property name="tooltip_text" translatable="yes">Simular com os dados já inseridos ou simular com novo arquivo .ods. A inserção de outro arquivo não gerará gráfico.</property>
                             <property name="margin_left">15</property>
                             <property name="margin_top">15</property>
                             <property name="margin_bottom">10</property>

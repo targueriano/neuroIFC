@@ -1396,3 +1396,21 @@ Traceback (most recent call last):
   File "Interface.py", line 255, in criarRede
     numTargets = [float(self.targets[i][j]) for i in xrange(len(self.targets)) for j in xrange(1)]
 TypeError: float() argument must be a string or a number
+Traceback (most recent call last):
+  File "Interface.py", line 250, in criarRede
+    intervalo = [[-100, 100] for i in xrange(len(self.inputs[0]))]
+IndexError: list index out of range
+Traceback (most recent call last):
+  File "/home/targueriano/neuroIFC/neuro-ifc_1.0.16_amd64/usr/local/neuro-ifc/src/Desenho.py", line 45, in criarArquitetura
+    sys.atexit()
+AttributeError: 'module' object has no attribute 'atexit'
+Traceback (most recent call last):
+  File "Interface.py", line 294, in aprender
+    self.errors = tr.treinar("rprop")
+  File "/home/targueriano/neuroIFC/neuro-ifc_1.0.16_amd64/usr/local/neuro-ifc/src/Treinamento.py", line 84, in treinar
+    lr=self.taxaAprendizado.get_value(),
+  File "/usr/local/lib/python2.7/dist-packages/neurolab/core.py", line 165, in train
+    return self.trainf(self, *args, **kwargs)
+  File "/usr/local/lib/python2.7/dist-packages/neurolab/core.py", line 327, in __call__
+    assert target.shape[1] == net.co
+AssertionError
