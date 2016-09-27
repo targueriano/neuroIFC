@@ -2,6 +2,9 @@
 #-*- coding: utf-8 -*-
 #autor Taylan Branco Meurer
 #algoritmo para chamar a interface principal do neuroIFC
+################################################################################
+#BUGS:
+################################################################################
 import traceback
 from __builtin__ import file
 from cgi import log
@@ -19,6 +22,7 @@ import thread
 import subprocess
 import Terminal as terminal
 import Animacao as anima
+from multiprocessing import Process
 try:
     import gi
     gi.require_version('Gtk', '3.0')
@@ -150,8 +154,58 @@ class Interface (object):
                                  "on_menuOpen_activate": self.pegarRedeSalva,
                                  "on_menuSaveAs_activate": self.salvar,
                                  "on_menuClear_activate": self.limpar,
+                                 "on_butSLP_clicked":self.treinarExemploSLP,
+                                 "on_butMLP_clicked":self.treinarExemploMLP,
                                  "on_sair_activate": Gtk.main_quit,
                                  })
+
+
+    def treinarExemploMLP(self, widget):
+        self.inputs = [[0,0],[0,1],[1,0],[1,1]]
+        self.targets = [[0],[1],[1],[0]]
+        ep = 500
+        show = 1
+        # Create network with 2 layers and random initialized
+        self.net = neurolab.net.newff([[-7, 7], [-7, 7]],[5, 1])
+
+        # Train network
+        self.errors = self.net.train(self.inputs, self.targets, epochs=ep,
+                                                        show=show, goal=0.02)
+        #imprimir Regra de Aprendizado em dados
+        self.storeRA.append([str(self.net.trainf)])
+        #atualizar pesos e bias
+        numTargets = [float(self.targets[i][j])
+                        for i in xrange(len(self.targets)) for j in xrange(1)]
+        self._setListStore(self.inputs, numTargets, True)
+        #imprimir Erro
+        for i in xrange(show-1, len(self.errors),show):
+            self.storeErro.append((i+1, self.errors[i]))
+
+
+
+    def treinarExemploSLP(self, widget):
+        #AND logical
+        self.inputs = [[0,0],[0,1],[1,0],[1,1]]
+        self.targets = [[0],[0],[0],[1]]
+        show = 1
+        ep = 100
+        # Create net with 2 inputs and 1 neuron
+        self.net = neurolab.net.newp([[0, 1],[0, 1]], 1)
+
+        # train with delta rule
+        # see net.trainf
+        self.errors = self.net.train(self.inputs, self.targets, epochs=ep,
+                                            show=show, lr=0.1)
+        #imprimir Regra de Aprendizado em dados
+        self.storeRA.append([str(self.net.trainf)])
+        #atualizar pesos e bias
+        numTargets = [float(self.targets[i][j])
+                        for i in xrange(len(self.targets)) for j in xrange(1)]
+        self._setListStore(self.inputs, numTargets, True)
+        #imprimir Erro
+        for i in xrange(show-1, len(self.errors),show):
+            self.storeErro.append((i+1, self.errors[i]))
+
 
 
     def desenharArquitetura(self, widget):
@@ -217,17 +271,19 @@ class Interface (object):
 
     def pegarRedeSalva(self, widget):
         try:
-            dialog = Gtk.FileChooserDialog("Por favor, escolha um arquivo .net", None,
-                Gtk.FileChooserAction.OPEN,
-                (Gtk.STOCK_CANCEL, Gtk.ResponseType.CANCEL,
-                 Gtk.STOCK_OPEN, Gtk.ResponseType.OK))
+            dialog = Gtk.FileChooserDialog("Por favor, escolha um arquivo .net",
+                                None,
+                                Gtk.FileChooserAction.OPEN,
+                                (Gtk.STOCK_CANCEL, Gtk.ResponseType.CANCEL,
+                                Gtk.STOCK_OPEN, Gtk.ResponseType.OK))
 
             response = dialog.run()
             if response == Gtk.ResponseType.OK:
                 #carrega o arquivo
                 self.net = neurolab.load(dialog.get_filename())
                 #extrai e coloca nos liststores
-                numTargets = [float(self.targets[i][j]) for i in xrange(len(self.targets)) for j in xrange(1)]
+                numTargets = [float(self.targets[i][j])
+                        for i in xrange(len(self.targets)) for j in xrange(1)]
                 self._setListStore(self.inputs, numTargets, True)
                 self.storeRA.append([str(self.net.trainf)])
                 #altera status para nome do arquivo
@@ -251,10 +307,14 @@ class Interface (object):
             #criar o intervalo de entradas
             intervalo = [[-100, 100] for i in xrange(len(self.inputs[0]))]
             #criar a rede neural artificial
-            rede = rna.Rede(intervalo, self.linear.get_active(), self.heaviside.get_active(),
-                            self.tangente.get_active(), self.sigmoide.get_active(), self.listaNeuronios)
+            rede = rna.Rede(intervalo, self.linear.get_active(),
+                                    self.heaviside.get_active(),
+                                    self.tangente.get_active(),
+                                    self.sigmoide.get_active(),
+                                            self.listaNeuronios)
             self.net = rede.criarRede()
-            numTargets = [float(self.targets[i][j]) for i in xrange(len(self.targets)) for j in xrange(1)]
+            numTargets = [float(self.targets[i][j])
+                    for i in xrange(len(self.targets)) for j in xrange(1)]
             self._setListStore(self.inputs, numTargets, True)
             self.feedStatus.gerarStatus(self.feedStatus.contexto_redeCriada)
         except:
@@ -272,8 +332,9 @@ class Interface (object):
     def aprender(self):
         try:
             tr = treino.Treinamento(self.net, self.inputs,
-                self.targets, self.epocas, self.show, self.objetivo,self.taxaAprendizado,
-                self.taxaIncremento, self.taxaDecremento, self.impulso, self.taxaRegularizacao)
+                self.targets, self.epocas, self.show, self.objetivo,
+                self.taxaAprendizado,self.taxaIncremento, self.taxaDecremento,
+                                        self.impulso, self.taxaRegularizacao)
             #treinar
             if self.delta.get_active():
                 self.errors = tr.treinar("delta")
@@ -294,13 +355,15 @@ class Interface (object):
                 self.errors = tr.treinar("rprop")
 
             #imprimir Erro
-            for i in xrange(self.show.get_value_as_int()-1, len(self.errors), self.show.get_value_as_int()):
+            for i in xrange(self.show.get_value_as_int()-1, len(self.errors),
+                                        self.show.get_value_as_int()):
                 self.storeErro.append((i+1, self.errors[i]))
 
             #imprimir Regra de Aprendizado em dados
             self.storeRA.append([str(self.net.trainf)])
             #atualizar pesos e bias
-            numTargets = [float(self.targets[i][j]) for i in xrange(len(self.targets)) for j in xrange(1)]
+            numTargets = [float(self.targets[i][j])
+                        for i in xrange(len(self.targets)) for j in xrange(1)]
             self._setListStore(self.inputs, numTargets, True)
 
             if len(self.errors) < self.epocas.get_value_as_int():
@@ -308,6 +371,8 @@ class Interface (object):
             else:
                 self.feedStatus.gerarStatus(self.feedStatus.contexto_max)
 
+            if self.switchAnimacao.get_active() and len(self.errors) <= 100:
+                self._animarErro()
 
         except:
             self.feedStatus.gerarStatus(self.feedStatus.contexto_train)
@@ -321,6 +386,18 @@ class Interface (object):
             self.spinner.stop()
 
 
+    def _animarErro(self):
+        try:
+            p = Process(target=anima.Animacao, args=(self.errors,))
+            p.start()
+            p.join()
+        except:
+            #pega a excecao gerada
+            trace = traceback.format_exc()
+            file("trace.log","a").write(trace)
+        finally:
+            p.terminate()
+
     def treinar(self,widget):
         thread.start_new_thread(self.carregarSpinner,())
         thread.start_new_thread(self.aprender,())
@@ -328,16 +405,19 @@ class Interface (object):
 
     def tratarEntrada(self, widget):
         try:
+            self.inputs = list()
+            self.targets = list()
+            caminho = None
             caminho = self.butOpenEntradas.get_filename()
             novaf = self.extrair_dados(caminho)
             if novaf:
-                tam = len(novaf[0])-1
-                #self.pesos = [i*random.randint(0,9) for i in range(1,tam+1)]
+                #tam = len(novaf[0])-1
                 for i in range(len(novaf)):
                     self.targets.append(novaf[i][-1])
                     del novaf[i][-1]
 
-                self.targets = [[self.targets[i]] for i in xrange(len(self.targets))]
+                self.targets = [[self.targets[i]]
+                                        for i in xrange(len(self.targets))]
                 self.inputs = novaf
 
         except:
@@ -382,7 +462,8 @@ class Interface (object):
                 self.storeDados.append((str(input[i]), target[i]) )
 
             pesos = self.net.layers[0].np['w']
-            pesos = [[str(pesos[i][j])] for i in xrange(len(pesos)) for j in xrange(len(pesos[0]))]
+            pesos = [[str(pesos[i][j])] for i in xrange(len(pesos))
+                                            for j in xrange(len(pesos[0]))]
             for i in xrange(len(pesos)):
                 self.storePesos.append(pesos[i])
 
@@ -408,7 +489,8 @@ class Interface (object):
                 self._setListStore(self.inputSimulador, numTargets, False)
             else:
                 self.saidaSimulador = self.net.sim(self.inputs)
-                numTargets = [float(self.targets[i][j]) for i in xrange(len(self.targets)) for j in xrange(1)]
+                numTargets = [float(self.targets[i][j])
+                        for i in xrange(len(self.targets)) for j in xrange(1)]
                 self._setListStore(self.inputs, numTargets, False)
 
             self.feedStatus.gerarStatus(self.feedStatus.contexto_simulacao)
@@ -424,14 +506,16 @@ class Interface (object):
 
 
     def montarGrafico(self, widget):
-        graf = grafico.Grafico(self.errors, self.saidaSimulador, self.inputs, self.targets)
+        graf = grafico.Grafico(self.errors, self.saidaSimulador,
+                                                self.inputs, self.targets)
         graf.gerarGraficoErro()
         #anima.Animacao(self.inputs, self.net)
 
 
     def montarGraficoSimulador(self, widget):
         if not self.butOpenSimulador.get_filename():
-            graf = grafico.Grafico(self.errors, self.saidaSimulador, self.inputs, self.targets)
+            graf = grafico.Grafico(self.errors, self.saidaSimulador,
+                                                self.inputs, self.targets)
             graf.gerarGraficoSimulacao()
 
 
