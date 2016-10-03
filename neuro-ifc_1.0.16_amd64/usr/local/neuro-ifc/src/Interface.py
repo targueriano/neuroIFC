@@ -3,7 +3,8 @@
 #autor Taylan Branco Meurer
 #algoritmo para chamar a interface principal do neuroIFC
 ################################################################################
-#BUGS:
+#Inserir:
+#        1. Regra BFGS --- OK
 ################################################################################
 import traceback
 from __builtin__ import file
@@ -23,6 +24,7 @@ import subprocess
 import Terminal as terminal
 import Animacao as anima
 from multiprocessing import Process
+import imagePerceptron as imgPerceptron
 try:
     import gi
     gi.require_version('Gtk', '3.0')
@@ -46,10 +48,14 @@ except:
     raise SystemExit
 
 class Interface (object):
-    """
+    '''
+    Descrição:
     Classe principal para o programa neuroIFC. Classe que ficará responsável pela
-    chamada do Gtk.
-    """
+    chamada do Gtk, versão do Debian 8, com Gnome 3.14.
+    Utilização:
+    Para iniciar o programa basta chamar essa classe com o comando:
+    python Interface.py
+    '''
     def __init__(self):
         gladeXML = "Interface.glade"
         builder = Gtk.Builder()
@@ -82,6 +88,7 @@ class Interface (object):
         self.gdx = builder.get_object("radioGDX")
         self.gda = builder.get_object("radioGDA")
         self.rprop = builder.get_object("radioRPROP")
+        self.bfgs = builder.get_object("radioBFGS")
 
         #variaveis da 4 Fase
         self.heaviside = builder.get_object("radioHeaviside")
@@ -156,9 +163,14 @@ class Interface (object):
                                  "on_menuClear_activate": self.limpar,
                                  "on_butSLP_clicked":self.treinarExemploSLP,
                                  "on_butMLP_clicked":self.treinarExemploMLP,
-                                 "on_sair_activate": Gtk.main_quit,
+                                 "on_verPerceptron_activate":self.verPerceptron,
+                                 "on_sair_activate": Gtk.main_quit
                                  })
 
+
+
+    def verPerceptron(self, widget):
+        imgPerceptron.DrawPerceptron()
 
     def treinarExemploMLP(self, widget):
         self.inputs = [[0,0],[0,1],[1,0],[1,1]]
@@ -208,16 +220,34 @@ class Interface (object):
 
 
 
+    '''
+    Descrição:
+    Método responsável pelo desenho da RNA. Se as entradas foram inseridas,
+    então o desenho as incluirá na primeira camada, caso contrário apenas
+    será desenhado camada oculta(s) + saída.
+    '''
     def desenharArquitetura(self, widget):
-        d = desenho.Desenho(lista=self.listaNeuronios)
-        d.criarArquitetura()
+        if self.inputs:
+            strTamEntradas = str(len(self.inputs[0]))
+            strTamEntradas += ","
+            strTamEntradas += self.listaNeuronios.get_text()
+            d = desenho.Desenho(lista=strTamEntradas)
+            d.criarArquitetura()
+        else:
+            lista = self.listaNeuronios.get_text()
+            d = desenho.Desenho(lista=lista)
+            d.criarArquitetura()
 
     def sobre(self,widget):
         sobre.Sobre()
 
+    #terminal VTE
     def ativarTerminal(self, widget):
         self.t.terminalVTE()
 
+
+    #Método para retornar ao estado inicial. Isso pode ser feito toda vez que
+    #se deseja iniciar uma nova arquitetura com um novo treinamento.
     def limpar(self, widget):
         self.modelStore.clear()
         self.modelStoreErro.clear()
@@ -228,7 +258,9 @@ class Interface (object):
 
         self.pesos = list()
         self.errors = list()
-        self.net.reset
+        if self.net:
+            self.net.reset
+            self.net = None
         self.butOpenSimulador.unselect_all()
         self.butOpenEntradas.unselect_all()
         self.inputs = list()
@@ -241,23 +273,33 @@ class Interface (object):
         self.statusFile.push(contexto, "Desconhecido")
         self.feedStatus.gerarStatus(self.feedStatus.contexto_pronto,)
 
-
+    '''
+    Descrição:
+    Esse método abre uma janela de diálogo padrão do Gtk+ a fim de criar e
+    armazenar um arquivo .net. Esse arquivo contém dados relacionados à RNA
+    criada.
+    Utilização: o evento apenas será gerado se houver uma RNA criada.
+    '''
     def salvar(self, widget):
         try:
-            self.dialog = Gtk.FileChooserDialog("Selecione o local e informe o nome do arquivo", None,
-                Gtk.FileChooserAction.SAVE,
-                (Gtk.STOCK_CANCEL, Gtk.ResponseType.CANCEL,
-                 Gtk.STOCK_SAVE, Gtk.ResponseType.OK))
+            if self.net:
+                self.dialog = Gtk.FileChooserDialog("Selecione o local e informe o nome do arquivo", None,
+                    Gtk.FileChooserAction.SAVE,
+                    (Gtk.STOCK_CANCEL, Gtk.ResponseType.CANCEL,
+                     Gtk.STOCK_SAVE, Gtk.ResponseType.OK))
 
-            response = self.dialog.run()
-            if response == Gtk.ResponseType.OK:
-                nome = self.dialog.get_filename()+".net"
-                self.net.save(nome)
+                response = self.dialog.run()
+                if response == Gtk.ResponseType.OK:
+                    nome = self.dialog.get_filename()+".net"
+                    self.net.save(nome)
 
-            #altera status para nome do arquivo
-            contexto = self.statusFile.get_context_id("fileSave")
-            self.statusFile.push(contexto,str(self.dialog.get_filename()))
-
+                #altera status para nome do arquivo
+                contexto = self.statusFile.get_context_id("fileSave")
+                self.statusFile.push(contexto,str(self.dialog.get_filename()))
+                self.dialog.destroy()
+            else:
+                contexto = self.status.get_context_id("EmptyNet")
+                self.status.push(contexto,"Não existe RNA para ser salva.")
         except:
             #pega a excecao gerada
             trace = traceback.format_exc()
@@ -265,10 +307,10 @@ class Interface (object):
             #print "Ocorreu um erro: \n",trace
             #salva em arquivo
             file("trace.log","a").write(trace)
-        finally:
             self.dialog.destroy()
 
-
+    #método para seleção de um arquivo .net, que contém dados referentes a uma
+    #RNA salva.
     def pegarRedeSalva(self, widget):
         try:
             dialog = Gtk.FileChooserDialog("Por favor, escolha um arquivo .net",
@@ -302,6 +344,14 @@ class Interface (object):
         finally:
             dialog.destroy()
 
+    '''
+    Desrição:
+    Esse método cria a rede neural artificial. Independente das entradas,
+    o intervalo será entre -100 e 100 para cada entrada. O método verifica
+    qual função de ativação está selecionada, depois chama a classe responsável
+    pela criação em si. Se não ocorrer nenhuma exceção, então será impresso
+    os dados relacionaos à rede.
+    '''
     def criarRede(self, widget):
         try:
             #criar o intervalo de entradas
@@ -354,6 +404,9 @@ class Interface (object):
             elif self.rprop.get_active():
                 self.errors = tr.treinar("rprop")
 
+            elif self.bfgs.get_active():
+                self.errors = tr.treinar("bfgs")
+
             #imprimir Erro
             for i in xrange(self.show.get_value_as_int()-1, len(self.errors),
                                         self.show.get_value_as_int()):
@@ -385,7 +438,13 @@ class Interface (object):
         finally:
             self.spinner.stop()
 
-
+    '''
+    Descrição:
+    Método privado chamado quando o switch está ativo. Esse método cria um novo
+    processo para criar um gráfico animado por meio do matplotlib.
+    Utilização:
+    A quantidade de erros deve ser menor ou igual a 100.
+    '''
     def _animarErro(self):
         try:
             p = Process(target=anima.Animacao, args=(self.errors,))
@@ -398,11 +457,27 @@ class Interface (object):
         finally:
             p.terminate()
 
+    '''
+    Descrição:
+    Esse método cria duas threads. Uma para o processo de aprendizado e outra
+    para o spinner. O fim das threads acontece quando o treinamento termina.
+    '''
     def treinar(self,widget):
         thread.start_new_thread(self.carregarSpinner,())
         thread.start_new_thread(self.aprender,())
 
 
+    """
+    Descrição:
+    Lê e interpreta o arquivo de entrada (.ods). O método chama o extrair_dados,
+    que acessa o arquivo, coloca-os numa lista de duas dimensões e separa-os da
+    seguinte forma:
+    1  4  5  7 -1
+    2  4  2 -3  1
+    inputs = [[1,4,5,7], [2,4,2,-3]]
+    targets = [[-1], [1]]
+    Os arquivos devem apenas possuir uma saída.
+    """
     def tratarEntrada(self, widget):
         try:
             self.inputs = list()
@@ -455,7 +530,10 @@ class Interface (object):
             #salva em arquivo
             file("trace.log","a").write(trace)
 
-
+    '''
+    Descrição:
+    Método privado para configurar e inserir os dados na tela.
+    '''
     def _setListStore(self, input, target, dados):
         if dados:
             for i in xrange(len(input)):

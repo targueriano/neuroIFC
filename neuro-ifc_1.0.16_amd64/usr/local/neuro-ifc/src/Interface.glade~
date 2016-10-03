@@ -328,10 +328,13 @@
                 <property name="use_action_appearance">True</property>
                 <property name="visible">True</property>
                 <property name="can_focus">False</property>
-                <property name="tooltip_text" translatable="yes">Exemplo de rede SLP com entrada AND.</property>
+                <property name="tooltip_text" translatable="yes">Exemplo de rede SLP com entrada AND.
+Regra: Delta
+SSE</property>
                 <property name="is_important">True</property>
                 <property name="use_underline">True</property>
                 <property name="icon_widget">image2</property>
+                <signal name="clicked" handler="on_butSLP_clicked" swapped="no"/>
               </object>
               <packing>
                 <property name="expand">False</property>
@@ -339,13 +342,18 @@
               </packing>
             </child>
             <child>
-              <object class="GtkToolButton" id="butMLPFast">
+              <object class="GtkToolButton" id="butMLP">
                 <property name="use_action_appearance">True</property>
                 <property name="visible">True</property>
                 <property name="can_focus">False</property>
-                <property name="tooltip_text" translatable="yes">Exemplo de rede MLP com entrada XOR.</property>
+                <property name="tooltip_text" translatable="yes">Exemplo de rede MLP com entrada XOR. 
+Regra: BFGS
+Erro: SSE
+Rede: [5,1]
+Objetivo: 0.02</property>
                 <property name="use_underline">True</property>
                 <property name="icon_widget">image3</property>
+                <signal name="clicked" handler="on_butMLP_clicked" swapped="no"/>
               </object>
               <packing>
                 <property name="expand">False</property>
@@ -1006,6 +1014,24 @@
                                             <property name="top_attach">0</property>
                                           </packing>
                                         </child>
+                                        <child>
+                                          <object class="GtkRadioButton" id="radioBFGS">
+                                            <property name="label" translatable="yes">BFGS</property>
+                                            <property name="use_action_appearance">True</property>
+                                            <property name="visible">True</property>
+                                            <property name="can_focus">True</property>
+                                            <property name="receives_default">False</property>
+                                            <property name="tooltip_text" translatable="yes">Algoritmo da família dos quase-Newton. Esse método consiste em encontrar uma aproximação para a matriz hessiana.</property>
+                                            <property name="xalign">0</property>
+                                            <property name="active">True</property>
+                                            <property name="draw_indicator">True</property>
+                                            <property name="group">radioDelta</property>
+                                          </object>
+                                          <packing>
+                                            <property name="left_attach">6</property>
+                                            <property name="top_attach">0</property>
+                                          </packing>
+                                        </child>
                                       </object>
                                     </child>
                                   </object>
@@ -1243,11 +1269,10 @@
                           <object class="GtkSwitch" id="switch1">
                             <property name="visible">True</property>
                             <property name="can_focus">True</property>
-                            <property name="tooltip_text" translatable="yes">Ativa ou desativa uma animação do processo de treinamento. </property>
+                            <property name="tooltip_text" translatable="yes">Ativa ou desativa uma animação do processo de treinamento. Desenhará o ajuste dos pesos somente quando houver um número de erros inferior a 101.  </property>
                             <property name="margin_left">115</property>
                             <property name="margin_right">10</property>
                             <property name="margin_bottom">40</property>
-                            <property name="state">True</property>
                           </object>
                           <packing>
                             <property name="left_attach">1</property>

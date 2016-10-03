@@ -221,11 +221,12 @@
                             <property name="visible">True</property>
                             <property name="can_focus">False</property>
                             <child>
-                              <object class="GtkMenuItem" id="menuitem6">
+                              <object class="GtkMenuItem" id="verPerceptron">
                                 <property name="visible">True</property>
                                 <property name="can_focus">False</property>
                                 <property name="label" translatable="yes">Perceptron</property>
                                 <property name="use_underline">True</property>
+                                <signal name="activate" handler="on_verPerceptron_activate" swapped="no"/>
                               </object>
                             </child>
                             <child>
@@ -1014,6 +1015,24 @@ Objetivo: 0.02</property>
                                             <property name="top_attach">0</property>
                                           </packing>
                                         </child>
+                                        <child>
+                                          <object class="GtkRadioButton" id="radioBFGS">
+                                            <property name="label" translatable="yes">BFGS</property>
+                                            <property name="use_action_appearance">True</property>
+                                            <property name="visible">True</property>
+                                            <property name="can_focus">True</property>
+                                            <property name="receives_default">False</property>
+                                            <property name="tooltip_text" translatable="yes">Algoritmo da família dos quase-Newton. Esse método consiste em encontrar uma aproximação para a matriz hessiana.</property>
+                                            <property name="xalign">0</property>
+                                            <property name="active">True</property>
+                                            <property name="draw_indicator">True</property>
+                                            <property name="group">radioDelta</property>
+                                          </object>
+                                          <packing>
+                                            <property name="left_attach">6</property>
+                                            <property name="top_attach">0</property>
+                                          </packing>
+                                        </child>
                                       </object>
                                     </child>
                                   </object>
@@ -1251,7 +1270,7 @@ Objetivo: 0.02</property>
                           <object class="GtkSwitch" id="switch1">
                             <property name="visible">True</property>
                             <property name="can_focus">True</property>
-                            <property name="tooltip_text" translatable="yes">Ativa ou desativa uma animação do processo de treinamento. Desenhará o ajuste dos pesos somente quando houver um número de erros inferior a 201.  </property>
+                            <property name="tooltip_text" translatable="yes">Ativa ou desativa uma animação do processo de treinamento. Desenhará o ajuste dos pesos somente quando houver um número de erros inferior a 101.  </property>
                             <property name="margin_left">115</property>
                             <property name="margin_right">10</property>
                             <property name="margin_bottom">40</property>

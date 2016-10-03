@@ -2,28 +2,29 @@
 <!-- Generated with glade 3.18.3 -->
 <interface>
   <requires lib="gtk+" version="3.12"/>
-  <object class="GtkAboutDialog" id="aboutdialog1">
+  <object class="GtkImage" id="image1">
+    <property name="visible">True</property>
     <property name="can_focus">False</property>
-    <property name="title" translatable="yes">Sobre</property>
+    <property name="pixbuf">../pictures/modelo_perceptron.png</property>
+  </object>
+  <object class="GtkMessageDialog" id="messagedialog1">
+    <property name="can_focus">False</property>
+    <property name="title" translatable="yes">Perceptron</property>
+    <property name="default_width">400</property>
+    <property name="default_height">115</property>
+    <property name="icon">../pictures/modelo_perceptron.png</property>
     <property name="type_hint">dialog</property>
-    <property name="program_name">neuroIFC</property>
-    <property name="version">1.0.16</property>
-    <property name="comments" translatable="yes">Software com fins educacionais.</property>
-    <property name="website">https://github.com/targueriano/neuroIFC</property>
-    <property name="website_label" translatable="yes">git_src: neuroIFC</property>
-    <property name="authors">Taylan Branco Meurer</property>
-    <property name="artists">Taylan Branco Meurer</property>
-    <property name="logo">../pictures/neuroIFC3.png</property>
-    <property name="license_type">gpl-3-0</property>
+    <property name="buttons">ok</property>
     <signal name="destroy-event" handler="gtk_main_quit" swapped="no"/>
     <child internal-child="vbox">
-      <object class="GtkBox" id="aboutdialog-vbox1">
+      <object class="GtkBox" id="messagedialog-vbox">
         <property name="can_focus">False</property>
         <property name="orientation">vertical</property>
-        <property name="spacing">4</property>
+        <property name="spacing">2</property>
         <child internal-child="action_area">
-          <object class="GtkButtonBox" id="aboutdialog-action_area1">
+          <object class="GtkButtonBox" id="messagedialog-action_area">
             <property name="can_focus">False</property>
+            <property name="homogeneous">True</property>
             <property name="layout_style">end</property>
             <child>
               <placeholder/>
@@ -37,9 +38,6 @@
             <property name="fill">False</property>
             <property name="position">0</property>
           </packing>
-        </child>
-        <child>
-          <placeholder/>
         </child>
       </object>
     </child>

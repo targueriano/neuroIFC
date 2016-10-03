@@ -37,7 +37,8 @@ class Desenho(object):
     def criarArquitetura (self):
         try:
 
-            lista_str = self.lista.get_text().split(",")
+
+            lista_str = self.lista.split(",")
             try:
                 lista = [ int(lista_str[i]) for i in xrange(len(lista_str) )]
             except:

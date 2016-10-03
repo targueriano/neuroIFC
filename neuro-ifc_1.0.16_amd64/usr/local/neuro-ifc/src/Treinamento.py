@@ -84,3 +84,13 @@ class Treinamento(object):
                                          lr=self.taxaAprendizado.get_value(),
                                         )
             return self.errors
+
+        elif regra == "bfgs":
+            self.net.trainf = neurolab.train.train_bfgs
+            self.errors = self.net.train(self.inputs, self.targets,
+                                          epochs=self.epocas.get_value_as_int(),
+                                          show=self.show.get_value_as_int(),
+                                          goal=self.objetivo.get_value(),
+                                          rr=self.taxaRegularizacao.get_value()
+                                         )
+            return self.errors

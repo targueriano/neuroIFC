@@ -6,6 +6,9 @@ Define Core Classes
 import numpy as np
 from . import tool
 
+############################Minhas importacoes################################
+import matplotlib.pyplot as plt
+import matplotlib.animation as animation
 
 
 class NeuroLabError(Exception):
@@ -290,6 +293,7 @@ class Trainer(object):
         self.params = self.defaults.copy()
         self.error = []
 
+
     def __str__(self):
         return 'Trainer(' + self._train_class.__name__ + ')'
 
@@ -329,6 +333,7 @@ class Trainer(object):
             assert target.shape[0] == input.shape[0]
             args.append(target)
 
+
         def epochf(err, net, *args):
             """Need call on each epoch"""
             if err is None:
@@ -336,6 +341,7 @@ class Trainer(object):
             self.error.append(err)
             epoch = len(self.error)
             show = self.params['show']
+
             if show and (epoch % show) == 0:
                 print("Epoch: {0}; Error: {1};".format(epoch, err))
             if err < self.params['goal']:
@@ -354,6 +360,7 @@ class Trainer(object):
         else:
             if self.params['show'] and len(self.error) >= self.params['epochs']:
                 print("The maximum number of train epochs is reached")
+
         return self.error
 
 
