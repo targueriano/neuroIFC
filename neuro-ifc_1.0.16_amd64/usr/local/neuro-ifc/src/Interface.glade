@@ -473,6 +473,7 @@ Objetivo: 0.02</property>
                       <object class="GtkLabel" id="label26">
                         <property name="visible">True</property>
                         <property name="can_focus">False</property>
+                        <property name="tooltip_text" translatable="yes">Fase para inserção dos dados de entrada e de alvo.</property>
                         <property name="label" translatable="yes">1º Fase</property>
                       </object>
                       <packing>

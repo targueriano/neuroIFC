@@ -201,12 +201,11 @@
               </object>
             </child>
             <child>
-              <object class="GtkMenuItem" id="Information">
+              <object class="GtkMenuItem" id="menuitem3">
                 <property name="visible">True</property>
                 <property name="can_focus">False</property>
                 <property name="label" translatable="yes">_Sobre</property>
                 <property name="use_underline">True</property>
-                <signal name="activate" handler="on_Information_activate" swapped="no"/>
                 <child type="submenu">
                   <object class="GtkMenu" id="menu3">
                     <property name="visible">True</property>
@@ -230,6 +229,7 @@
                         <property name="tooltip_text" translatable="yes">Mostra informações sobre o perceptron e a regra de treinamento backpropagation error. </property>
                         <property name="use_underline">True</property>
                         <property name="use_stock">True</property>
+                        <signal name="activate" handler="on_information_activate" swapped="no"/>
                       </object>
                     </child>
                   </object>
