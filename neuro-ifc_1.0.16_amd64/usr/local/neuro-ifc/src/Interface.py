@@ -24,7 +24,7 @@ import subprocess
 import Terminal as terminal
 import Animacao as anima
 from multiprocessing import Process
-import imagePerceptron as imgPerceptron
+import Information as info
 try:
     import gi
     gi.require_version('Gtk', '3.0')
@@ -163,14 +163,14 @@ class Interface (object):
                                  "on_menuClear_activate": self.limpar,
                                  "on_butSLP_clicked":self.treinarExemploSLP,
                                  "on_butMLP_clicked":self.treinarExemploMLP,
-                                 "on_verPerceptron_activate":self.verPerceptron,
+                                 "on_information_activate":self.verInformation,
                                  "on_sair_activate": Gtk.main_quit
                                  })
 
 
 
-    def verPerceptron(self, widget):
-        imgPerceptron.DrawPerceptron()
+    def verInformation(self, widget):
+        info.DrawInformation()
 
     def treinarExemploMLP(self, widget):
         self.inputs = [[0,0],[0,1],[1,0],[1,1]]
