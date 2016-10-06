@@ -12,29 +12,21 @@
         <col id="0" translatable="yes">A topologia perceptron de duas ou mais camadas difere da SLP por apresentar no mí-
 nimo duas camadas adaptativas. A solução de problemas não lineares é possível em virtude
 das funções de ativação de cada neurônio e da composição da sua estrutura em camadas suces-
-sivas (BRAGA et al., 2000). Segundo (CYBENKO, 1989), uma rede MLP com uma camada
-intermediária pode aproximar qualquer função contínua, enquanto a utilização de duas camadas
-intermediárias permite a aproximação de qualquer função.</col>
+sivas.</col>
       </row>
       <row>
-        <col id="0" translatable="yes">Nas redes de uma única camada, o erro é adquirido por meio da diferença entre a saída
-desejada e a saída corrente da rede, todavia, para uma MLP, esse procedimento apenas é válido
-para a camada de saída. Isso acontece porque não existem saídas desejadas definidas para as
-camadas intermediárias ou ocultas. Por essa razão, o grande problema de uma MLP é calcular
-ou estimar o erro das camadas intermediárias (BRAGA et al., 2000).</col>
+        <col id="0" translatable="yes">O grande problema de uma MLP é calcular ou estimar o erro das camadas intermediárias.</col>
       </row>
       <row>
         <col id="0" translatable="yes">A solução desse problema surgiu com o algoritmo de retropropagação de erros ou back-
 propagation. Esse algoritmo realiza o cálculo do erro das camadas ocultas a partir de uma es-
 timativa do efeito que estas causam no erro da camada de saída. Dessa forma, o erro da saída
 da rede é calculado e retroalimentado para as camadas intermediárias, oportunizando ajustes de
-pesos proporcionais aos valores das conexões entre camadas (BRAGA et al., 2000).</col>
+pesos proporcionais aos valores das conexões entre camadas.</col>
       </row>
       <row>
         <col id="0" translatable="yes">O backpropagation faz uso do gradiente descendente para efetuar os ajustes dos pesos.
-A utilização do gradiente requer o uso de funções de ativação contínuas e diferenciáveis, conse-
-quentemente, funções do tipo degrau não podem ser utilizadas. Uma das funções mais comuns
-para a configuração da rede MLP é a sigmóide.</col>
+A utilização do gradiente requer o uso de funções de ativação contínuas e diferenciáveis. Uma das funções mais comuns para a configuração da rede MLP é a sigmóide.</col>
       </row>
     </data>
   </object>
@@ -134,7 +126,7 @@ nomeia-se perceptron de uma única camada (Single-layer perceptron).
                         <property name="title" translatable="yes">Multi-layer perceptron</property>
                         <child>
                           <object class="GtkCellRendererText" id="cellrenderertext1">
-                            <property name="background_gdk">#bf2ae2e4e73f</property>
+                            <property name="background_gdk">#eeeeeeeeecec</property>
                           </object>
                           <attributes>
                             <attribute name="text">0</attribute>
@@ -176,7 +168,7 @@ nomeia-se perceptron de uma única camada (Single-layer perceptron).
                     <property name="title" translatable="yes">Perceptron</property>
                     <child>
                       <object class="GtkCellRendererText" id="cellrenderertext2">
-                        <property name="background_gdk">#bf2ae2e4e73f</property>
+                        <property name="background_gdk">#eeeeeeeeecec</property>
                       </object>
                       <attributes>
                         <attribute name="text">0</attribute>
@@ -214,7 +206,7 @@ nomeia-se perceptron de uma única camada (Single-layer perceptron).
           </packing>
         </child>
         <child>
-          <object class="GtkButton" id="button1">
+          <object class="GtkButton" id="butAnimar">
             <property name="label" translatable="yes">Animação</property>
             <property name="visible">True</property>
             <property name="can_focus">True</property>
@@ -224,6 +216,7 @@ nomeia-se perceptron de uma única camada (Single-layer perceptron).
             <property name="margin_top">5</property>
             <property name="margin_bottom">5</property>
             <property name="hexpand">True</property>
+            <signal name="clicked" handler="on_butAnimar_clicked" swapped="no"/>
           </object>
           <packing>
             <property name="expand">False</property>

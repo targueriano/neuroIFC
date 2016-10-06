@@ -25,6 +25,7 @@ import Terminal as terminal
 import Animacao as anima
 from multiprocessing import Process
 import Information as info
+
 try:
     import gi
     gi.require_version('Gtk', '3.0')

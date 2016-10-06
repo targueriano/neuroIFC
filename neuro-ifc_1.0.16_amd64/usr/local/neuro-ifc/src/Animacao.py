@@ -12,8 +12,7 @@ class Animacao(object):
         fig = plt.figure()
         self.y = list()
         self.epoca = len(erro)
-        #intervalo = int(self.epoca*0.2)
-        #print intervalo
+
         plt.xlim(0,len(erro)+5)
         plt.ylim(0, erro[0]*3)
         ani = animation.FuncAnimation(fig, self._animacao,
@@ -30,16 +29,3 @@ class Animacao(object):
             sys.exit()
         self.y.append(self._getError(i))
         plt.plot(self.y)
-
-
-
-
-
-
-
-#e = [18,15,12,10,0.77]
-#p = Process(target=Animacao, args=(e,))
-#p.start()
-#p.join()
-#a = Animacao(e)
-#thread.start_new_thread(a.run, ())
