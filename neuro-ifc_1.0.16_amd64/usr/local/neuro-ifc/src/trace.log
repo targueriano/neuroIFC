@@ -28,3 +28,41 @@ Traceback (most recent call last):
   File "Interface.py", line 541, in simular
     self.saidaSimulador = self.net.sim(self.inputs)
 AttributeError: 'NoneType' object has no attribute 'sim'
+Traceback (most recent call last):
+  File "Interface.py", line 537, in simular
+    self.saidaSimulador = self.net.sim(self.inputSimulador)
+  File "/home/targueriano/neuroIFC/neuro-ifc_1.0.16_amd64/usr/local/neuro-ifc/src/neurolab/core.py", line 146, in sim
+    assert input.shape[1] == self.ci
+AssertionError
+Traceback (most recent call last):
+  File "Interface.py", line 537, in simular
+    self.saidaSimulador = self.net.sim(self.inputSimulador)
+  File "/home/targueriano/neuroIFC/neuro-ifc_1.0.16_amd64/usr/local/neuro-ifc/src/neurolab/core.py", line 146, in sim
+    assert input.shape[1] == self.ci
+AssertionError
+Traceback (most recent call last):
+  File "Interface.py", line 377, in aprender
+    self.errors = tr.treinar("rprop")
+  File "/home/targueriano/neuroIFC/neuro-ifc_1.0.16_amd64/usr/local/neuro-ifc/src/Treinamento.py", line 84, in treinar
+    lr=self.taxaAprendizado.get_value(),
+  File "/home/targueriano/neuroIFC/neuro-ifc_1.0.16_amd64/usr/local/neuro-ifc/src/neurolab/core.py", line 169, in train
+    return self.trainf(self, *args, **kwargs)
+  File "/home/targueriano/neuroIFC/neuro-ifc_1.0.16_amd64/usr/local/neuro-ifc/src/neurolab/core.py", line 326, in __call__
+    assert input.ndim == 2
+AssertionError
+Traceback (most recent call last):
+  File "Interface.py", line 377, in aprender
+    self.errors = tr.treinar("rprop")
+  File "/home/targueriano/neuroIFC/neuro-ifc_1.0.16_amd64/usr/local/neuro-ifc/src/Treinamento.py", line 84, in treinar
+    lr=self.taxaAprendizado.get_value(),
+  File "/home/targueriano/neuroIFC/neuro-ifc_1.0.16_amd64/usr/local/neuro-ifc/src/neurolab/core.py", line 169, in train
+    return self.trainf(self, *args, **kwargs)
+  File "/home/targueriano/neuroIFC/neuro-ifc_1.0.16_amd64/usr/local/neuro-ifc/src/neurolab/core.py", line 327, in __call__
+    assert input.shape[1] == net.ci
+AssertionError
+Traceback (most recent call last):
+  File "Interface.py", line 537, in simular
+    self.saidaSimulador = self.net.sim(self.inputSimulador)
+  File "/home/targueriano/neuroIFC/neuro-ifc_1.0.16_amd64/usr/local/neuro-ifc/src/neurolab/core.py", line 146, in sim
+    assert input.shape[1] == self.ci
+AssertionError
