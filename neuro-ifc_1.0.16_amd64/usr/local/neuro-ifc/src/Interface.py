@@ -13,13 +13,12 @@ import json
 import random
 import numpy as np
 import Desenho as desenho
-#import Desenho_cv2 as desenho
 import RNA as rna
 import Grafico as grafico
-import Feedback as feed
 import Treinamento as treino
 import Sobre as sobre
 import thread
+import time
 import subprocess
 import Terminal as terminal
 import Animacao as anima
@@ -68,67 +67,27 @@ class Interface (object):
         self.t = terminal.Terminal()
         box.add(self.t)
 
-        #variaveis da 1 fase
-        self.butOpenEntradas = builder.get_object("butOpenEntradas")
+        #dicionario para a barra de status
+        self.dir_context = {
+            0:"Pronto!",
+            1:"O objetivo do aprendizado foi atingido.",
+            2:"O objetivo não foi atingido dentro do número de épocas.",
+            3:"Saída gerada com sucesso.",
+            4:"A configuração da rede não pode ser nula.",
+            5:"O arquivo deve possuir extensão .net.",
+            6:"Inserir arquivo de entrada antes de criar a rede.",
+            7:"Verifique as fases anteriores antes de treinar.",
+            8:"Realize as fases anteriores ou insira um arquivo com as entradas.",
+            9:"RNA criada com sucesso.",
+            10:"Não existe RNA para ser salva."
+        }
 
-        #variaveis 2 Fase
-        self.listaNeuronios = builder.get_object("listaNeurons")
-        self.epocas = builder.get_object("spinEpocas")
-        self.objetivo = builder.get_object("spinObjetivo")
-        self.show = builder.get_object("spinShow")
-        self.taxaAprendizado = builder.get_object("spinTaxaAprendizado")
-        self.impulso = builder.get_object("spinImpulso")
-        self.taxaRegularizacao = builder.get_object("spinRegularizacao")
-        self.taxaIncremento = builder.get_object("spinTaxaIncremento")
-        self.taxaDecremento = builder.get_object("spinTaxaDecremento")
-
-        #variaveis da 3 Fase
-        self.delta = builder.get_object("radioDelta")
-        self.gd = builder.get_object("radioGD")
-        self.gdm = builder.get_object("radioGDM")
-        self.gdx = builder.get_object("radioGDX")
-        self.gda = builder.get_object("radioGDA")
-        self.rprop = builder.get_object("radioRPROP")
-        self.bfgs = builder.get_object("radioBFGS")
-
-        #variaveis da 4 Fase
-        self.heaviside = builder.get_object("radioHeaviside")
-        self.linear = builder.get_object("radioLinear")
-        self.tangente = builder.get_object("radioTangente")
-        self.sigmoide = builder.get_object("radioSigmoide")
-
-        #variaveis 6 Fase
-        self.switchAnimacao = builder.get_object("switch1")
-
-        #variaveis 7 Fase
-        self.butOpenSimulador = builder.get_object("butOpenSimulador")
-
-        #liststore
-        self.store = builder.get_object("liststore1")
-        self.storeErro = builder.get_object("liststore2")
-        self.storeDados = builder.get_object("liststore3")
-        self.storePesos = builder.get_object("liststore4")
-        self.storeBias = builder.get_object("liststore5")
-        self.storeRA = builder.get_object("liststore6")
-
-        #textview
-        self.modelStore = builder.get_object("treeview1").get_model()
-        self.modelStoreErro = builder.get_object("treeview2").get_model()
-        self.modelStoreDados = builder.get_object("treeview3").get_model()
-        self.modelStorePesos = builder.get_object("treeview4").get_model()
-        self.modelStoreBias = builder.get_object("treeview5").get_model()
-        self.modelStoreRA = builder.get_object("treeview6").get_model()
-
-
-
-        #spinner
-        self.spinner = builder.get_object("spinner1")
-
+        self.getVars(builder)
 
         #statusbar
         self.status = builder.get_object("statusbar1")
-        self.feedStatus = feed.Feedback(self.status)
-        self.feedStatus.gerarStatus(self.feedStatus.contexto_pronto)
+        self._statusDefault()
+
         self.statusFile = builder.get_object("statusbar2")
         contexto = self.statusFile.get_context_id("desconhecido")
         self.statusFile.push(contexto, "Desconhecido")
@@ -169,6 +128,16 @@ class Interface (object):
                                  })
 
 
+
+    def _statusDefault(self):
+        contexto = self.status.get_context_id(self.dir_context[0])
+        self.status.push(contexto,self.dir_context[0])
+
+    def _statusDinamico(self, dic):
+        contexto = self.status.get_context_id(dic)
+        self.status.push(contexto, dic)
+        time.sleep(5)
+        self.status.pop(contexto)
 
     def verInformation(self, widget):
         info.DrawInformation()
@@ -269,10 +238,10 @@ class Interface (object):
         self.inputSimulador = list()
         self.saidaSimulador = list()
         #limpar variaveis do simulador
-        #verificar logicas
+        #status do arquivo
         contexto = self.statusFile.get_context_id("clear")
         self.statusFile.push(contexto, "Desconhecido")
-        self.feedStatus.gerarStatus(self.feedStatus.contexto_pronto,)
+
 
     '''
     Descrição:
@@ -299,8 +268,7 @@ class Interface (object):
                 self.statusFile.push(contexto,str(self.dialog.get_filename()))
                 self.dialog.destroy()
             else:
-                contexto = self.status.get_context_id("EmptyNet")
-                self.status.push(contexto,"Não existe RNA para ser salva.")
+                thread.start_new_thread(self._statusDinamico, (self.dir_context[10],))
         except:
             #pega a excecao gerada
             trace = traceback.format_exc()
@@ -334,7 +302,7 @@ class Interface (object):
                 self.statusFile.push(contexto,str(dialog.get_filename()))
 
         except:
-            self.feedStatus.gerarStatus(self.feedStatus.contexto_load)
+            thread.start_new_thread(self._statusDinamico,(self.dir_context[5],))
             #pega a excecao gerada
             trace = traceback.format_exc()
             #imprime
@@ -366,10 +334,13 @@ class Interface (object):
             self.net = rede.criarRede()
             numTargets = [float(self.targets[i][j])
                     for i in xrange(len(self.targets)) for j in xrange(1)]
+
             self._setListStore(self.inputs, numTargets, True)
-            self.feedStatus.gerarStatus(self.feedStatus.contexto_redeCriada)
+
+            #status
+            thread.start_new_thread(self._statusDinamico,(self.dir_context[9],))
         except:
-            self.feedStatus.gerarStatus(self.feedStatus.contexto_rede)
+            thread.start_new_thread(self._statusDinamico,(self.dir_context[6],))
             #pega a excecao gerada
             trace = traceback.format_exc()
             #imprime
@@ -421,15 +392,15 @@ class Interface (object):
             self._setListStore(self.inputs, numTargets, True)
 
             if len(self.errors) < self.epocas.get_value_as_int():
-                self.feedStatus.gerarStatus(self.feedStatus.contexto_treinado)
+                thread.start_new_thread(self._statusDinamico,(self.dir_context[1],))
             else:
-                self.feedStatus.gerarStatus(self.feedStatus.contexto_max)
+                thread.start_new_thread(self._statusDinamico,(self.dir_context[2],))
 
             if self.switchAnimacao.get_active() and len(self.errors) <= 100:
                 self._animarErro()
 
         except:
-            self.feedStatus.gerarStatus(self.feedStatus.contexto_train)
+            thread.start_new_thread(self._statusDinamico,(self.dir_context[7],))
             #pega a excecao gerada
             trace = traceback.format_exc()
             #imprime
@@ -572,10 +543,12 @@ class Interface (object):
                         for i in xrange(len(self.targets)) for j in xrange(1)]
                 self._setListStore(self.inputs, numTargets, False)
 
-            self.feedStatus.gerarStatus(self.feedStatus.contexto_simulacao)
+            #self.feedStatus.gerarStatus(self.feedStatus.contexto_simulacao)
+            thread.start_new_thread(self._statusDinamico,(self.dir_context[3],))
 
         except:
-            self.feedStatus.gerarStatus(self.feedStatus.contexto_erroSim)
+            #self.feedStatus.gerarStatus(self.feedStatus.contexto_erroSim)
+            thread.start_new_thread(self._statusDinamico,(self.dir_context[8],))
             #pega a excecao gerada
             trace = traceback.format_exc()
             #imprime
@@ -597,6 +570,60 @@ class Interface (object):
                                                 self.inputs, self.targets)
             graf.gerarGraficoSimulacao()
 
+    def getVars(self, builder):
+        #variaveis da 1 fase
+        self.butOpenEntradas = builder.get_object("butOpenEntradas")
+
+        #variaveis 2 Fase
+        self.listaNeuronios = builder.get_object("listaNeurons")
+        self.epocas = builder.get_object("spinEpocas")
+        self.objetivo = builder.get_object("spinObjetivo")
+        self.show = builder.get_object("spinShow")
+        self.taxaAprendizado = builder.get_object("spinTaxaAprendizado")
+        self.impulso = builder.get_object("spinImpulso")
+        self.taxaRegularizacao = builder.get_object("spinRegularizacao")
+        self.taxaIncremento = builder.get_object("spinTaxaIncremento")
+        self.taxaDecremento = builder.get_object("spinTaxaDecremento")
+
+        #variaveis da 3 Fase
+        self.delta = builder.get_object("radioDelta")
+        self.gd = builder.get_object("radioGD")
+        self.gdm = builder.get_object("radioGDM")
+        self.gdx = builder.get_object("radioGDX")
+        self.gda = builder.get_object("radioGDA")
+        self.rprop = builder.get_object("radioRPROP")
+        self.bfgs = builder.get_object("radioBFGS")
+
+        #variaveis da 4 Fase
+        self.heaviside = builder.get_object("radioHeaviside")
+        self.linear = builder.get_object("radioLinear")
+        self.tangente = builder.get_object("radioTangente")
+        self.sigmoide = builder.get_object("radioSigmoide")
+
+        #variaveis 6 Fase
+        self.switchAnimacao = builder.get_object("switch1")
+
+        #variaveis 7 Fase
+        self.butOpenSimulador = builder.get_object("butOpenSimulador")
+
+        #liststore
+        self.store = builder.get_object("liststore1")
+        self.storeErro = builder.get_object("liststore2")
+        self.storeDados = builder.get_object("liststore3")
+        self.storePesos = builder.get_object("liststore4")
+        self.storeBias = builder.get_object("liststore5")
+        self.storeRA = builder.get_object("liststore6")
+
+        #textview
+        self.modelStore = builder.get_object("treeview1").get_model()
+        self.modelStoreErro = builder.get_object("treeview2").get_model()
+        self.modelStoreDados = builder.get_object("treeview3").get_model()
+        self.modelStorePesos = builder.get_object("treeview4").get_model()
+        self.modelStoreBias = builder.get_object("treeview5").get_model()
+        self.modelStoreRA = builder.get_object("treeview6").get_model()
+
+        #spinner
+        self.spinner = builder.get_object("spinner1")
 
 
 if __name__ == "__main__":

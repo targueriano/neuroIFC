@@ -4,3 +4,27 @@
 
 
 
+Traceback (most recent call last):
+  File "Interface.py", line 327, in criarRede
+    intervalo = [[-100, 100] for i in xrange(len(self.inputs[0]))]
+IndexError: list index out of range
+Traceback (most recent call last):
+  File "Interface.py", line 377, in aprender
+    self.errors = tr.treinar("rprop")
+  File "/home/targueriano/neuroIFC/neuro-ifc_1.0.16_amd64/usr/local/neuro-ifc/src/Treinamento.py", line 79, in treinar
+    self.net.trainf = neurolab.train.train_rprop
+AttributeError: 'NoneType' object has no attribute 'trainf'
+Traceback (most recent call last):
+  File "Interface.py", line 327, in criarRede
+    intervalo = [[-100, 100] for i in xrange(len(self.inputs[0]))]
+IndexError: list index out of range
+Traceback (most recent call last):
+  File "Interface.py", line 362, in aprender
+    self.errors = tr.treinar("delta")
+  File "/home/targueriano/neuroIFC/neuro-ifc_1.0.16_amd64/usr/local/neuro-ifc/src/Treinamento.py", line 25, in treinar
+    self.errors = self.net.train(self.inputs, self.targets,
+AttributeError: 'NoneType' object has no attribute 'train'
+Traceback (most recent call last):
+  File "Interface.py", line 541, in simular
+    self.saidaSimulador = self.net.sim(self.inputs)
+AttributeError: 'NoneType' object has no attribute 'sim'
