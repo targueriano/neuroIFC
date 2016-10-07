@@ -79,7 +79,7 @@ class Interface (object):
             7:"Verifique as fases anteriores antes de treinar.",
             8:"Realize as fases anteriores ou insira um arquivo com as entradas.",
             9:"RNA criada com sucesso.",
-            10:"Não existe RNA para ser salva."
+            10:"Crie uma RNA e realize um treinamento."
         }
 
         self.getVars(builder)
@@ -252,7 +252,7 @@ class Interface (object):
     '''
     def salvar(self, widget):
         try:
-            if self.net:
+            if self.net and self.errors:
                 self.dialog = Gtk.FileChooserDialog("Selecione o local e informe o nome do arquivo", None,
                     Gtk.FileChooserAction.SAVE,
                     (Gtk.STOCK_CANCEL, Gtk.ResponseType.CANCEL,
