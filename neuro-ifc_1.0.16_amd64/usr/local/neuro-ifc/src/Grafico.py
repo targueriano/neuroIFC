@@ -15,6 +15,7 @@ class Grafico(object):
 
     def gerarGraficoErro(self):
         pl.plot(self.erro)
+        pl.title("F(epoch) = erro")
         pl.xlabel('Epoch')
         pl.ylabel('Erro (default SSE)')
         pl.grid()
@@ -36,6 +37,7 @@ class Grafico(object):
             pl.plot(x_list, y2, "-",x_list , y, ".", x_list, y2,"p")
             pl.legend(['Obtidos', 'Desejados'])
             pl.grid()
+            pl.title("Valores obtidos e desejados")
             pl.show()
         except:
             pass

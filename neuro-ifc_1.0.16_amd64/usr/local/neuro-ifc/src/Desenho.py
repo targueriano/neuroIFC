@@ -9,7 +9,7 @@ import traceback
 class Desenho(object):
     def __init__(self, lista):
         pygame.init()
-        self.screen = pygame.display.set_mode((640,480), 0, 32)
+        self.screen = pygame.display.set_mode((1000,400), 0, 32)
         self.blue = (0,0,255)
         self.red = (255, 0,0)
         self.white = (255,255,255)
@@ -17,9 +17,10 @@ class Desenho(object):
         self.black = (0,0,0)
         self.screen.fill(self.black)
         self.clock = pygame.time.Clock()
-        self.FPS = 30
+        self.FPS = 5
         pygame.display.set_caption("Arquitetura de rede neural artificial feedforward")
         self.lista = lista
+        self.criarArquitetura()
 
     def loopFrame(self):
         while True:
@@ -36,12 +37,11 @@ class Desenho(object):
 
     def criarArquitetura (self):
         try:
-
-
             lista_str = self.lista.split(",")
             try:
                 lista = [ int(lista_str[i]) for i in xrange(len(lista_str) )]
             except:
+                print "oi"
                 pygame.quit()
                 sys.atexit()
 

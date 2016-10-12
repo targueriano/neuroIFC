@@ -2,8 +2,9 @@
 #-*- coding: utf-8 -*-
 #autor Taylan Branco Meurer
 
+
+import traceback
 import cv2
-cv2.use("Gtk3")
 import numpy as np
 
 class Desenho(object):
@@ -20,12 +21,10 @@ class Desenho(object):
 
     def criarDesenho(self, canvas):
         try:
-            lista_str = self.lista.get_text().split(",")
-            print lista_str
+            lista_str = self.lista.split(',')
             try:
                 lista = [ int(lista_str[i]) for i in xrange(len(lista_str) )]
             except:
-                print "Bosta"
                 return None
 
             #posicao na tela (x,y)
@@ -74,3 +73,6 @@ class Desenho(object):
             print "Ocorreu um erro: \n",trace
             #salva em arquivo
             file("trace.log","a").write(trace)
+
+#lista = "3,4,5,10,1"
+#Desenho(lista)

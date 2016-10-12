@@ -66,3 +66,285 @@ Traceback (most recent call last):
   File "/home/targueriano/neuroIFC/neuro-ifc_1.0.16_amd64/usr/local/neuro-ifc/src/neurolab/core.py", line 146, in sim
     assert input.shape[1] == self.ci
 AssertionError
+Traceback (most recent call last):
+  File "Interface.py", line 537, in simular
+    self.saidaSimulador = self.net.sim(self.inputSimulador)
+  File "/home/targueriano/neuroIFC/neuro-ifc_1.0.16_amd64/usr/local/neuro-ifc/src/neurolab/core.py", line 146, in sim
+    assert input.shape[1] == self.ci
+AssertionError
+Traceback (most recent call last):
+  File "Interface.py", line 324, in criarRede
+    intervalo = [[-100, 100] for i in xrange(len(self.inputs[0]))]
+IndexError: list index out of range
+Traceback (most recent call last):
+  File "Interface.py", line 371, in aprender
+    self.errors = tr.treinar("gdx")
+  File "/home/targueriano/neuroIFC/neuro-ifc_1.0.16_amd64/usr/local/neuro-ifc/src/Treinamento.py", line 65, in treinar
+    self.net.trainf = neurolab.train.train_gdx
+AttributeError: 'NoneType' object has no attribute 'trainf'
+Traceback (most recent call last):
+  File "Interface.py", line 326, in criarRede
+    intervalo = [[-100, 100] for i in xrange(len(self.inputs[0]))]
+IndexError: list index out of range
+Traceback (most recent call last):
+  File "/home/targueriano/neuroIFC/neuro-ifc_1.0.16_amd64/usr/local/neuro-ifc/src/Desenho.py", line 84, in criarArquitetura
+    self.loopFrame()
+  File "/home/targueriano/neuroIFC/neuro-ifc_1.0.16_amd64/usr/local/neuro-ifc/src/Desenho.py", line 27, in loopFrame
+    if event.type == QUIT:
+NameError: global name 'QUIT' is not defined
+Traceback (most recent call last):
+  File "Interface.py", line 326, in criarRede
+    intervalo = [[-100, 100] for i in xrange(len(self.inputs[0]))]
+IndexError: list index out of range
+Traceback (most recent call last):
+  File "Interface.py", line 369, in aprender
+    self.errors = tr.treinar("gdm")
+  File "/home/targueriano/neuroIFC/neuro-ifc_1.0.16_amd64/usr/local/neuro-ifc/src/Treinamento.py", line 42, in treinar
+    self.net.trainf = neurolab.train.train_gdm
+AttributeError: 'NoneType' object has no attribute 'trainf'
+Traceback (most recent call last):
+  File "Interface.py", line 329, in criarRede
+    intervalo = [[-10, 10] for i in xrange(len(self.inputs[0]))]
+IndexError: list index out of range
+Traceback (most recent call last):
+  File "Interface.py", line 329, in criarRede
+    intervalo = [[-10, 10] for i in xrange(len(self.inputs[0]))]
+IndexError: list index out of range
+Traceback (most recent call last):
+  File "Interface.py", line 378, in aprender
+    self.errors = tr.treinar("gdx")
+  File "/home/targueriano/neuroIFC/neuro-ifc_1.0.16_amd64/usr/local/neuro-ifc/src/Treinamento.py", line 65, in treinar
+    self.net.trainf = neurolab.train.train_gdx
+AttributeError: 'NoneType' object has no attribute 'trainf'
+Traceback (most recent call last):
+  File "Interface.py", line 553, in simular
+    self.saidaSimulador = self.net.sim(self.inputs)
+AttributeError: 'NoneType' object has no attribute 'sim'
+Traceback (most recent call last):
+  File "Interface.py", line 329, in criarRede
+    intervalo = [[-10, 10] for i in xrange(len(self.inputs[0]))]
+IndexError: list index out of range
+Traceback (most recent call last):
+  File "Interface.py", line 495, in extrair_dados
+    data = get_data(caminho)
+  File "/usr/local/lib/python2.7/dist-packages/pyexcel_ods/__init__.py", line 344, in get_data
+    return read_data(afile, file_type=file_type, **keywords)
+  File "/usr/local/lib/python2.7/dist-packages/pyexcel_io/__init__.py", line 311, in get_data
+    data = load_data(afile, file_type=file_type, **keywords)
+  File "/usr/local/lib/python2.7/dist-packages/pyexcel_io/__init__.py", line 176, in load_data
+    filename))
+NotImplementedError: Cannot read content of file type net from file /home/targueriano/neuroIFC/neuro-ifc_1.0.16_amd64/usr/local/neuro-ifc/exemplos/rprop531tan.net
+Traceback (most recent call last):
+  File "Interface.py", line 496, in extrair_dados
+    data = get_data(caminho)
+  File "/usr/local/lib/python2.7/dist-packages/pyexcel_ods/__init__.py", line 344, in get_data
+    return read_data(afile, file_type=file_type, **keywords)
+  File "/usr/local/lib/python2.7/dist-packages/pyexcel_io/__init__.py", line 311, in get_data
+    data = load_data(afile, file_type=file_type, **keywords)
+  File "/usr/local/lib/python2.7/dist-packages/pyexcel_io/__init__.py", line 176, in load_data
+    filename))
+NotImplementedError: Cannot read content of file type log from file /home/targueriano/neuroIFC/neuro-ifc_1.0.16_amd64/usr/local/neuro-ifc/src/trace.log
+Traceback (most recent call last):
+  File "Interface.py", line 496, in extrair_dados
+    data = get_data(caminho)
+  File "/usr/local/lib/python2.7/dist-packages/pyexcel_ods/__init__.py", line 344, in get_data
+    return read_data(afile, file_type=file_type, **keywords)
+  File "/usr/local/lib/python2.7/dist-packages/pyexcel_io/__init__.py", line 311, in get_data
+    data = load_data(afile, file_type=file_type, **keywords)
+  File "/usr/local/lib/python2.7/dist-packages/pyexcel_io/__init__.py", line 176, in load_data
+    filename))
+NotImplementedError: Cannot read content of file type net from file /home/targueriano/neuroIFC/neuro-ifc_1.0.16_amd64/usr/local/neuro-ifc/exemplos/rprop531tan.net
+Traceback (most recent call last):
+  File "Interface.py", line 496, in extrair_dados
+    data = get_data(caminho)
+  File "/usr/local/lib/python2.7/dist-packages/pyexcel_ods/__init__.py", line 344, in get_data
+    return read_data(afile, file_type=file_type, **keywords)
+  File "/usr/local/lib/python2.7/dist-packages/pyexcel_io/__init__.py", line 311, in get_data
+    data = load_data(afile, file_type=file_type, **keywords)
+  File "/usr/local/lib/python2.7/dist-packages/pyexcel_io/__init__.py", line 176, in load_data
+    filename))
+NotImplementedError: Cannot read content of file type net from file /home/targueriano/neuroIFC/neuro-ifc_1.0.16_amd64/usr/local/neuro-ifc/exemplos/rprop531tan.net
+Traceback (most recent call last):
+  File "Interface.py", line 496, in extrair_dados
+    data = get_data(caminho)
+  File "/usr/local/lib/python2.7/dist-packages/pyexcel_ods/__init__.py", line 344, in get_data
+    return read_data(afile, file_type=file_type, **keywords)
+  File "/usr/local/lib/python2.7/dist-packages/pyexcel_io/__init__.py", line 311, in get_data
+    data = load_data(afile, file_type=file_type, **keywords)
+  File "/usr/local/lib/python2.7/dist-packages/pyexcel_io/__init__.py", line 176, in load_data
+    filename))
+NotImplementedError: Cannot read content of file type log from file /home/targueriano/neuroIFC/neuro-ifc_1.0.16_amd64/usr/local/neuro-ifc/src/trace.log
+Traceback (most recent call last):
+  File "Interface.py", line 496, in extrair_dados
+    data = get_data(caminho)
+  File "/usr/local/lib/python2.7/dist-packages/pyexcel_ods/__init__.py", line 344, in get_data
+    return read_data(afile, file_type=file_type, **keywords)
+  File "/usr/local/lib/python2.7/dist-packages/pyexcel_io/__init__.py", line 311, in get_data
+    data = load_data(afile, file_type=file_type, **keywords)
+  File "/usr/local/lib/python2.7/dist-packages/pyexcel_io/__init__.py", line 176, in load_data
+    filename))
+NotImplementedError: Cannot read content of file type net from file /home/targueriano/neuroIFC/neuro-ifc_1.0.16_amd64/usr/local/neuro-ifc/exemplos/rprop531tan.net
+Traceback (most recent call last):
+  File "Interface.py", line 496, in extrair_dados
+    data = get_data(caminho)
+  File "/usr/local/lib/python2.7/dist-packages/pyexcel_ods/__init__.py", line 344, in get_data
+    return read_data(afile, file_type=file_type, **keywords)
+  File "/usr/local/lib/python2.7/dist-packages/pyexcel_io/__init__.py", line 311, in get_data
+    data = load_data(afile, file_type=file_type, **keywords)
+  File "/usr/local/lib/python2.7/dist-packages/pyexcel_io/__init__.py", line 176, in load_data
+    filename))
+NotImplementedError: Cannot read content of file type mp3 from file /home/targueriano/Music/musicFabio/Travis/Sing.mp3
+Traceback (most recent call last):
+  File "Interface.py", line 330, in criarRede
+    intervalo = [[-10, 10] for i in xrange(len(self.inputs[0]))]
+IndexError: list index out of range
+Traceback (most recent call last):
+  File "Interface.py", line 367, in aprender
+    self.errors = tr.treinar("delta")
+  File "/home/targueriano/neuroIFC/neuro-ifc_1.0.16_amd64/usr/local/neuro-ifc/src/Treinamento.py", line 28, in treinar
+    lr=self.taxaAprendizado.get_value()
+  File "/home/targueriano/neuroIFC/neuro-ifc_1.0.16_amd64/usr/local/neuro-ifc/src/neurolab/core.py", line 169, in train
+    return self.trainf(self, *args, **kwargs)
+  File "/home/targueriano/neuroIFC/neuro-ifc_1.0.16_amd64/usr/local/neuro-ifc/src/neurolab/core.py", line 356, in __call__
+    train(net, *args)
+  File "/home/targueriano/neuroIFC/neuro-ifc_1.0.16_amd64/usr/local/neuro-ifc/src/neurolab/train/spo.py", line 79, in __call__
+    **self.kwargs)
+TypeError: fmin_bfgs() got an unexpected keyword argument 'lr'
+Traceback (most recent call last):
+  File "Interface.py", line 496, in extrair_dados
+    data = get_data(caminho)
+  File "/usr/local/lib/python2.7/dist-packages/pyexcel_ods/__init__.py", line 344, in get_data
+    return read_data(afile, file_type=file_type, **keywords)
+  File "/usr/local/lib/python2.7/dist-packages/pyexcel_io/__init__.py", line 311, in get_data
+    data = load_data(afile, file_type=file_type, **keywords)
+  File "/usr/local/lib/python2.7/dist-packages/pyexcel_io/__init__.py", line 176, in load_data
+    filename))
+NotImplementedError: Cannot read content of file type net from file /home/targueriano/neuroIFC/neuro-ifc_1.0.16_amd64/usr/local/neuro-ifc/exemplos/rprop531tan.net
+Traceback (most recent call last):
+  File "Interface.py", line 496, in extrair_dados
+    data = get_data(caminho)
+  File "/usr/local/lib/python2.7/dist-packages/pyexcel_ods/__init__.py", line 344, in get_data
+    return read_data(afile, file_type=file_type, **keywords)
+  File "/usr/local/lib/python2.7/dist-packages/pyexcel_io/__init__.py", line 311, in get_data
+    data = load_data(afile, file_type=file_type, **keywords)
+  File "/usr/local/lib/python2.7/dist-packages/pyexcel_io/__init__.py", line 176, in load_data
+    filename))
+NotImplementedError: Cannot read content of file type py from file /home/targueriano/ControleGuarita/novoAluno.py
+Traceback (most recent call last):
+  File "Interface.py", line 496, in extrair_dados
+    data = get_data(caminho)
+  File "/usr/local/lib/python2.7/dist-packages/pyexcel_ods/__init__.py", line 344, in get_data
+    return read_data(afile, file_type=file_type, **keywords)
+  File "/usr/local/lib/python2.7/dist-packages/pyexcel_io/__init__.py", line 311, in get_data
+    data = load_data(afile, file_type=file_type, **keywords)
+  File "/usr/local/lib/python2.7/dist-packages/pyexcel_io/__init__.py", line 176, in load_data
+    filename))
+NotImplementedError: Cannot read content of file type py from file /home/targueriano/ControleGuarita/novoAluno.py
+Traceback (most recent call last):
+  File "Desenho_cv2.py", line 23, in criarDesenho
+    lista_str = self.lista.get_text().split(",")
+AttributeError: 'numpy.ndarray' object has no attribute 'get_text'
+Traceback (most recent call last):
+  File "Desenho_cv2.py", line 23, in criarDesenho
+    lista_str = self.lista.get_text().split(",")
+AttributeError: 'list' object has no attribute 'get_text'
+Traceback (most recent call last):
+  File "Desenho_cv2.py", line 23, in criarDesenho
+    lista_str = self.lista.get_text().split(",")
+AttributeError: 'str' object has no attribute 'get_text'
+Traceback (most recent call last):
+  File "/home/targueriano/neuroIFC/neuro-ifc_1.0.16_amd64/usr/local/neuro-ifc/src/Desenho_cv2.py", line 23, in criarDesenho
+    lista_str = self.lista.get_text().split(",")
+AttributeError: 'str' object has no attribute 'get_text'
+Traceback (most recent call last):
+  File "Interface.py", line 365, in criarRede
+    self.desenharRNA()
+  File "Interface.py", line 223, in desenharRNA
+    gi.require_version('Gtk', '2.0')
+  File "/usr/lib/python2.7/dist-packages/gi/__init__.py", line 92, in require_version
+    (namespace, loaded_version))
+ValueError: Namespace Gtk is already loaded with version 3.0
+Traceback (most recent call last):
+  File "Interface.py", line 365, in criarRede
+    self.desenharRNA()
+  File "Interface.py", line 223, in desenharRNA
+    gi.require_version('Gtk', '2.0')
+  File "/usr/lib/python2.7/dist-packages/gi/__init__.py", line 92, in require_version
+    (namespace, loaded_version))
+ValueError: Namespace Gtk is already loaded with version 3.0
+Traceback (most recent call last):
+  File "Interface.py", line 365, in criarRede
+    self.desenharRNA()
+  File "Interface.py", line 223, in desenharRNA
+    gi.require_version('Gtk', '2.0')
+  File "/usr/lib/python2.7/dist-packages/gi/__init__.py", line 92, in require_version
+    (namespace, loaded_version))
+ValueError: Namespace Gtk is already loaded with version 3.0
+Traceback (most recent call last):
+  File "Interface.py", line 364, in criarRede
+    self.desenharRNA()
+  File "Interface.py", line 227, in desenharRNA
+    cv2.Desenho(strTamEntradas)
+NameError: global name 'cv2' is not defined
+Traceback (most recent call last):
+  File "Interface.py", line 364, in criarRede
+    self.desenharRNA()
+  File "Interface.py", line 227, in desenharRNA
+    cv2.Desenho(strTamEntradas)
+NameError: global name 'cv2' is not defined
+Traceback (most recent call last):
+  File "Interface.py", line 364, in criarRede
+    self.desenharRNA()
+  File "Interface.py", line 227, in desenharRNA
+    cv2.Desenho(strTamEntradas)
+NameError: global name 'cv2' is not defined
+Traceback (most recent call last):
+  File "Interface.py", line 350, in criarRede
+    intervalo = [[-10, 10] for i in xrange(len(self.inputs[0]))]
+IndexError: list index out of range
+Traceback (most recent call last):
+  File "Interface.py", line 364, in criarRede
+    self.desenharRNA()
+  File "Interface.py", line 227, in desenharRNA
+    cv2.Desenho(strTamEntradas)
+NameError: global name 'cv2' is not defined
+Traceback (most recent call last):
+  File "Interface.py", line 364, in criarRede
+    self.desenharRNA()
+  File "Interface.py", line 227, in desenharRNA
+    cv2.Desenho(strTamEntradas)
+NameError: global name 'cv2' is not defined
+Traceback (most recent call last):
+  File "Interface.py", line 364, in criarRede
+    self.desenharRNA()
+  File "Interface.py", line 227, in desenharRNA
+    cv2.Desenho(strTamEntradas)
+NameError: global name 'cv2' is not defined
+Traceback (most recent call last):
+  File "Interface.py", line 389, in aprender
+    self.errors = tr.treinar("delta")
+  File "/home/targueriano/neuroIFC/neuro-ifc_1.0.16_amd64/usr/local/neuro-ifc/src/Treinamento.py", line 28, in treinar
+    lr=self.taxaAprendizado.get_value()
+  File "/home/targueriano/neuroIFC/neuro-ifc_1.0.16_amd64/usr/local/neuro-ifc/src/neurolab/core.py", line 169, in train
+    return self.trainf(self, *args, **kwargs)
+  File "/home/targueriano/neuroIFC/neuro-ifc_1.0.16_amd64/usr/local/neuro-ifc/src/neurolab/core.py", line 356, in __call__
+    train(net, *args)
+  File "/home/targueriano/neuroIFC/neuro-ifc_1.0.16_amd64/usr/local/neuro-ifc/src/neurolab/train/spo.py", line 79, in __call__
+    **self.kwargs)
+TypeError: fmin_bfgs() got an unexpected keyword argument 'lr'
+Traceback (most recent call last):
+  File "Interface.py", line 400, in criarRede
+    intervalo = [[-10, 10] for i in xrange(len(self.inputs[0]))]
+IndexError: list index out of range
+Traceback (most recent call last):
+  File "Interface.py", line 412, in criarRede
+    intervalo = [[-10, 10] for i in xrange(len(self.inputs[0]))]
+IndexError: list index out of range
+Traceback (most recent call last):
+  File "Interface.py", line 488, in aprender
+    self.butSaveFast.set_sensitive(True)
+AttributeError: 'Interface' object has no attribute 'butSaveFast'
+Traceback (most recent call last):
+  File "Interface.py", line 488, in aprender
+    self.butSaveFast.set_sensitive(True)
+AttributeError: 'Interface' object has no attribute 'butSaveFast'

@@ -4,22 +4,27 @@
 #algoritmo para chamar a interface principal do neuroIFC
 ################################################################################
 #Inserir:
-#        1. Regra BFGS --- OK
+#        1. Titulo de cada secao
+#        2. status mais ativos
+#        3. colocar regra de treinamento na segunda fase
+#        4. ocultar entradas conforme regra escolhida
+#        5. mostrar rna e seus parametros
+#        6. titulo de cada grafico
+#        7. incluir erro (SSE ou MSE ou MAP) na tabela de simulacao
+#        8. perguntar antes de apagar tudo
 ################################################################################
 import traceback
 from __builtin__ import file
-from cgi import log
-import json
-import random
 import numpy as np
 import Desenho as desenho
+#import Desenho_cv2 as cv2
 import RNA as rna
 import Grafico as grafico
 import Treinamento as treino
 import Sobre as sobre
 import thread
 import time
-import subprocess
+#import subprocess
 import Terminal as terminal
 import Animacao as anima
 from multiprocessing import Process
@@ -32,11 +37,7 @@ try:
     from gi.repository import Gio
     from pyexcel_ods import get_data
     from pyexcel_ods import save_data
-    import pylab
     import neurolab
-    import pygame, sys
-    from pygame.locals import *
-
 except:
     #pega a excecao gerada
     trace = traceback.format_exc()
@@ -79,7 +80,10 @@ class Interface (object):
             7:"Verifique as fases anteriores antes de treinar.",
             8:"Realize as fases anteriores ou insira um arquivo com as entradas.",
             9:"RNA criada com sucesso.",
-            10:"Crie uma RNA e realize um treinamento."
+            10:"Crie uma RNA e realize um treinamento.",
+            11:"Treinando...",
+            12:"Dados inseridos com sucesso!",
+            13:"O arquivo deve ter extensão .ods."
         }
 
         self.getVars(builder)
@@ -124,10 +128,88 @@ class Interface (object):
                                  "on_butSLP_clicked":self.treinarExemploSLP,
                                  "on_butMLP_clicked":self.treinarExemploMLP,
                                  "on_information_activate":self.verInformation,
+                                 "on_radioDelta_clicked":self.ativarDelta,
+                                 "on_radioGDM_clicked":self.ativarGDM,
+                                 "on_radioGD_clicked":self.ativarGD,
+                                 "on_radioGDA_clicked":self.ativarGDA,
+                                 "on_radioGDX_clicked":self.ativarGDX,
+                                 "on_radioRPROP_clicked": self.ativarRPROP,
+                                 "on_radioBFGS_clicked": self.ativarBFGS,
                                  "on_sair_activate": Gtk.main_quit
                                  })
 
+    def ativarBFGS(self, widget):
+        self._desativarEntradas()
+        self.taxaRegularizacao.set_sensitive(True)
+        self._ativarListaNeuronios()
+        self._ativarFuncTrainMLP()
 
+    def ativarRPROP(self, widget):
+        self._desativarEntradas()
+        self._ativarListaNeuronios()
+        self._ativarFuncTrainMLP()
+
+    def ativarGDX(self, widget):
+        self.impulso.set_sensitive(True)
+        self.taxaRegularizacao.set_sensitive(True)
+        self.taxaDecremento.set_sensitive(True)
+        self.taxaIncremento.set_sensitive(True)
+        self._ativarListaNeuronios()
+        self._ativarFuncTrainMLP()
+
+
+    def ativarGDA(self, widget):
+        self._desativarEntradas()
+        self.taxaRegularizacao.set_sensitive(True)
+        self.taxaDecremento.set_sensitive(True)
+        self.taxaIncremento.set_sensitive(True)
+        self._ativarListaNeuronios()
+        self._ativarFuncTrainMLP()
+
+
+    def _desativarEntradas(self):
+        self.taxaRegularizacao.set_sensitive(False)
+        self.taxaDecremento.set_sensitive(False)
+        self.taxaIncremento.set_sensitive(False)
+        self.impulso.set_sensitive(False)
+        self.listaNeuronios.set_sensitive(False)
+        #######
+        self.linear.set_sensitive(False)
+        self.heaviside.set_sensitive(False)
+        self.tangente.set_sensitive(False)
+        self.sigmoide.set_sensitive(False)
+
+    def _ativarListaNeuronios(self):
+        self.listaNeuronios.set_text('3,3,1')
+        self.listaNeuronios.set_sensitive(True)
+
+    def ativarGDM(self, widget):
+        self._desativarEntradas()
+        self.taxaRegularizacao.set_sensitive(True)
+        self.impulso.set_sensitive(True)
+        self._ativarListaNeuronios()
+        self._ativarFuncTrainMLP()
+
+
+    def ativarGD(self, widget):
+        self._desativarEntradas()
+        self._ativarListaNeuronios()
+        self._ativarFuncTrainMLP()
+
+    def _ativarFuncTrainMLP(self):
+        self.tangente.set_sensitive(True)
+        self.tangente.set_active(True)
+        self.sigmoide.set_sensitive(True)
+
+
+    def ativarDelta(self, widget):
+        self._desativarEntradas()
+        self.listaNeuronios.set_text("1")
+        self.listaNeuronios.set_sensitive(False)
+        #####
+        self.heaviside.set_sensitive(True)
+        self.heaviside.set_active(True)
+        self.linear.set_sensitive(True)
 
     def _statusDefault(self):
         contexto = self.status.get_context_id(self.dir_context[0])
@@ -136,7 +218,7 @@ class Interface (object):
     def _statusDinamico(self, dic):
         contexto = self.status.get_context_id(dic)
         self.status.push(contexto, dic)
-        time.sleep(5)
+        time.sleep(2)
         self.status.pop(contexto)
 
     def verInformation(self, widget):
@@ -197,16 +279,38 @@ class Interface (object):
     será desenhado camada oculta(s) + saída.
     '''
     def desenharArquitetura(self, widget):
-        if self.inputs:
-            strTamEntradas = str(len(self.inputs[0]))
-            strTamEntradas += ","
-            strTamEntradas += self.listaNeuronios.get_text()
-            d = desenho.Desenho(lista=strTamEntradas)
-            d.criarArquitetura()
-        else:
-            lista = self.listaNeuronios.get_text()
-            d = desenho.Desenho(lista=lista)
-            d.criarArquitetura()
+        try:
+            if self.inputs:
+                strTamEntradas = str(len(self.inputs[0]))
+                strTamEntradas += ","
+                strTamEntradas += self.listaNeuronios.get_text()
+
+                p = Process(target=desenho.Desenho, args=(strTamEntradas,))
+                p.start()
+                p.join()
+
+            else:
+                lista = self.listaNeuronios.get_text()
+                p = Process(target=desenho.Desenho, args=(lista,))
+                p.start()
+                p.join()
+        except:
+            trace = traceback.format_exc()
+            file("trace.log","a").write(trace)
+        finally:
+            p.terminate()
+
+    def desenharRNA(self, widget):
+        try:
+            p = Process(target=anima.Animacao, args=(self.errors,))
+            p.start()
+            p.join()
+        except:
+            #pega a excecao gerada
+            trace = traceback.format_exc()
+            file("trace.log","a").write(trace)
+        finally:
+            p.terminate()
 
     def sobre(self,widget):
         sobre.Sobre()
@@ -219,6 +323,15 @@ class Interface (object):
     #Método para retornar ao estado inicial. Isso pode ser feito toda vez que
     #se deseja iniciar uma nova arquitetura com um novo treinamento.
     def limpar(self, widget):
+        #desativar botoes
+        self.butCriarRNA.set_sensitive(False)
+        self.butTreinar.set_sensitive(False)
+        self.butOpenSimulador.set_sensitive(False)
+        self.butSimular.set_sensitive(False)
+        self.butGraficoTreinar.set_sensitive(False)
+        self.butGraficoSimulador.set_sensitive(False)
+        self.butSaveFast.set_sensitive(False)
+
         self.modelStore.clear()
         self.modelStoreErro.clear()
         self.modelStoreDados.clear()
@@ -252,23 +365,23 @@ class Interface (object):
     '''
     def salvar(self, widget):
         try:
-            if self.net and self.errors:
-                self.dialog = Gtk.FileChooserDialog("Selecione o local e informe o nome do arquivo", None,
-                    Gtk.FileChooserAction.SAVE,
-                    (Gtk.STOCK_CANCEL, Gtk.ResponseType.CANCEL,
-                     Gtk.STOCK_SAVE, Gtk.ResponseType.OK))
+            self.dialog = Gtk.FileChooserDialog("""Selecione o local e
+                                     informe o nome do arquivo""",
+                                     None,
+                                     Gtk.FileChooserAction.SAVE,
+                                    (Gtk.STOCK_CANCEL, Gtk.ResponseType.CANCEL,
+                                     Gtk.STOCK_SAVE, Gtk.ResponseType.OK))
 
-                response = self.dialog.run()
-                if response == Gtk.ResponseType.OK:
-                    nome = self.dialog.get_filename()+".net"
-                    self.net.save(nome)
+            response = self.dialog.run()
+            if response == Gtk.ResponseType.OK:
+                nome = self.dialog.get_filename()+".net"
+                self.net.save(nome)
 
-                #altera status para nome do arquivo
-                contexto = self.statusFile.get_context_id("fileSave")
-                self.statusFile.push(contexto,str(self.dialog.get_filename()))
-                self.dialog.destroy()
-            else:
-                thread.start_new_thread(self._statusDinamico, (self.dir_context[10],))
+            #altera status para nome do arquivo
+            contexto = self.statusFile.get_context_id("fileSave")
+            self.statusFile.push(contexto,str(self.dialog.get_filename()))
+            self.dialog.destroy()
+
         except:
             #pega a excecao gerada
             trace = traceback.format_exc()
@@ -301,6 +414,10 @@ class Interface (object):
                 contexto = self.statusFile.get_context_id("fileAbrir")
                 self.statusFile.push(contexto,str(dialog.get_filename()))
 
+                self.butOpenSimulador.set_sensitive(True)
+                self.butSimular.set_sensitive(True)
+
+
         except:
             thread.start_new_thread(self._statusDinamico,(self.dir_context[5],))
             #pega a excecao gerada
@@ -324,7 +441,7 @@ class Interface (object):
     def criarRede(self, widget):
         try:
             #criar o intervalo de entradas
-            intervalo = [[-100, 100] for i in xrange(len(self.inputs[0]))]
+            intervalo = [[-10, 10] for i in xrange(len(self.inputs[0]))]
             #criar a rede neural artificial
             rede = rna.Rede(intervalo, self.linear.get_active(),
                                     self.heaviside.get_active(),
@@ -337,8 +454,13 @@ class Interface (object):
 
             self._setListStore(self.inputs, numTargets, True)
 
+            #ativar fase do treinamento
+            self.butTreinar.set_sensitive(True)
+            self.butGraficoTreinar.set_sensitive(True)
             #status
             thread.start_new_thread(self._statusDinamico,(self.dir_context[9],))
+
+
         except:
             thread.start_new_thread(self._statusDinamico,(self.dir_context[6],))
             #pega a excecao gerada
@@ -349,6 +471,8 @@ class Interface (object):
             file("trace.log","a").write(trace)
 
     def carregarSpinner(self):
+        contexto = self.status.get_context_id(self.dir_context[11])
+        self.status.push(contexto, self.dir_context[11])
         self.spinner.start()
 
     def aprender(self):
@@ -391,6 +515,14 @@ class Interface (object):
                         for i in xrange(len(self.targets)) for j in xrange(1)]
             self._setListStore(self.inputs, numTargets, True)
 
+
+            self.butSaveFast.set_sensitive(True)
+            self.butSimular.set_sensitive(True)
+            self.butOpenSimulador.set_sensitive(True)
+            self.butGraficoSimulador.set_sensitive(True)
+
+            self.status.pop(self.status.get_context_id(self.dir_context[11]))
+
             if len(self.errors) < self.epocas.get_value_as_int():
                 thread.start_new_thread(self._statusDinamico,(self.dir_context[1],))
             else:
@@ -398,6 +530,7 @@ class Interface (object):
 
             if self.switchAnimacao.get_active() and len(self.errors) <= 100:
                 self._animarErro()
+
 
         except:
             thread.start_new_thread(self._statusDinamico,(self.dir_context[7],))
@@ -409,6 +542,7 @@ class Interface (object):
             file("trace.log","a").write(trace)
         finally:
             self.spinner.stop()
+
 
     '''
     Descrição:
@@ -429,6 +563,7 @@ class Interface (object):
         finally:
             p.terminate()
 
+
     '''
     Descrição:
     Esse método cria duas threads. Uma para o processo de aprendizado e outra
@@ -437,6 +572,7 @@ class Interface (object):
     def treinar(self,widget):
         thread.start_new_thread(self.carregarSpinner,())
         thread.start_new_thread(self.aprender,())
+
 
 
     """
@@ -467,6 +603,11 @@ class Interface (object):
                                         for i in xrange(len(self.targets))]
                 self.inputs = novaf
 
+                self.butCriarRNA.set_sensitive(True)
+
+                thread.start_new_thread(self._statusDinamico,
+                                                (self.dir_context[12],))
+
         except:
             #pega a excecao gerada
             trace = traceback.format_exc()
@@ -485,6 +626,8 @@ class Interface (object):
 
             return nova
         except:
+            thread.start_new_thread(self._statusDinamico,
+                                            (self.dir_context[13],))
             trace = traceback.format_exc()
             file("trace.log","a").write(trace)
 
@@ -574,7 +717,16 @@ class Interface (object):
         #variaveis da 1 fase
         self.butOpenEntradas = builder.get_object("butOpenEntradas")
 
-        #variaveis 2 Fase
+        #variaveis da 2 Fase
+        self.delta = builder.get_object("radioDelta")
+        self.gd = builder.get_object("radioGD")
+        self.gdm = builder.get_object("radioGDM")
+        self.gdx = builder.get_object("radioGDX")
+        self.gda = builder.get_object("radioGDA")
+        self.rprop = builder.get_object("radioRPROP")
+        self.bfgs = builder.get_object("radioBFGS")
+
+        #variaveis 3 Fase
         self.listaNeuronios = builder.get_object("listaNeurons")
         self.epocas = builder.get_object("spinEpocas")
         self.objetivo = builder.get_object("spinObjetivo")
@@ -585,14 +737,6 @@ class Interface (object):
         self.taxaIncremento = builder.get_object("spinTaxaIncremento")
         self.taxaDecremento = builder.get_object("spinTaxaDecremento")
 
-        #variaveis da 3 Fase
-        self.delta = builder.get_object("radioDelta")
-        self.gd = builder.get_object("radioGD")
-        self.gdm = builder.get_object("radioGDM")
-        self.gdx = builder.get_object("radioGDX")
-        self.gda = builder.get_object("radioGDA")
-        self.rprop = builder.get_object("radioRPROP")
-        self.bfgs = builder.get_object("radioBFGS")
 
         #variaveis da 4 Fase
         self.heaviside = builder.get_object("radioHeaviside")
@@ -600,11 +744,19 @@ class Interface (object):
         self.tangente = builder.get_object("radioTangente")
         self.sigmoide = builder.get_object("radioSigmoide")
 
+
+        #variavel da 5 Fase
+        self.butCriarRNA = builder.get_object("butCriarRede")
+
         #variaveis 6 Fase
+        self.butTreinar = builder.get_object("butTreinar")
+        self.butGraficoTreinar = builder.get_object("butGrafico")
         self.switchAnimacao = builder.get_object("switch1")
 
         #variaveis 7 Fase
         self.butOpenSimulador = builder.get_object("butOpenSimulador")
+        self.butSimular = builder.get_object("butSimular")
+        self.butGraficoSimulador = builder.get_object("butGraficoSimulador")
 
         #liststore
         self.store = builder.get_object("liststore1")
@@ -621,6 +773,9 @@ class Interface (object):
         self.modelStorePesos = builder.get_object("treeview4").get_model()
         self.modelStoreBias = builder.get_object("treeview5").get_model()
         self.modelStoreRA = builder.get_object("treeview6").get_model()
+
+        #variaveis do toolbar
+        self.butSaveFast = builder.get_object("butSaveFast")
 
         #spinner
         self.spinner = builder.get_object("spinner1")

@@ -21,4 +21,4 @@ class Terminal(Vte.Terminal):
             )
 
     def subprocessTerminal(self):
-        subprocess.call(["gnome-terminal", "&" ])
+        subprocess.call(["gnome-terminal", "" ])
