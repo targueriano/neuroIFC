@@ -338,6 +338,7 @@ class Interface (object):
         self.modelStorePesos.clear()
         self.modelStoreRA.clear()
         self.modelStoreBias.clear()
+        self.modelStoreSSE_MSE.clear()
 
         self.pesos = list()
         self.errors = list()
@@ -649,10 +650,10 @@ class Interface (object):
     Descrição:
     Método privado para configurar e inserir os dados na tela.
     '''
-    def _setListStore(self, input, target, dados):
+    def _setListStore(self, entradas, target, dados):
         if dados:
-            for i in xrange(len(input)):
-                self.storeDados.append((str(input[i]), target[i]) )
+            for i in xrange(len(entradas)):
+                self.storeDados.append((str(entradas[i]), target[i]) )
 
             pesos = self.net.layers[0].np['w']
             pesos = [[str(pesos[i][j])] for i in xrange(len(pesos))
@@ -668,11 +669,20 @@ class Interface (object):
 
 
         else:
+            sse = 0
             for i in xrange(len(self.saidaSimulador)):
-                self.store.append((str(input[i]),
+                erroQuad = (float(self.saidaSimulador[i]) - target[i])**2
+                sse += erroQuad
+                self.store.append((str(entradas[i]),
                                     target[i],
-                                    float(self.saidaSimulador[i])
+                                    float(self.saidaSimulador[i]),
+                                    erroQuad,
                                  ))
+
+            #incluir SSE e MSE na saida da simulacao
+            mse = sse / len(target)
+            self.storeSSE_MSE.append((sse,mse))
+
 
     def simular(self, widget):
         try:
@@ -695,7 +705,7 @@ class Interface (object):
             #pega a excecao gerada
             trace = traceback.format_exc()
             #imprime
-            #print "Ocorreu um erro: \n",trace
+            print "Ocorreu um erro: \n",trace
             #salva em arquivo
             file("trace.log","a").write(trace)
 
@@ -765,6 +775,8 @@ class Interface (object):
         self.storePesos = builder.get_object("liststore4")
         self.storeBias = builder.get_object("liststore5")
         self.storeRA = builder.get_object("liststore6")
+        self.storeSSE_MSE = builder.get_object("liststore7")
+
 
         #textview
         self.modelStore = builder.get_object("treeview1").get_model()
@@ -773,6 +785,7 @@ class Interface (object):
         self.modelStorePesos = builder.get_object("treeview4").get_model()
         self.modelStoreBias = builder.get_object("treeview5").get_model()
         self.modelStoreRA = builder.get_object("treeview6").get_model()
+        self.modelStoreSSE_MSE = builder.get_object("treeview7").get_model()
 
         #variaveis do toolbar
         self.butSaveFast = builder.get_object("butSaveFast")

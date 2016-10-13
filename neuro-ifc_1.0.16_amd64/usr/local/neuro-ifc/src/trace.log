@@ -348,3 +348,93 @@ Traceback (most recent call last):
   File "Interface.py", line 488, in aprender
     self.butSaveFast.set_sensitive(True)
 AttributeError: 'Interface' object has no attribute 'butSaveFast'
+Traceback (most recent call last):
+  File "Interface.py", line 689, in simular
+    self._setListStore(self.inputs, numTargets, False)
+  File "Interface.py", line 672, in _setListStore
+    erroQuad = (entradas[i] - target[i])^2
+TypeError: unsupported operand type(s) for -: 'list' and 'float'
+Traceback (most recent call last):
+  File "Interface.py", line 690, in simular
+    self._setListStore(self.inputs, numTargets, False)
+  File "Interface.py", line 673, in _setListStore
+    erroQuad = (entradas[i] - target[i])^2
+TypeError: unsupported operand type(s) for -: 'list' and 'float'
+Traceback (most recent call last):
+  File "Interface.py", line 690, in simular
+    self._setListStore(self.inputs, numTargets, False)
+  File "Interface.py", line 673, in _setListStore
+    erroQuad = (entradas[i] - target[i])^2
+TypeError: unsupported operand type(s) for -: 'list' and 'float'
+Traceback (most recent call last):
+  File "Interface.py", line 689, in simular
+    self._setListStore(self.inputs, numTargets, False)
+  File "Interface.py", line 672, in _setListStore
+    erroQuad = (entradas[i] - target[i])^2
+TypeError: unsupported operand type(s) for -: 'list' and 'float'
+Traceback (most recent call last):
+  File "Interface.py", line 689, in simular
+    self._setListStore(self.inputs, numTargets, False)
+  File "Interface.py", line 672, in _setListStore
+    erroQuad = (entradas[i] - target[i])^2
+TypeError: unsupported operand type(s) for -: 'list' and 'float'
+Traceback (most recent call last):
+  File "Interface.py", line 689, in simular
+    self._setListStore(self.inputs, numTargets, False)
+  File "Interface.py", line 672, in _setListStore
+    erroQuad = (entradas[i] - target[i])^2
+TypeError: unsupported operand type(s) for -: 'list' and 'float'
+Traceback (most recent call last):
+  File "Interface.py", line 689, in simular
+    self._setListStore(self.inputs, numTargets, False)
+  File "Interface.py", line 672, in _setListStore
+    erroQuad = (entradas[i] - target[i])^2
+TypeError: unsupported operand type(s) for -: 'list' and 'float'
+Traceback (most recent call last):
+  File "Interface.py", line 691, in simular
+    self._setListStore(self.inputs, numTargets, False)
+  File "Interface.py", line 671, in _setListStore
+    print type(entrada[0])
+NameError: global name 'entrada' is not defined
+Traceback (most recent call last):
+  File "Interface.py", line 691, in simular
+    self._setListStore(self.inputs, numTargets, False)
+  File "Interface.py", line 674, in _setListStore
+    erroQuad = (float(entradas[i]) - float(target[i]))^2
+TypeError: float() argument must be a string or a number
+Traceback (most recent call last):
+  File "Interface.py", line 689, in simular
+    self._setListStore(self.inputs, numTargets, False)
+  File "Interface.py", line 672, in _setListStore
+    erroQuad = (float(self.saidaSimulador) - float(target[i]))^2
+TypeError: only length-1 arrays can be converted to Python scalars
+Traceback (most recent call last):
+  File "Interface.py", line 689, in simular
+    self._setListStore(self.inputs, numTargets, False)
+  File "Interface.py", line 672, in _setListStore
+    erroQuad = (float(self.saidaSimulador[i]) - float(target[i]))^2
+TypeError: unsupported operand type(s) for ^: 'float' and 'int'
+Traceback (most recent call last):
+  File "Interface.py", line 689, in simular
+    self._setListStore(self.inputs, numTargets, False)
+  File "Interface.py", line 672, in _setListStore
+    erroQuad = (float(self.saidaSimulador[i]) - float(target[i]))^2
+TypeError: unsupported operand type(s) for ^: 'float' and 'int'
+Traceback (most recent call last):
+  File "Interface.py", line 691, in simular
+    self._setListStore(self.inputs, numTargets, False)
+  File "Interface.py", line 674, in _setListStore
+    erroQuad = (float(self.saidaSimulador[i]) - float(target[i]))^2
+TypeError: unsupported operand type(s) for ^: 'float' and 'int'
+Traceback (most recent call last):
+  File "Interface.py", line 691, in simular
+    self._setListStore(self.inputs, numTargets, False)
+  File "Interface.py", line 674, in _setListStore
+    erroQuad = (float(self.saidaSimulador[i]) - target[i])^2
+TypeError: unsupported operand type(s) for ^: 'float' and 'int'
+Traceback (most recent call last):
+  File "Interface.py", line 693, in simular
+    self._setListStore(self.inputs, numTargets, False)
+  File "Interface.py", line 673, in _setListStore
+    sse += erroQuad
+UnboundLocalError: local variable 'sse' referenced before assignment

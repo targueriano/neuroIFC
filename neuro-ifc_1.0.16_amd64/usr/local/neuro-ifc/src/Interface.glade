@@ -73,6 +73,8 @@
       <column type="gdouble"/>
       <!-- column-name Obtidos -->
       <column type="gdouble"/>
+      <!-- column-name Erro quadrático -->
+      <column type="gdouble"/>
     </columns>
   </object>
   <object class="GtkListStore" id="liststore2">
@@ -107,6 +109,14 @@
     <columns>
       <!-- column-name Regra -->
       <column type="gchararray"/>
+    </columns>
+  </object>
+  <object class="GtkListStore" id="liststore7">
+    <columns>
+      <!-- column-name SSE -->
+      <column type="gdouble"/>
+      <!-- column-name MSE -->
+      <column type="gdouble"/>
     </columns>
   </object>
   <object class="GtkWindow" id="window1">
@@ -1705,9 +1715,71 @@ Objetivo: 0.02</property>
                                         </child>
                                       </object>
                                     </child>
+                                    <child>
+                                      <object class="GtkTreeViewColumn" id="treeviewcolumn11">
+                                        <property name="resizable">True</property>
+                                        <property name="sizing">autosize</property>
+                                        <property name="title" translatable="yes">Erro Quadrático</property>
+                                        <child>
+                                          <object class="GtkCellRendererText" id="cellrenderertext11">
+                                            <property name="background_gdk">#88888a8a8585</property>
+                                          </object>
+                                          <attributes>
+                                            <attribute name="text">3</attribute>
+                                          </attributes>
+                                        </child>
+                                      </object>
+                                    </child>
                                   </object>
                                   <packing>
                                     <property name="left_attach">0</property>
+                                    <property name="top_attach">0</property>
+                                  </packing>
+                                </child>
+                                <child>
+                                  <object class="GtkTreeView" id="treeview7">
+                                    <property name="visible">True</property>
+                                    <property name="can_focus">True</property>
+                                    <property name="model">liststore7</property>
+                                    <property name="hover_selection">True</property>
+                                    <property name="enable_grid_lines">both</property>
+                                    <property name="activate_on_single_click">True</property>
+                                    <child internal-child="selection">
+                                      <object class="GtkTreeSelection" id="treeview-selection7"/>
+                                    </child>
+                                    <child>
+                                      <object class="GtkTreeViewColumn" id="treeviewcolumn12">
+                                        <property name="resizable">True</property>
+                                        <property name="sizing">autosize</property>
+                                        <property name="title" translatable="yes">SSE</property>
+                                        <child>
+                                          <object class="GtkCellRendererText" id="cellrenderertext12">
+                                            <property name="background_gdk">#fcfcafaf3e3e</property>
+                                          </object>
+                                          <attributes>
+                                            <attribute name="text">0</attribute>
+                                          </attributes>
+                                        </child>
+                                      </object>
+                                    </child>
+                                    <child>
+                                      <object class="GtkTreeViewColumn" id="treeviewcolumn13">
+                                        <property name="resizable">True</property>
+                                        <property name="sizing">autosize</property>
+                                        <property name="title" translatable="yes">MSE</property>
+                                        <child>
+                                          <object class="GtkCellRendererText" id="cellrenderertext13">
+                                            <property name="background_gdk">#fcfcafaf3e3e</property>
+                                          </object>
+                                          <attributes>
+                                            <attribute name="text">1</attribute>
+                                          </attributes>
+                                        </child>
+                                      </object>
+                                    </child>
+                                  </object>
+                                  <packing>
+                                    <property name="left_attach">1</property>
                                     <property name="top_attach">0</property>
                                   </packing>
                                 </child>
