@@ -28,7 +28,8 @@ class Desenho(object):
                 if event.type == QUIT:
                     try:
                         pygame.quit()
-                        sys.atexit()
+                        #sys.atexit()
+                        sys.exit()
                     except:
                         return None
                     #sys.exit()
@@ -41,9 +42,8 @@ class Desenho(object):
             try:
                 lista = [ int(lista_str[i]) for i in xrange(len(lista_str) )]
             except:
-                print "oi"
                 pygame.quit()
-                sys.atexit()
+                sys.exit()
 
             #posicao na tela (x,y)
             x = 25

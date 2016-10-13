@@ -438,3 +438,33 @@ Traceback (most recent call last):
   File "Interface.py", line 673, in _setListStore
     sse += erroQuad
 UnboundLocalError: local variable 'sse' referenced before assignment
+Traceback (most recent call last):
+  File "Interface.py", line 509, in aprender
+    self.show.get_value_as_int()):
+ValueError: xrange() arg 3 must not be zero
+Traceback (most recent call last):
+  File "/home/targueriano/neuroIFC/neuro-ifc_1.0.16_amd64/usr/local/neuro-ifc/src/Desenho.py", line 84, in criarArquitetura
+    self.loopFrame()
+  File "/home/targueriano/neuroIFC/neuro-ifc_1.0.16_amd64/usr/local/neuro-ifc/src/Desenho.py", line 28, in loopFrame
+    if event.type == QUIT:
+NameError: global name 'QUIT' is not defined
+Traceback (most recent call last):
+  File "/home/targueriano/neuroIFC/neuro-ifc_1.0.16_amd64/usr/local/neuro-ifc/src/Desenho.py", line 84, in criarArquitetura
+    self.loopFrame()
+  File "/home/targueriano/neuroIFC/neuro-ifc_1.0.16_amd64/usr/local/neuro-ifc/src/Desenho.py", line 28, in loopFrame
+    if event.type == QUIT:
+NameError: global name 'QUIT' is not defined
+Traceback (most recent call last):
+  File "/home/targueriano/neuroIFC/neuro-ifc_1.0.16_amd64/usr/local/neuro-ifc/src/Desenho.py", line 84, in criarArquitetura
+    self.loopFrame()
+  File "/home/targueriano/neuroIFC/neuro-ifc_1.0.16_amd64/usr/local/neuro-ifc/src/Desenho.py", line 28, in loopFrame
+    if event.type == QUIT:
+NameError: global name 'QUIT' is not defined
+Traceback (most recent call last):
+  File "/home/targueriano/neuroIFC/neuro-ifc_1.0.16_amd64/usr/local/neuro-ifc/src/Desenho.py", line 46, in criarArquitetura
+    sys.atexit()
+AttributeError: 'module' object has no attribute 'atexit'
+Traceback (most recent call last):
+  File "/home/targueriano/neuroIFC/neuro-ifc_1.0.16_amd64/usr/local/neuro-ifc/src/Desenho.py", line 46, in criarArquitetura
+    sys.exit()
+SystemExit
