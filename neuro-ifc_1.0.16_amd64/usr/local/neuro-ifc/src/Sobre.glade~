@@ -5,6 +5,7 @@
   <object class="GtkAboutDialog" id="aboutdialog1">
     <property name="can_focus">False</property>
     <property name="title" translatable="yes">Sobre</property>
+    <property name="icon_name">dialog-information</property>
     <property name="type_hint">dialog</property>
     <property name="program_name">neuroIFC</property>
     <property name="version">1.0.16</property>

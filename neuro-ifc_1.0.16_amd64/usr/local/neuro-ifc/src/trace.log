@@ -468,3 +468,13 @@ Traceback (most recent call last):
   File "/home/targueriano/neuroIFC/neuro-ifc_1.0.16_amd64/usr/local/neuro-ifc/src/Desenho.py", line 46, in criarArquitetura
     sys.exit()
 SystemExit
+Traceback (most recent call last):
+  File "Interface.py", line 622, in extrair_dados
+    data = get_data(caminho)
+  File "/usr/local/lib/python2.7/dist-packages/pyexcel_ods/__init__.py", line 344, in get_data
+    return read_data(afile, file_type=file_type, **keywords)
+  File "/usr/local/lib/python2.7/dist-packages/pyexcel_io/__init__.py", line 311, in get_data
+    data = load_data(afile, file_type=file_type, **keywords)
+  File "/usr/local/lib/python2.7/dist-packages/pyexcel_io/__init__.py", line 176, in load_data
+    filename))
+NotImplementedError: Cannot read content of file type net from file /home/targueriano/neuroIFC/neuro-ifc_1.0.16_amd64/usr/local/neuro-ifc/exemplos/rprop531tan.net

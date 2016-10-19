@@ -14,7 +14,7 @@
     <property name="website_label" translatable="yes">git_src: neuroIFC</property>
     <property name="authors">Taylan Branco Meurer</property>
     <property name="artists">Taylan Branco Meurer</property>
-    <property name="logo">../pictures/neuroIFC3.png</property>
+    <property name="logo">../pictures/logo2.png</property>
     <property name="license_type">gpl-3-0</property>
     <signal name="destroy-event" handler="gtk_main_quit" swapped="no"/>
     <child internal-child="vbox">
