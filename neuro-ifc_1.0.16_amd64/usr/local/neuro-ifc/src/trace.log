@@ -478,3 +478,1609 @@ Traceback (most recent call last):
   File "/usr/local/lib/python2.7/dist-packages/pyexcel_io/__init__.py", line 176, in load_data
     filename))
 NotImplementedError: Cannot read content of file type net from file /home/targueriano/neuroIFC/neuro-ifc_1.0.16_amd64/usr/local/neuro-ifc/exemplos/rprop531tan.net
+Traceback (most recent call last):
+  File "Interface.py", line 504, in aprender
+    self.errors = tr.treinar("bfgs")
+  File "/home/targueriano/neuroIFC/neuro-ifc_1.0.16_amd64/usr/local/neuro-ifc/src/Treinamento.py", line 94, in treinar
+    rr=self.taxaRegularizacao.get_value()
+  File "/usr/local/lib/python2.7/dist-packages/neurolab/core.py", line 165, in train
+    return self.trainf(self, *args, **kwargs)
+  File "/usr/local/lib/python2.7/dist-packages/neurolab/core.py", line 327, in __call__
+    assert target.shape[1] == net.co
+AssertionError
+Traceback (most recent call last):
+  File "Interface.py", line 491, in aprender
+    self.errors = tr.treinar("gdm")
+  File "/home/targueriano/neuroIFC/neuro-ifc_1.0.16_amd64/usr/local/neuro-ifc/src/Treinamento.py", line 49, in treinar
+    rr=self.taxaRegularizacao.get_value()
+  File "/usr/local/lib/python2.7/dist-packages/neurolab/core.py", line 165, in train
+    return self.trainf(self, *args, **kwargs)
+  File "/usr/local/lib/python2.7/dist-packages/neurolab/core.py", line 327, in __call__
+    assert target.shape[1] == net.co
+AssertionError
+Traceback (most recent call last):
+  File "Interface.py", line 454, in criarRede
+    self._setListPesosBias()
+  File "Interface.py", line 659, in _setListPesosBias
+    if dados:#tabela de dados
+NameError: global name 'dados' is not defined
+Traceback (most recent call last):
+  File "Interface.py", line 702, in simular
+    self.saidaSimulador = self.net.sim(self.inputs)
+  File "/usr/local/lib/python2.7/dist-packages/neurolab/core.py", line 141, in sim
+    assert input.ndim == 2
+AssertionError
+Traceback (most recent call last):
+  File "Interface.py", line 623, in extrair_dados
+    data = get_data(caminho)
+  File "/usr/local/lib/python2.7/dist-packages/pyexcel_ods/__init__.py", line 344, in get_data
+    return read_data(afile, file_type=file_type, **keywords)
+  File "/usr/local/lib/python2.7/dist-packages/pyexcel_io/__init__.py", line 311, in get_data
+    data = load_data(afile, file_type=file_type, **keywords)
+  File "/usr/local/lib/python2.7/dist-packages/pyexcel_io/__init__.py", line 176, in load_data
+    filename))
+NotImplementedError: Cannot read content of file type py from file /home/targueriano/neuroIFC/neuro-ifc_1.0.16_amd64/usr/local/neuro-ifc/src/Terminal.py
+Traceback (most recent call last):
+  File "Interface.py", line 623, in extrair_dados
+    data = get_data(caminho)
+  File "/usr/local/lib/python2.7/dist-packages/pyexcel_ods/__init__.py", line 344, in get_data
+    return read_data(afile, file_type=file_type, **keywords)
+  File "/usr/local/lib/python2.7/dist-packages/pyexcel_io/__init__.py", line 311, in get_data
+    data = load_data(afile, file_type=file_type, **keywords)
+  File "/usr/local/lib/python2.7/dist-packages/pyexcel_io/__init__.py", line 176, in load_data
+    filename))
+NotImplementedError: Cannot read content of file type svg from file /home/targueriano/Pictures/drawing2.svg
+Traceback (most recent call last):
+  File "Interface.py", line 623, in extrair_dados
+    data = get_data(caminho)
+  File "/usr/local/lib/python2.7/dist-packages/pyexcel_ods/__init__.py", line 344, in get_data
+    return read_data(afile, file_type=file_type, **keywords)
+  File "/usr/local/lib/python2.7/dist-packages/pyexcel_io/__init__.py", line 311, in get_data
+    data = load_data(afile, file_type=file_type, **keywords)
+  File "/usr/local/lib/python2.7/dist-packages/pyexcel_io/__init__.py", line 176, in load_data
+    filename))
+NotImplementedError: Cannot read content of file type png from file /home/targueriano/Pictures/Debian.png
+Traceback (most recent call last):
+  File "Interface.py", line 701, in simular
+    self.saidaSimulador = self.net.sim(self.inputSimulador)
+  File "/usr/local/lib/python2.7/dist-packages/neurolab/core.py", line 142, in sim
+    assert input.shape[1] == self.ci
+AssertionError
+Traceback (most recent call last):
+  File "Interface.py", line 623, in extrair_dados
+    data = get_data(caminho)
+  File "/usr/local/lib/python2.7/dist-packages/pyexcel_ods/__init__.py", line 344, in get_data
+    return read_data(afile, file_type=file_type, **keywords)
+  File "/usr/local/lib/python2.7/dist-packages/pyexcel_io/__init__.py", line 311, in get_data
+    data = load_data(afile, file_type=file_type, **keywords)
+  File "/usr/local/lib/python2.7/dist-packages/pyexcel_io/__init__.py", line 176, in load_data
+    filename))
+NotImplementedError: Cannot read content of file type png from file /home/targueriano/neuroIFC/neuro-ifc_1.0.16_amd64/usr/share/icons/hicolor/48x48/app/neuro-ifc.png
+Traceback (most recent call last):
+  File "Interface.py", line 623, in extrair_dados
+    data = get_data(caminho)
+  File "/usr/local/lib/python2.7/dist-packages/pyexcel_ods/__init__.py", line 344, in get_data
+    return read_data(afile, file_type=file_type, **keywords)
+  File "/usr/local/lib/python2.7/dist-packages/pyexcel_io/__init__.py", line 311, in get_data
+    data = load_data(afile, file_type=file_type, **keywords)
+  File "/usr/local/lib/python2.7/dist-packages/pyexcel_io/__init__.py", line 176, in load_data
+    filename))
+NotImplementedError: Cannot read content of file type png from file /home/targueriano/Downloads/235167-reports-and-analytics/png/loss.png
+Traceback (most recent call last):
+  File "Interface.py", line 624, in extrair_dados
+    data = get_data(caminho)
+  File "/usr/local/lib/python2.7/dist-packages/pyexcel_ods/__init__.py", line 344, in get_data
+    return read_data(afile, file_type=file_type, **keywords)
+  File "/usr/local/lib/python2.7/dist-packages/pyexcel_io/__init__.py", line 311, in get_data
+    data = load_data(afile, file_type=file_type, **keywords)
+  File "/usr/local/lib/python2.7/dist-packages/pyexcel_io/__init__.py", line 176, in load_data
+    filename))
+NotImplementedError: Cannot read content of file type net from file /home/targueriano/neuroIFC/neuro-ifc_1.0.16_amd64/usr/local/neuro-ifc/exemplos/rprop531tan.net
+Traceback (most recent call last):
+  File "Interface.py", line 624, in extrair_dados
+    data = get_data(caminho)
+  File "/usr/local/lib/python2.7/dist-packages/pyexcel_ods/__init__.py", line 344, in get_data
+    return read_data(afile, file_type=file_type, **keywords)
+  File "/usr/local/lib/python2.7/dist-packages/pyexcel_io/__init__.py", line 311, in get_data
+    data = load_data(afile, file_type=file_type, **keywords)
+  File "/usr/local/lib/python2.7/dist-packages/pyexcel_io/__init__.py", line 176, in load_data
+    filename))
+NotImplementedError: Cannot read content of file type png from file /home/targueriano/neuroIFC/neuro-ifc_1.0.16_amd64/usr/share/icons/hicolor/48x48/app/neuro-ifc.png
+Traceback (most recent call last):
+  File "Interface.py", line 644, in tratarDadosSimulacao
+    print len(novaf[0])
+TypeError: 'NoneType' object has no attribute '__getitem__'
+Traceback (most recent call last):
+  File "Interface.py", line 642, in extrair_dados
+    data = get_data(caminho)
+  File "/usr/local/lib/python2.7/dist-packages/pyexcel_ods/__init__.py", line 344, in get_data
+    return read_data(afile, file_type=file_type, **keywords)
+  File "/usr/local/lib/python2.7/dist-packages/pyexcel_io/__init__.py", line 311, in get_data
+    data = load_data(afile, file_type=file_type, **keywords)
+  File "/usr/local/lib/python2.7/dist-packages/pyexcel_io/__init__.py", line 176, in load_data
+    filename))
+NotImplementedError: Cannot read content of file type png from file /home/targueriano/neuroIFC/neuro-ifc_1.0.16_amd64/usr/share/icons/hicolor/16x16/app/neuro-ifc.png
+Traceback (most recent call last):
+  File "Interface.py", line 643, in extrair_dados
+    data = get_data(caminho)
+  File "/usr/local/lib/python2.7/dist-packages/pyexcel_ods/__init__.py", line 344, in get_data
+    return read_data(afile, file_type=file_type, **keywords)
+  File "/usr/local/lib/python2.7/dist-packages/pyexcel_io/__init__.py", line 311, in get_data
+    data = load_data(afile, file_type=file_type, **keywords)
+  File "/usr/local/lib/python2.7/dist-packages/pyexcel_io/__init__.py", line 176, in load_data
+    filename))
+NotImplementedError: Cannot read content of file type png from file /home/targueriano/neuroIFC/neuro-ifc_1.0.16_amd64/usr/share/icons/hicolor/48x48/app/neuro-ifc.png
+Traceback (most recent call last):
+  File "/home/targueriano/neuroIFC/neuro-ifc_1.0.16_amd64/usr/local/neuro-ifc/src/Desenho.py", line 46, in criarArquitetura
+    sys.exit()
+SystemExit
+Traceback (most recent call last):
+  File "Interface.py", line 506, in aprender
+    self.errors = tr.treinar("gd")
+  File "/home/targueriano/neuroIFC/neuro-ifc_1.0.16_amd64/usr/local/neuro-ifc/src/Treinamento.py", line 38, in treinar
+    lr=self.taxaAprendizado.get_value()
+  File "/usr/local/lib/python2.7/dist-packages/neurolab/core.py", line 165, in train
+    return self.trainf(self, *args, **kwargs)
+  File "/usr/local/lib/python2.7/dist-packages/neurolab/core.py", line 327, in __call__
+    assert target.shape[1] == net.co
+AssertionError
+Traceback (most recent call last):
+  File "Interface.py", line 647, in extrair_dados
+    data = get_data(caminho)
+  File "/usr/local/lib/python2.7/dist-packages/pyexcel_ods/__init__.py", line 344, in get_data
+    return read_data(afile, file_type=file_type, **keywords)
+  File "/usr/local/lib/python2.7/dist-packages/pyexcel_io/__init__.py", line 311, in get_data
+    data = load_data(afile, file_type=file_type, **keywords)
+  File "/usr/local/lib/python2.7/dist-packages/pyexcel_io/__init__.py", line 176, in load_data
+    filename))
+NotImplementedError: Cannot read content of file type png from file /home/targueriano/Downloads/235167-reports-and-analytics/png/loss.png
+Traceback (most recent call last):
+  File "Interface.py", line 483, in criarRede
+    thread.start_new_thread(self._statusDinamico,(self.dir_context[15],))
+KeyError: 15
+Traceback (most recent call last):
+  File "Interface.py", line 484, in criarRede
+    thread.start_new_thread(self._statusDinamico,(self.dir_context[15],))
+KeyError: 15
+Traceback (most recent call last):
+  File "/home/targueriano/neuroIFC/neuro-ifc_1.0.16_amd64/usr/local/neuro-ifc/src/Desenho.py", line 46, in criarArquitetura
+    sys.exit()
+SystemExit
+Traceback (most recent call last):
+  File "Interface.py", line 648, in extrair_dados
+    data = get_data(caminho)
+  File "/usr/local/lib/python2.7/dist-packages/pyexcel_ods/__init__.py", line 344, in get_data
+    return read_data(afile, file_type=file_type, **keywords)
+  File "/usr/local/lib/python2.7/dist-packages/pyexcel_io/__init__.py", line 311, in get_data
+    data = load_data(afile, file_type=file_type, **keywords)
+  File "/usr/local/lib/python2.7/dist-packages/pyexcel_io/__init__.py", line 176, in load_data
+    filename))
+NotImplementedError: Cannot read content of file type png from file /home/targueriano/neuroIFC/neuro-ifc_1.0.16_amd64/usr/share/icons/hicolor/16x16/app/neuro-ifc.png
+Traceback (most recent call last):
+  File "Interface.py", line 648, in extrair_dados
+    data = get_data(caminho)
+  File "/usr/local/lib/python2.7/dist-packages/pyexcel_ods/__init__.py", line 344, in get_data
+    return read_data(afile, file_type=file_type, **keywords)
+  File "/usr/local/lib/python2.7/dist-packages/pyexcel_io/__init__.py", line 311, in get_data
+    data = load_data(afile, file_type=file_type, **keywords)
+  File "/usr/local/lib/python2.7/dist-packages/pyexcel_io/__init__.py", line 176, in load_data
+    filename))
+NotImplementedError: Cannot read content of file type py from file /home/targueriano/neuroIFC/neuro-ifc_1.0.16_amd64/usr/local/neuro-ifc/src/Terminal.py
+Traceback (most recent call last):
+  File "Interface.py", line 418, in pegarRedeSalva
+    self.net = neurolab.load(dialog.get_filename())
+  File "/usr/local/lib/python2.7/dist-packages/neurolab/tool.py", line 55, in load
+    net = load(file)
+  File "/usr/lib/python2.7/pickle.py", line 1378, in load
+    return Unpickler(file).load()
+  File "/usr/lib/python2.7/pickle.py", line 858, in load
+    dispatch[key](self)
+KeyError: '<'
+Traceback (most recent call last):
+  File "Interface.py", line 418, in pegarRedeSalva
+    self.net = neurolab.load(dialog.get_filename())
+  File "/usr/local/lib/python2.7/dist-packages/neurolab/tool.py", line 55, in load
+    net = load(file)
+  File "/usr/lib/python2.7/pickle.py", line 1378, in load
+    return Unpickler(file).load()
+  File "/usr/lib/python2.7/pickle.py", line 858, in load
+    dispatch[key](self)
+  File "/usr/lib/python2.7/pickle.py", line 891, in load_persid
+    self.append(self.persistent_load(pid))
+AttributeError: Unpickler instance has no attribute 'persistent_load'
+Traceback (most recent call last):
+  File "Interface.py", line 648, in extrair_dados
+    data = get_data(caminho)
+  File "/usr/local/lib/python2.7/dist-packages/pyexcel_ods/__init__.py", line 344, in get_data
+    return read_data(afile, file_type=file_type, **keywords)
+  File "/usr/local/lib/python2.7/dist-packages/pyexcel_io/__init__.py", line 311, in get_data
+    data = load_data(afile, file_type=file_type, **keywords)
+  File "/usr/local/lib/python2.7/dist-packages/pyexcel_io/__init__.py", line 176, in load_data
+    filename))
+NotImplementedError: Cannot read content of file type py from file /home/targueriano/neuroIFC/neuro-ifc_1.0.16_amd64/usr/local/neuro-ifc/src/Sobre.py
+Traceback (most recent call last):
+  File "Interface.py", line 648, in extrair_dados
+    data = get_data(caminho)
+  File "/usr/local/lib/python2.7/dist-packages/pyexcel_ods/__init__.py", line 344, in get_data
+    return read_data(afile, file_type=file_type, **keywords)
+  File "/usr/local/lib/python2.7/dist-packages/pyexcel_io/__init__.py", line 311, in get_data
+    data = load_data(afile, file_type=file_type, **keywords)
+  File "/usr/local/lib/python2.7/dist-packages/pyexcel_io/__init__.py", line 176, in load_data
+    filename))
+NotImplementedError: Cannot read content of file type 16_amd64/usr/bin/neuro-ifc from file /home/targueriano/neuroIFC/neuro-ifc_1.0.16_amd64/usr/bin/neuro-ifc
+Traceback (most recent call last):
+  File "Interface.py", line 648, in extrair_dados
+    data = get_data(caminho)
+  File "/usr/local/lib/python2.7/dist-packages/pyexcel_ods/__init__.py", line 344, in get_data
+    return read_data(afile, file_type=file_type, **keywords)
+  File "/usr/local/lib/python2.7/dist-packages/pyexcel_io/__init__.py", line 311, in get_data
+    data = load_data(afile, file_type=file_type, **keywords)
+  File "/usr/local/lib/python2.7/dist-packages/pyexcel_io/__init__.py", line 176, in load_data
+    filename))
+NotImplementedError: Cannot read content of file type net from file /home/targueriano/neuroIFC/neuro-ifc_1.0.16_amd64/usr/local/neuro-ifc/exemplos/rprop531tan.net
+Traceback (most recent call last):
+  File "Interface.py", line 648, in extrair_dados
+    data = get_data(caminho)
+  File "/usr/local/lib/python2.7/dist-packages/pyexcel_ods/__init__.py", line 344, in get_data
+    return read_data(afile, file_type=file_type, **keywords)
+  File "/usr/local/lib/python2.7/dist-packages/pyexcel_io/__init__.py", line 311, in get_data
+    data = load_data(afile, file_type=file_type, **keywords)
+  File "/usr/local/lib/python2.7/dist-packages/pyexcel_io/__init__.py", line 176, in load_data
+    filename))
+NotImplementedError: Cannot read content of file type svg from file /home/targueriano/Pictures/drawing2.svg
+Traceback (most recent call last):
+  File "Interface.py", line 648, in extrair_dados
+    data = get_data(caminho)
+  File "/usr/local/lib/python2.7/dist-packages/pyexcel_ods/__init__.py", line 344, in get_data
+    return read_data(afile, file_type=file_type, **keywords)
+  File "/usr/local/lib/python2.7/dist-packages/pyexcel_io/__init__.py", line 311, in get_data
+    data = load_data(afile, file_type=file_type, **keywords)
+  File "/usr/local/lib/python2.7/dist-packages/pyexcel_io/__init__.py", line 176, in load_data
+    filename))
+NotImplementedError: Cannot read content of file type png from file /home/targueriano/Pictures/Debian.png
+Traceback (most recent call last):
+  File "Interface.py", line 418, in pegarRedeSalva
+    self.net = neurolab.load(dialog.get_filename())
+  File "/usr/local/lib/python2.7/dist-packages/neurolab/tool.py", line 55, in load
+    net = load(file)
+  File "/usr/lib/python2.7/pickle.py", line 1378, in load
+    return Unpickler(file).load()
+  File "/usr/lib/python2.7/pickle.py", line 858, in load
+    dispatch[key](self)
+KeyError: '#'
+Traceback (most recent call last):
+  File "Interface.py", line 648, in extrair_dados
+    data = get_data(caminho)
+  File "/usr/local/lib/python2.7/dist-packages/pyexcel_ods/__init__.py", line 344, in get_data
+    return read_data(afile, file_type=file_type, **keywords)
+  File "/usr/local/lib/python2.7/dist-packages/pyexcel_io/__init__.py", line 311, in get_data
+    data = load_data(afile, file_type=file_type, **keywords)
+  File "/usr/local/lib/python2.7/dist-packages/pyexcel_io/__init__.py", line 176, in load_data
+    filename))
+NotImplementedError: Cannot read content of file type net from file /home/targueriano/neuroIFC/neuro-ifc_1.0.16_amd64/usr/local/neuro-ifc/exemplos/rprop531tan.net
+Traceback (most recent call last):
+  File "Interface.py", line 418, in pegarRedeSalva
+    self.net = neurolab.load(dialog.get_filename())
+  File "/usr/local/lib/python2.7/dist-packages/neurolab/tool.py", line 55, in load
+    net = load(file)
+  File "/usr/lib/python2.7/pickle.py", line 1378, in load
+    return Unpickler(file).load()
+  File "/usr/lib/python2.7/pickle.py", line 858, in load
+    dispatch[key](self)
+KeyError: '<'
+Traceback (most recent call last):
+  File "Interface.py", line 418, in pegarRedeSalva
+    self.net = neurolab.load(dialog.get_filename())
+  File "/usr/local/lib/python2.7/dist-packages/neurolab/tool.py", line 55, in load
+    net = load(file)
+  File "/usr/lib/python2.7/pickle.py", line 1378, in load
+    return Unpickler(file).load()
+  File "/usr/lib/python2.7/pickle.py", line 858, in load
+    dispatch[key](self)
+  File "/usr/lib/python2.7/pickle.py", line 891, in load_persid
+    self.append(self.persistent_load(pid))
+AttributeError: Unpickler instance has no attribute 'persistent_load'
+Traceback (most recent call last):
+  File "Interface.py", line 418, in pegarRedeSalva
+    self.net = neurolab.load(dialog.get_filename())
+  File "/usr/local/lib/python2.7/dist-packages/neurolab/tool.py", line 55, in load
+    net = load(file)
+  File "/usr/lib/python2.7/pickle.py", line 1378, in load
+    return Unpickler(file).load()
+  File "/usr/lib/python2.7/pickle.py", line 858, in load
+    dispatch[key](self)
+  File "/usr/lib/python2.7/pickle.py", line 891, in load_persid
+    self.append(self.persistent_load(pid))
+AttributeError: Unpickler instance has no attribute 'persistent_load'
+Traceback (most recent call last):
+  File "Interface.py", line 418, in pegarRedeSalva
+    self.net = neurolab.load(dialog.get_filename())
+  File "/usr/local/lib/python2.7/dist-packages/neurolab/tool.py", line 55, in load
+    net = load(file)
+  File "/usr/lib/python2.7/pickle.py", line 1378, in load
+    return Unpickler(file).load()
+  File "/usr/lib/python2.7/pickle.py", line 858, in load
+    dispatch[key](self)
+  File "/usr/lib/python2.7/pickle.py", line 891, in load_persid
+    self.append(self.persistent_load(pid))
+AttributeError: Unpickler instance has no attribute 'persistent_load'
+Traceback (most recent call last):
+  File "/home/targueriano/neuroIFC/neuro-ifc_1.0.16_amd64/usr/local/neuro-ifc/src/Desenho.py", line 77, in criarArquitetura
+    if coord[aux_Y] != -1:
+KeyboardInterrupt
+Traceback (most recent call last):
+  File "Interface.py", line 300, in desenharArquitetura
+    p.join()
+  File "/usr/lib/python2.7/multiprocessing/process.py", line 145, in join
+    res = self._popen.wait(timeout)
+  File "/usr/lib/python2.7/multiprocessing/forking.py", line 154, in wait
+    return self.poll(0)
+  File "/usr/lib/python2.7/multiprocessing/forking.py", line 135, in poll
+    pid, sts = os.waitpid(self.pid, flag)
+KeyboardInterrupt
+Traceback (most recent call last):
+  File "Interface.py", line 418, in pegarRedeSalva
+    self.net = neurolab.load(dialog.get_filename())
+  File "/usr/local/lib/python2.7/dist-packages/neurolab/tool.py", line 55, in load
+    net = load(file)
+  File "/usr/lib/python2.7/pickle.py", line 1378, in load
+    return Unpickler(file).load()
+  File "/usr/lib/python2.7/pickle.py", line 858, in load
+    dispatch[key](self)
+  File "/usr/lib/python2.7/pickle.py", line 891, in load_persid
+    self.append(self.persistent_load(pid))
+AttributeError: Unpickler instance has no attribute 'persistent_load'
+Traceback (most recent call last):
+  File "Interface.py", line 418, in pegarRedeSalva
+    self.net = neurolab.load(dialog.get_filename())
+  File "/usr/local/lib/python2.7/dist-packages/neurolab/tool.py", line 55, in load
+    net = load(file)
+  File "/usr/lib/python2.7/pickle.py", line 1378, in load
+    return Unpickler(file).load()
+  File "/usr/lib/python2.7/pickle.py", line 858, in load
+    dispatch[key](self)
+  File "/usr/lib/python2.7/pickle.py", line 891, in load_persid
+    self.append(self.persistent_load(pid))
+AttributeError: Unpickler instance has no attribute 'persistent_load'
+Traceback (most recent call last):
+  File "Interface.py", line 389, in salvar
+    self.net.save(nome)
+AttributeError: 'NoneType' object has no attribute 'save'
+Traceback (most recent call last):
+  File "Interface.py", line 296, in desenharArquitetura
+    raise "O tamanho da camada é muito alto para ser desenhado."
+TypeError: exceptions must be old-style classes or derived from BaseException, not str
+Traceback (most recent call last):
+  File "Interface.py", line 296, in desenharArquitetura
+    raise "O tamanho da camada é muito alto para ser desenhado."
+TypeError: exceptions must be old-style classes or derived from BaseException, not str
+Traceback (most recent call last):
+  File "Interface.py", line 296, in desenharArquitetura
+    raise "O tamanho da camada é muito alto para ser desenhado."
+TypeError: exceptions must be old-style classes or derived from BaseException, not str
+Traceback (most recent call last):
+  File "Interface.py", line 296, in desenharArquitetura
+    raise "O tamanho da camada é muito alto para ser desenhado."
+TypeError: exceptions must be old-style classes or derived from BaseException, not str
+Traceback (most recent call last):
+  File "Interface.py", line 296, in desenharArquitetura
+    raise "O tamanho da camada é muito alto para ser desenhado."
+TypeError: exceptions must be old-style classes or derived from BaseException, not str
+Traceback (most recent call last):
+  File "Interface.py", line 296, in desenharArquitetura
+    raise "O tamanho da camada é muito alto para ser desenhado."
+TypeError: exceptions must be old-style classes or derived from BaseException, not str
+Traceback (most recent call last):
+  File "Interface.py", line 296, in desenharArquitetura
+    raise "O tamanho da camada é muito alto para ser desenhado."
+TypeError: exceptions must be old-style classes or derived from BaseException, not str
+Traceback (most recent call last):
+  File "Interface.py", line 296, in desenharArquitetura
+    raise "O tamanho da camada é muito alto para ser desenhado."
+TypeError: exceptions must be old-style classes or derived from BaseException, not str
+Traceback (most recent call last):
+  File "Interface.py", line 296, in desenharArquitetura
+    raise "O tamanho da camada é muito alto para ser desenhado."
+TypeError: exceptions must be old-style classes or derived from BaseException, not str
+Traceback (most recent call last):
+  File "Interface.py", line 296, in desenharArquitetura
+    raise "O tamanho da camada é muito alto para ser desenhado."
+TypeError: exceptions must be old-style classes or derived from BaseException, not str
+Traceback (most recent call last):
+  File "Interface.py", line 296, in desenharArquitetura
+    raise "O tamanho da camada é muito alto para ser desenhado."
+TypeError: exceptions must be old-style classes or derived from BaseException, not str
+Traceback (most recent call last):
+  File "Interface.py", line 296, in desenharArquitetura
+    raise "O tamanho da camada é muito alto para ser desenhado."
+TypeError: exceptions must be old-style classes or derived from BaseException, not str
+Traceback (most recent call last):
+  File "Interface.py", line 296, in desenharArquitetura
+    raise "O tamanho da camada é muito alto para ser desenhado."
+TypeError: exceptions must be old-style classes or derived from BaseException, not str
+Traceback (most recent call last):
+  File "Interface.py", line 296, in desenharArquitetura
+    raise "O tamanho da camada é muito alto para ser desenhado."
+TypeError: exceptions must be old-style classes or derived from BaseException, not str
+Traceback (most recent call last):
+  File "Interface.py", line 296, in desenharArquitetura
+    raise "O tamanho da camada é muito alto para ser desenhado."
+TypeError: exceptions must be old-style classes or derived from BaseException, not str
+Traceback (most recent call last):
+  File "Interface.py", line 296, in desenharArquitetura
+    raise "O tamanho da camada é muito alto para ser desenhado."
+TypeError: exceptions must be old-style classes or derived from BaseException, not str
+Traceback (most recent call last):
+  File "Interface.py", line 296, in desenharArquitetura
+    raise "O tamanho da camada é muito alto para ser desenhado."
+TypeError: exceptions must be old-style classes or derived from BaseException, not str
+Traceback (most recent call last):
+  File "Interface.py", line 296, in desenharArquitetura
+    raise "O tamanho da camada é muito alto para ser desenhado."
+TypeError: exceptions must be old-style classes or derived from BaseException, not str
+Traceback (most recent call last):
+  File "Interface.py", line 296, in desenharArquitetura
+    raise "O tamanho da camada é muito alto para ser desenhado."
+TypeError: exceptions must be old-style classes or derived from BaseException, not str
+Traceback (most recent call last):
+  File "Interface.py", line 296, in desenharArquitetura
+    raise "O tamanho da camada é muito alto para ser desenhado."
+TypeError: exceptions must be old-style classes or derived from BaseException, not str
+Traceback (most recent call last):
+  File "Interface.py", line 296, in desenharArquitetura
+    raise "O tamanho da camada é muito alto para ser desenhado."
+TypeError: exceptions must be old-style classes or derived from BaseException, not str
+Traceback (most recent call last):
+  File "Interface.py", line 296, in desenharArquitetura
+    raise "O tamanho da camada é muito alto para ser desenhado."
+TypeError: exceptions must be old-style classes or derived from BaseException, not str
+Traceback (most recent call last):
+  File "Interface.py", line 296, in desenharArquitetura
+    raise "O tamanho da camada é muito alto para ser desenhado."
+TypeError: exceptions must be old-style classes or derived from BaseException, not str
+Traceback (most recent call last):
+  File "Interface.py", line 296, in desenharArquitetura
+    raise "O tamanho da camada é muito alto para ser desenhado."
+TypeError: exceptions must be old-style classes or derived from BaseException, not str
+Traceback (most recent call last):
+  File "Interface.py", line 296, in desenharArquitetura
+    raise "O tamanho da camada é muito alto para ser desenhado."
+TypeError: exceptions must be old-style classes or derived from BaseException, not str
+Traceback (most recent call last):
+  File "Interface.py", line 296, in desenharArquitetura
+    raise "O tamanho da camada é muito alto para ser desenhado."
+TypeError: exceptions must be old-style classes or derived from BaseException, not str
+Traceback (most recent call last):
+  File "Interface.py", line 296, in desenharArquitetura
+    raise "O tamanho da camada é muito alto para ser desenhado."
+TypeError: exceptions must be old-style classes or derived from BaseException, not str
+Traceback (most recent call last):
+  File "Interface.py", line 296, in desenharArquitetura
+    raise "O tamanho da camada é muito alto para ser desenhado."
+TypeError: exceptions must be old-style classes or derived from BaseException, not str
+Traceback (most recent call last):
+  File "Interface.py", line 296, in desenharArquitetura
+    raise "O tamanho da camada é muito alto para ser desenhado."
+TypeError: exceptions must be old-style classes or derived from BaseException, not str
+Traceback (most recent call last):
+  File "Interface.py", line 296, in desenharArquitetura
+    raise "O tamanho da camada é muito alto para ser desenhado."
+TypeError: exceptions must be old-style classes or derived from BaseException, not str
+Traceback (most recent call last):
+  File "Interface.py", line 296, in desenharArquitetura
+    raise "O tamanho da camada é muito alto para ser desenhado."
+TypeError: exceptions must be old-style classes or derived from BaseException, not str
+Traceback (most recent call last):
+  File "Interface.py", line 296, in desenharArquitetura
+    raise "O tamanho da camada é muito alto para ser desenhado."
+TypeError: exceptions must be old-style classes or derived from BaseException, not str
+Traceback (most recent call last):
+  File "Interface.py", line 296, in desenharArquitetura
+    raise "O tamanho da camada é muito alto para ser desenhado."
+TypeError: exceptions must be old-style classes or derived from BaseException, not str
+Traceback (most recent call last):
+  File "Interface.py", line 296, in desenharArquitetura
+    raise "O tamanho da camada é muito alto para ser desenhado."
+TypeError: exceptions must be old-style classes or derived from BaseException, not str
+Traceback (most recent call last):
+  File "Interface.py", line 296, in desenharArquitetura
+    raise "O tamanho da camada é muito alto para ser desenhado."
+TypeError: exceptions must be old-style classes or derived from BaseException, not str
+Traceback (most recent call last):
+  File "Interface.py", line 296, in desenharArquitetura
+    raise "O tamanho da camada é muito alto para ser desenhado."
+TypeError: exceptions must be old-style classes or derived from BaseException, not str
+Traceback (most recent call last):
+  File "Interface.py", line 296, in desenharArquitetura
+    raise "O tamanho da camada é muito alto para ser desenhado."
+TypeError: exceptions must be old-style classes or derived from BaseException, not str
+Traceback (most recent call last):
+  File "Interface.py", line 296, in desenharArquitetura
+    raise "O tamanho da camada é muito alto para ser desenhado."
+TypeError: exceptions must be old-style classes or derived from BaseException, not str
+Traceback (most recent call last):
+  File "Interface.py", line 296, in desenharArquitetura
+    raise "O tamanho da camada é muito alto para ser desenhado."
+TypeError: exceptions must be old-style classes or derived from BaseException, not str
+Traceback (most recent call last):
+  File "Interface.py", line 296, in desenharArquitetura
+    raise "O tamanho da camada é muito alto para ser desenhado."
+TypeError: exceptions must be old-style classes or derived from BaseException, not str
+Traceback (most recent call last):
+  File "Interface.py", line 296, in desenharArquitetura
+    raise "O tamanho da camada é muito alto para ser desenhado."
+TypeError: exceptions must be old-style classes or derived from BaseException, not str
+Traceback (most recent call last):
+  File "Interface.py", line 296, in desenharArquitetura
+    raise "O tamanho da camada é muito alto para ser desenhado."
+TypeError: exceptions must be old-style classes or derived from BaseException, not str
+Traceback (most recent call last):
+  File "Interface.py", line 296, in desenharArquitetura
+    raise "O tamanho da camada é muito alto para ser desenhado."
+TypeError: exceptions must be old-style classes or derived from BaseException, not str
+Traceback (most recent call last):
+  File "Interface.py", line 296, in desenharArquitetura
+    raise "O tamanho da camada é muito alto para ser desenhado."
+TypeError: exceptions must be old-style classes or derived from BaseException, not str
+Traceback (most recent call last):
+  File "Interface.py", line 296, in desenharArquitetura
+    raise "O tamanho da camada é muito alto para ser desenhado."
+TypeError: exceptions must be old-style classes or derived from BaseException, not str
+Traceback (most recent call last):
+  File "Interface.py", line 296, in desenharArquitetura
+    raise "O tamanho da camada é muito alto para ser desenhado."
+TypeError: exceptions must be old-style classes or derived from BaseException, not str
+Traceback (most recent call last):
+  File "Interface.py", line 296, in desenharArquitetura
+    raise "O tamanho da camada é muito alto para ser desenhado."
+TypeError: exceptions must be old-style classes or derived from BaseException, not str
+Traceback (most recent call last):
+  File "Interface.py", line 296, in desenharArquitetura
+    raise "O tamanho da camada é muito alto para ser desenhado."
+TypeError: exceptions must be old-style classes or derived from BaseException, not str
+Traceback (most recent call last):
+  File "Interface.py", line 296, in desenharArquitetura
+    raise "O tamanho da camada é muito alto para ser desenhado."
+TypeError: exceptions must be old-style classes or derived from BaseException, not str
+Traceback (most recent call last):
+  File "Interface.py", line 296, in desenharArquitetura
+    raise
+TypeError: exceptions must be old-style classes or derived from BaseException, not NoneType
+Traceback (most recent call last):
+  File "Interface.py", line 296, in desenharArquitetura
+    raise
+TypeError: exceptions must be old-style classes or derived from BaseException, not NoneType
+Traceback (most recent call last):
+  File "Interface.py", line 296, in desenharArquitetura
+    raise
+TypeError: exceptions must be old-style classes or derived from BaseException, not NoneType
+Traceback (most recent call last):
+  File "Interface.py", line 296, in desenharArquitetura
+    raise
+TypeError: exceptions must be old-style classes or derived from BaseException, not NoneType
+Traceback (most recent call last):
+  File "Interface.py", line 296, in desenharArquitetura
+    raise
+TypeError: exceptions must be old-style classes or derived from BaseException, not NoneType
+Traceback (most recent call last):
+  File "Interface.py", line 296, in desenharArquitetura
+    raise
+TypeError: exceptions must be old-style classes or derived from BaseException, not NoneType
+Traceback (most recent call last):
+  File "Interface.py", line 296, in desenharArquitetura
+    raise
+TypeError: exceptions must be old-style classes or derived from BaseException, not NoneType
+Traceback (most recent call last):
+  File "Interface.py", line 296, in desenharArquitetura
+    raise
+TypeError: exceptions must be old-style classes or derived from BaseException, not NoneType
+Traceback (most recent call last):
+  File "Interface.py", line 296, in desenharArquitetura
+    raise
+TypeError: exceptions must be old-style classes or derived from BaseException, not NoneType
+Traceback (most recent call last):
+  File "Interface.py", line 296, in desenharArquitetura
+    raise
+TypeError: exceptions must be old-style classes or derived from BaseException, not NoneType
+Traceback (most recent call last):
+  File "Interface.py", line 296, in desenharArquitetura
+    raise
+TypeError: exceptions must be old-style classes or derived from BaseException, not NoneType
+Traceback (most recent call last):
+  File "Interface.py", line 296, in desenharArquitetura
+    raise
+TypeError: exceptions must be old-style classes or derived from BaseException, not NoneType
+Traceback (most recent call last):
+  File "Interface.py", line 296, in desenharArquitetura
+    raise
+TypeError: exceptions must be old-style classes or derived from BaseException, not NoneType
+Traceback (most recent call last):
+  File "Interface.py", line 296, in desenharArquitetura
+    raise
+TypeError: exceptions must be old-style classes or derived from BaseException, not NoneType
+Traceback (most recent call last):
+  File "Interface.py", line 296, in desenharArquitetura
+    raise
+TypeError: exceptions must be old-style classes or derived from BaseException, not NoneType
+Traceback (most recent call last):
+  File "Interface.py", line 296, in desenharArquitetura
+    raise
+TypeError: exceptions must be old-style classes or derived from BaseException, not NoneType
+Traceback (most recent call last):
+  File "Interface.py", line 296, in desenharArquitetura
+    raise
+TypeError: exceptions must be old-style classes or derived from BaseException, not NoneType
+Traceback (most recent call last):
+  File "Interface.py", line 296, in desenharArquitetura
+    raise
+TypeError: exceptions must be old-style classes or derived from BaseException, not NoneType
+Traceback (most recent call last):
+  File "Interface.py", line 296, in desenharArquitetura
+    raise
+TypeError: exceptions must be old-style classes or derived from BaseException, not NoneType
+Traceback (most recent call last):
+  File "Interface.py", line 296, in desenharArquitetura
+    raise
+TypeError: exceptions must be old-style classes or derived from BaseException, not NoneType
+Traceback (most recent call last):
+  File "Interface.py", line 296, in desenharArquitetura
+    raise
+TypeError: exceptions must be old-style classes or derived from BaseException, not NoneType
+Traceback (most recent call last):
+  File "Interface.py", line 296, in desenharArquitetura
+    raise
+TypeError: exceptions must be old-style classes or derived from BaseException, not NoneType
+Traceback (most recent call last):
+  File "Interface.py", line 296, in desenharArquitetura
+    raise
+TypeError: exceptions must be old-style classes or derived from BaseException, not NoneType
+Traceback (most recent call last):
+  File "Interface.py", line 296, in desenharArquitetura
+    raise
+TypeError: exceptions must be old-style classes or derived from BaseException, not NoneType
+Traceback (most recent call last):
+  File "Interface.py", line 296, in desenharArquitetura
+    raise
+TypeError: exceptions must be old-style classes or derived from BaseException, not NoneType
+Traceback (most recent call last):
+  File "Interface.py", line 296, in desenharArquitetura
+    raise
+TypeError: exceptions must be old-style classes or derived from BaseException, not NoneType
+Traceback (most recent call last):
+  File "Interface.py", line 296, in desenharArquitetura
+    raise
+TypeError: exceptions must be old-style classes or derived from BaseException, not NoneType
+Traceback (most recent call last):
+  File "Interface.py", line 296, in desenharArquitetura
+    raise
+TypeError: exceptions must be old-style classes or derived from BaseException, not NoneType
+Traceback (most recent call last):
+  File "Interface.py", line 296, in desenharArquitetura
+    raise
+TypeError: exceptions must be old-style classes or derived from BaseException, not NoneType
+Traceback (most recent call last):
+  File "Interface.py", line 296, in desenharArquitetura
+    raise
+TypeError: exceptions must be old-style classes or derived from BaseException, not NoneType
+Traceback (most recent call last):
+  File "Interface.py", line 296, in desenharArquitetura
+    raise
+TypeError: exceptions must be old-style classes or derived from BaseException, not NoneType
+Traceback (most recent call last):
+  File "Interface.py", line 296, in desenharArquitetura
+    raise
+TypeError: exceptions must be old-style classes or derived from BaseException, not NoneType
+Traceback (most recent call last):
+  File "Interface.py", line 657, in extrair_dados
+    data = get_data(caminho)
+  File "/usr/local/lib/python2.7/dist-packages/pyexcel_ods/__init__.py", line 344, in get_data
+    return read_data(afile, file_type=file_type, **keywords)
+  File "/usr/local/lib/python2.7/dist-packages/pyexcel_io/__init__.py", line 311, in get_data
+    data = load_data(afile, file_type=file_type, **keywords)
+  File "/usr/local/lib/python2.7/dist-packages/pyexcel_io/__init__.py", line 176, in load_data
+    filename))
+NotImplementedError: Cannot read content of file type py from file /home/targueriano/Documents/myCode_python/insertion_sort.py
+Traceback (most recent call last):
+  File "Interface.py", line 481, in criarRede
+    self.desenharArquitetura()
+TypeError: desenharArquitetura() takes exactly 2 arguments (1 given)
+Traceback (most recent call last):
+  File "Interface.py", line 432, in pegarRedeSalva
+    self.net = neurolab.load(dialog.get_filename())
+  File "/usr/local/lib/python2.7/dist-packages/neurolab/tool.py", line 55, in load
+    net = load(file)
+  File "/usr/lib/python2.7/pickle.py", line 1378, in load
+    return Unpickler(file).load()
+  File "/usr/lib/python2.7/pickle.py", line 858, in load
+    dispatch[key](self)
+KeyError: '#'
+Traceback (most recent call last):
+  File "Interface.py", line 432, in pegarRedeSalva
+    self.net = neurolab.load(dialog.get_filename())
+  File "/usr/local/lib/python2.7/dist-packages/neurolab/tool.py", line 55, in load
+    net = load(file)
+  File "/usr/lib/python2.7/pickle.py", line 1378, in load
+    return Unpickler(file).load()
+  File "/usr/lib/python2.7/pickle.py", line 858, in load
+    dispatch[key](self)
+  File "/usr/lib/python2.7/pickle.py", line 891, in load_persid
+    self.append(self.persistent_load(pid))
+AttributeError: Unpickler instance has no attribute 'persistent_load'
+Traceback (most recent call last):
+  File "Interface.py", line 432, in pegarRedeSalva
+    self.net = neurolab.load(dialog.get_filename())
+  File "/usr/local/lib/python2.7/dist-packages/neurolab/tool.py", line 55, in load
+    net = load(file)
+  File "/usr/lib/python2.7/pickle.py", line 1378, in load
+    return Unpickler(file).load()
+  File "/usr/lib/python2.7/pickle.py", line 858, in load
+    dispatch[key](self)
+KeyError: '%'
+Traceback (most recent call last):
+  File "Interface.py", line 298, in desenharArquitetura
+    raise
+TypeError: exceptions must be old-style classes or derived from BaseException, not NoneType
+Traceback (most recent call last):
+  File "Interface.py", line 298, in desenharArquitetura
+    raise
+TypeError: exceptions must be old-style classes or derived from BaseException, not NoneType
+Traceback (most recent call last):
+  File "Interface.py", line 298, in desenharArquitetura
+    raise
+TypeError: exceptions must be old-style classes or derived from BaseException, not NoneType
+Traceback (most recent call last):
+  File "Interface.py", line 298, in desenharArquitetura
+    raise
+TypeError: exceptions must be old-style classes or derived from BaseException, not NoneType
+Traceback (most recent call last):
+  File "Interface.py", line 298, in desenharArquitetura
+    raise
+TypeError: exceptions must be old-style classes or derived from BaseException, not NoneType
+Traceback (most recent call last):
+  File "Interface.py", line 666, in extrair_dados
+    data = get_data(caminho)
+  File "/usr/local/lib/python2.7/dist-packages/pyexcel_ods/__init__.py", line 344, in get_data
+    return read_data(afile, file_type=file_type, **keywords)
+  File "/usr/local/lib/python2.7/dist-packages/pyexcel_io/__init__.py", line 311, in get_data
+    data = load_data(afile, file_type=file_type, **keywords)
+  File "/usr/local/lib/python2.7/dist-packages/pyexcel_io/__init__.py", line 176, in load_data
+    filename))
+NotImplementedError: Cannot read content of file type net from file /home/targueriano/neuroIFC/neuro-ifc_1.0.16_amd64/usr/local/neuro-ifc/exemplos/rprop531tan.net
+Traceback (most recent call last):
+  File "Interface.py", line 666, in extrair_dados
+    data = get_data(caminho)
+  File "/usr/local/lib/python2.7/dist-packages/pyexcel_ods/__init__.py", line 344, in get_data
+    return read_data(afile, file_type=file_type, **keywords)
+  File "/usr/local/lib/python2.7/dist-packages/pyexcel_io/__init__.py", line 311, in get_data
+    data = load_data(afile, file_type=file_type, **keywords)
+  File "/usr/local/lib/python2.7/dist-packages/pyexcel_io/__init__.py", line 176, in load_data
+    filename))
+NotImplementedError: Cannot read content of file type net from file /home/targueriano/neuroIFC/neuro-ifc_1.0.16_amd64/usr/local/neuro-ifc/exemplos/rprop531tan.net
+Traceback (most recent call last):
+  File "Interface.py", line 298, in desenharArquitetura
+    raise
+TypeError: exceptions must be old-style classes or derived from BaseException, not NoneType
+Traceback (most recent call last):
+  File "Interface.py", line 666, in extrair_dados
+    data = get_data(caminho)
+  File "/usr/local/lib/python2.7/dist-packages/pyexcel_ods/__init__.py", line 344, in get_data
+    return read_data(afile, file_type=file_type, **keywords)
+  File "/usr/local/lib/python2.7/dist-packages/pyexcel_io/__init__.py", line 311, in get_data
+    data = load_data(afile, file_type=file_type, **keywords)
+  File "/usr/local/lib/python2.7/dist-packages/pyexcel_io/__init__.py", line 176, in load_data
+    filename))
+NotImplementedError: Cannot read content of file type net from file /home/targueriano/neuroIFC/neuro-ifc_1.0.16_amd64/usr/local/neuro-ifc/exemplos/rprop531tan.net
+Traceback (most recent call last):
+  File "Interface.py", line 683, in extrair_dados
+    data = get_data(caminho)
+  File "/usr/local/lib/python2.7/dist-packages/pyexcel_ods/__init__.py", line 344, in get_data
+    return read_data(afile, file_type=file_type, **keywords)
+  File "/usr/local/lib/python2.7/dist-packages/pyexcel_io/__init__.py", line 311, in get_data
+    data = load_data(afile, file_type=file_type, **keywords)
+  File "/usr/local/lib/python2.7/dist-packages/pyexcel_io/__init__.py", line 176, in load_data
+    filename))
+NotImplementedError: Cannot read content of file type png from file /home/targueriano/neuroIFC/neuro-ifc_1.0.16_amd64/usr/share/icons/hicolor/48x48/app/neuro-ifc.png
+Traceback (most recent call last):
+  File "Interface.py", line 456, in pegarRedeSalva
+    self.statusFile.pop(self.novoContexto)
+TypeError: Must be number, not str
+Traceback (most recent call last):
+  File "Interface.py", line 456, in pegarRedeSalva
+    self.statusFile.pop(self.novoContexto)
+TypeError: Must be number, not str
+Traceback (most recent call last):
+  File "Interface.py", line 449, in pegarRedeSalva
+    self.net = neurolab.load(dialog.get_filename())
+  File "/usr/local/lib/python2.7/dist-packages/neurolab/tool.py", line 55, in load
+    net = load(file)
+  File "/usr/lib/python2.7/pickle.py", line 1378, in load
+    return Unpickler(file).load()
+  File "/usr/lib/python2.7/pickle.py", line 858, in load
+    dispatch[key](self)
+  File "/usr/lib/python2.7/pickle.py", line 880, in load_eof
+    raise EOFError
+EOFError
+Traceback (most recent call last):
+  File "Interface.py", line 456, in pegarRedeSalva
+    self.statusFile.pop(self.novoContexto)
+TypeError: Must be number, not str
+Traceback (most recent call last):
+  File "Interface.py", line 456, in pegarRedeSalva
+    self.statusFile.pop(self.novoContexto)
+TypeError: Must be number, not str
+Traceback (most recent call last):
+  File "Interface.py", line 686, in extrair_dados
+    data = get_data(caminho)
+  File "/usr/local/lib/python2.7/dist-packages/pyexcel_ods/__init__.py", line 344, in get_data
+    return read_data(afile, file_type=file_type, **keywords)
+  File "/usr/local/lib/python2.7/dist-packages/pyexcel_io/__init__.py", line 311, in get_data
+    data = load_data(afile, file_type=file_type, **keywords)
+  File "/usr/local/lib/python2.7/dist-packages/pyexcel_io/__init__.py", line 176, in load_data
+    filename))
+NotImplementedError: Cannot read content of file type png from file /home/targueriano/neuroIFC/neuro-ifc_1.0.16_amd64/usr/share/icons/hicolor/48x48/app/neuro-ifc.png
+Traceback (most recent call last):
+  File "Interface.py", line 713, in extrair_dados
+    data = get_data(caminho)
+  File "/usr/local/lib/python2.7/dist-packages/pyexcel_ods/__init__.py", line 344, in get_data
+    return read_data(afile, file_type=file_type, **keywords)
+  File "/usr/local/lib/python2.7/dist-packages/pyexcel_io/__init__.py", line 311, in get_data
+    data = load_data(afile, file_type=file_type, **keywords)
+  File "/usr/local/lib/python2.7/dist-packages/pyexcel_io/__init__.py", line 176, in load_data
+    filename))
+NotImplementedError: Cannot read content of file type png from file /home/targueriano/neuroIFC/neuro-ifc_1.0.16_amd64/usr/share/icons/hicolor/48x48/app/neuro-ifc.png
+Traceback (most recent call last):
+  File "Interface.py", line 713, in extrair_dados
+    data = get_data(caminho)
+  File "/usr/local/lib/python2.7/dist-packages/pyexcel_ods/__init__.py", line 344, in get_data
+    return read_data(afile, file_type=file_type, **keywords)
+  File "/usr/local/lib/python2.7/dist-packages/pyexcel_io/__init__.py", line 311, in get_data
+    data = load_data(afile, file_type=file_type, **keywords)
+  File "/usr/local/lib/python2.7/dist-packages/pyexcel_io/__init__.py", line 176, in load_data
+    filename))
+NotImplementedError: Cannot read content of file type /home/targueriano/ControleGuarita/listaAlunos from file /home/targueriano/ControleGuarita/listaAlunos
+Traceback (most recent call last):
+  File "Interface.py", line 713, in extrair_dados
+    data = get_data(caminho)
+  File "/usr/local/lib/python2.7/dist-packages/pyexcel_ods/__init__.py", line 344, in get_data
+    return read_data(afile, file_type=file_type, **keywords)
+  File "/usr/local/lib/python2.7/dist-packages/pyexcel_io/__init__.py", line 311, in get_data
+    data = load_data(afile, file_type=file_type, **keywords)
+  File "/usr/local/lib/python2.7/dist-packages/pyexcel_io/__init__.py", line 176, in load_data
+    filename))
+NotImplementedError: Cannot read content of file type glade from file /home/targueriano/ControleGuarita/novoAluno.glade
+Traceback (most recent call last):
+  File "Interface.py", line 713, in extrair_dados
+    data = get_data(caminho)
+  File "/usr/local/lib/python2.7/dist-packages/pyexcel_ods/__init__.py", line 344, in get_data
+    return read_data(afile, file_type=file_type, **keywords)
+  File "/usr/local/lib/python2.7/dist-packages/pyexcel_io/__init__.py", line 311, in get_data
+    data = load_data(afile, file_type=file_type, **keywords)
+  File "/usr/local/lib/python2.7/dist-packages/pyexcel_io/__init__.py", line 176, in load_data
+    filename))
+NotImplementedError: Cannot read content of file type pyc from file /home/targueriano/ControleGuarita/conexaoMYSQL.pyc
+Traceback (most recent call last):
+  File "Interface.py", line 713, in extrair_dados
+    data = get_data(caminho)
+  File "/usr/local/lib/python2.7/dist-packages/pyexcel_ods/__init__.py", line 344, in get_data
+    return read_data(afile, file_type=file_type, **keywords)
+  File "/usr/local/lib/python2.7/dist-packages/pyexcel_io/__init__.py", line 311, in get_data
+    data = load_data(afile, file_type=file_type, **keywords)
+  File "/usr/local/lib/python2.7/dist-packages/pyexcel_io/__init__.py", line 176, in load_data
+    filename))
+NotImplementedError: Cannot read content of file type glade from file /home/targueriano/ControleGuarita/novoAluno.glade
+Traceback (most recent call last):
+  File "Interface.py", line 713, in extrair_dados
+    data = get_data(caminho)
+  File "/usr/local/lib/python2.7/dist-packages/pyexcel_ods/__init__.py", line 344, in get_data
+    return read_data(afile, file_type=file_type, **keywords)
+  File "/usr/local/lib/python2.7/dist-packages/pyexcel_io/__init__.py", line 311, in get_data
+    data = load_data(afile, file_type=file_type, **keywords)
+  File "/usr/local/lib/python2.7/dist-packages/pyexcel_io/__init__.py", line 176, in load_data
+    filename))
+NotImplementedError: Cannot read content of file type py from file /home/targueriano/ControleGuarita/abrirListaAlunos.py
+Traceback (most recent call last):
+  File "Interface.py", line 713, in extrair_dados
+    data = get_data(caminho)
+  File "/usr/local/lib/python2.7/dist-packages/pyexcel_ods/__init__.py", line 344, in get_data
+    return read_data(afile, file_type=file_type, **keywords)
+  File "/usr/local/lib/python2.7/dist-packages/pyexcel_io/__init__.py", line 311, in get_data
+    data = load_data(afile, file_type=file_type, **keywords)
+  File "/usr/local/lib/python2.7/dist-packages/pyexcel_io/__init__.py", line 176, in load_data
+    filename))
+NotImplementedError: Cannot read content of file type net from file /home/targueriano/neuroIFC/neuro-ifc_1.0.16_amd64/usr/local/neuro-ifc/exemplos/xor51gdxtan.net
+Traceback (most recent call last):
+  File "Interface.py", line 712, in extrair_dados
+    data = get_data(caminho)
+  File "/usr/local/lib/python2.7/dist-packages/pyexcel_ods/__init__.py", line 344, in get_data
+    return read_data(afile, file_type=file_type, **keywords)
+  File "/usr/local/lib/python2.7/dist-packages/pyexcel_io/__init__.py", line 311, in get_data
+    data = load_data(afile, file_type=file_type, **keywords)
+  File "/usr/local/lib/python2.7/dist-packages/pyexcel_io/__init__.py", line 176, in load_data
+    filename))
+NotImplementedError: Cannot read content of file type net from file /home/targueriano/neuroIFC/neuro-ifc_1.0.16_amd64/usr/local/neuro-ifc/exemplos/xor51gdxtan.net
+Traceback (most recent call last):
+  File "Desenho_cv2.py", line 25, in criarDesenho
+    lista_str = self.lista.split(',')
+AttributeError: 'list' object has no attribute 'split'
+Traceback (most recent call last):
+  File "Desenho_cv2.py", line 25, in criarDesenho
+    lista_str = self.lista.split(',')
+AttributeError: 'list' object has no attribute 'split'
+Traceback (most recent call last):
+  File "Desenho_cv2.py", line 25, in criarDesenho
+    lista_str = self.lista.split(',')
+AttributeError: 'list' object has no attribute 'split'
+Traceback (most recent call last):
+  File "Desenho_cv2.py", line 61, in criarDesenho
+    cv2.line(canvas,(coord[aux_X]+tamNodo,coord[aux_X+1]), (coord[aux_Y]-tamNodo,coord[aux_Y+1]), self.BLUE, 1)
+KeyboardInterrupt
+Traceback (most recent call last):
+  File "Interface.py", line 330, in desenharArquitetura
+    terminal.Terminal().subprocessTerminal(lista)
+  File "/home/targueriano/neuroIFC/neuro-ifc_1.0.16_amd64/usr/local/neuro-ifc/src/Terminal.py", line 25, in subprocessTerminal
+    subprocess.call(["python /usr/local/neuro-ifc/src/Desenho_cv2.py", lista ])
+  File "/usr/lib/python2.7/subprocess.py", line 522, in call
+    return Popen(*popenargs, **kwargs).wait()
+  File "/usr/lib/python2.7/subprocess.py", line 710, in __init__
+    errread, errwrite)
+  File "/usr/lib/python2.7/subprocess.py", line 1335, in _execute_child
+    raise child_exception
+OSError: [Errno 2] No such file or directory
+Traceback (most recent call last):
+  File "Interface.py", line 330, in desenharArquitetura
+    terminal.Terminal().subprocessTerminal(lista)
+  File "/home/targueriano/neuroIFC/neuro-ifc_1.0.16_amd64/usr/local/neuro-ifc/src/Terminal.py", line 25, in subprocessTerminal
+    subprocess.call(["python /usr/local/neuro-ifc/src/Desenho_cv2.py", lista ])
+  File "/usr/lib/python2.7/subprocess.py", line 522, in call
+    return Popen(*popenargs, **kwargs).wait()
+  File "/usr/lib/python2.7/subprocess.py", line 710, in __init__
+    errread, errwrite)
+  File "/usr/lib/python2.7/subprocess.py", line 1335, in _execute_child
+    raise child_exception
+OSError: [Errno 2] No such file or directory
+Traceback (most recent call last):
+  File "Interface.py", line 330, in desenharArquitetura
+    terminal.Terminal().subprocessTerminal(lista)
+  File "/home/targueriano/neuroIFC/neuro-ifc_1.0.16_amd64/usr/local/neuro-ifc/src/Terminal.py", line 25, in subprocessTerminal
+    subprocess.call(["python /usr/local/neuro-ifc/src/Desenho_cv2.py", lista ])
+  File "/usr/lib/python2.7/subprocess.py", line 522, in call
+    return Popen(*popenargs, **kwargs).wait()
+  File "/usr/lib/python2.7/subprocess.py", line 710, in __init__
+    errread, errwrite)
+  File "/usr/lib/python2.7/subprocess.py", line 1335, in _execute_child
+    raise child_exception
+OSError: [Errno 2] No such file or directory
+Traceback (most recent call last):
+  File "Interface.py", line 330, in desenharArquitetura
+    terminal.Terminal().subprocessTerminal(lista)
+  File "/home/targueriano/neuroIFC/neuro-ifc_1.0.16_amd64/usr/local/neuro-ifc/src/Terminal.py", line 25, in subprocessTerminal
+    subprocess.call(["python /usr/local/neuro-ifc/src/Desenho_cv2.py", lista ])
+  File "/usr/lib/python2.7/subprocess.py", line 522, in call
+    return Popen(*popenargs, **kwargs).wait()
+  File "/usr/lib/python2.7/subprocess.py", line 710, in __init__
+    errread, errwrite)
+  File "/usr/lib/python2.7/subprocess.py", line 1335, in _execute_child
+    raise child_exception
+OSError: [Errno 2] No such file or directory
+Traceback (most recent call last):
+  File "Interface.py", line 330, in desenharArquitetura
+    terminal.Terminal().subprocessTerminal(lista)
+  File "/home/targueriano/neuroIFC/neuro-ifc_1.0.16_amd64/usr/local/neuro-ifc/src/Terminal.py", line 25, in subprocessTerminal
+    subprocess.call(["python /usr/local/neuro-ifc/src/Desenho_cv2.py", lista ])
+  File "/usr/lib/python2.7/subprocess.py", line 522, in call
+    return Popen(*popenargs, **kwargs).wait()
+  File "/usr/lib/python2.7/subprocess.py", line 710, in __init__
+    errread, errwrite)
+  File "/usr/lib/python2.7/subprocess.py", line 1335, in _execute_child
+    raise child_exception
+OSError: [Errno 2] No such file or directory
+Traceback (most recent call last):
+  File "Interface.py", line 330, in desenharArquitetura
+    terminal.Terminal().subprocessTerminal(lista)
+  File "/home/targueriano/neuroIFC/neuro-ifc_1.0.16_amd64/usr/local/neuro-ifc/src/Terminal.py", line 25, in subprocessTerminal
+    subprocess.call(["python /usr/local/neuro-ifc/src/Desenho_cv2.py", lista ])
+  File "/usr/lib/python2.7/subprocess.py", line 522, in call
+    return Popen(*popenargs, **kwargs).wait()
+  File "/usr/lib/python2.7/subprocess.py", line 710, in __init__
+    errread, errwrite)
+  File "/usr/lib/python2.7/subprocess.py", line 1335, in _execute_child
+    raise child_exception
+OSError: [Errno 2] No such file or directory
+Traceback (most recent call last):
+  File "Interface.py", line 330, in desenharArquitetura
+    terminal.Terminal().subprocessTerminal(lista)
+  File "/home/targueriano/neuroIFC/neuro-ifc_1.0.16_amd64/usr/local/neuro-ifc/src/Terminal.py", line 25, in subprocessTerminal
+    subprocess.call(["python /usr/local/neuro-ifc/src/Desenho_cv2.py", lista ])
+  File "/usr/lib/python2.7/subprocess.py", line 522, in call
+    return Popen(*popenargs, **kwargs).wait()
+  File "/usr/lib/python2.7/subprocess.py", line 710, in __init__
+    errread, errwrite)
+  File "/usr/lib/python2.7/subprocess.py", line 1335, in _execute_child
+    raise child_exception
+OSError: [Errno 2] No such file or directory
+Traceback (most recent call last):
+  File "Interface.py", line 330, in desenharArquitetura
+    terminal.Terminal().subprocessTerminal(lista)
+  File "/home/targueriano/neuroIFC/neuro-ifc_1.0.16_amd64/usr/local/neuro-ifc/src/Terminal.py", line 25, in subprocessTerminal
+    subprocess.call(["python /usr/local/neuro-ifc/src/Desenho_cv2.py", lista ])
+  File "/usr/lib/python2.7/subprocess.py", line 522, in call
+    return Popen(*popenargs, **kwargs).wait()
+  File "/usr/lib/python2.7/subprocess.py", line 710, in __init__
+    errread, errwrite)
+  File "/usr/lib/python2.7/subprocess.py", line 1335, in _execute_child
+    raise child_exception
+OSError: [Errno 2] No such file or directory
+Traceback (most recent call last):
+  File "Interface.py", line 330, in desenharArquitetura
+    terminal.Terminal().subprocessTerminal(lista)
+  File "/home/targueriano/neuroIFC/neuro-ifc_1.0.16_amd64/usr/local/neuro-ifc/src/Terminal.py", line 25, in subprocessTerminal
+    subprocess.call(["python /usr/local/neuro-ifc/src/Desenho_cv2.py", lista ])
+  File "/usr/lib/python2.7/subprocess.py", line 522, in call
+    return Popen(*popenargs, **kwargs).wait()
+  File "/usr/lib/python2.7/subprocess.py", line 710, in __init__
+    errread, errwrite)
+  File "/usr/lib/python2.7/subprocess.py", line 1335, in _execute_child
+    raise child_exception
+OSError: [Errno 2] No such file or directory
+Traceback (most recent call last):
+  File "Interface.py", line 330, in desenharArquitetura
+    terminal.Terminal().subprocessTerminal(lista)
+  File "/home/targueriano/neuroIFC/neuro-ifc_1.0.16_amd64/usr/local/neuro-ifc/src/Terminal.py", line 25, in subprocessTerminal
+    subprocess.call(["python /usr/local/neuro-ifc/src/Desenho_cv2.py", lista ])
+  File "/usr/lib/python2.7/subprocess.py", line 522, in call
+    return Popen(*popenargs, **kwargs).wait()
+  File "/usr/lib/python2.7/subprocess.py", line 710, in __init__
+    errread, errwrite)
+  File "/usr/lib/python2.7/subprocess.py", line 1335, in _execute_child
+    raise child_exception
+OSError: [Errno 2] No such file or directory
+Traceback (most recent call last):
+  File "Interface.py", line 330, in desenharArquitetura
+    terminal.Terminal().subprocessTerminal(lista)
+  File "/home/targueriano/neuroIFC/neuro-ifc_1.0.16_amd64/usr/local/neuro-ifc/src/Terminal.py", line 25, in subprocessTerminal
+    subprocess.call(["python /usr/local/neuro-ifc/src/Desenho_cv2.py", lista ])
+  File "/usr/lib/python2.7/subprocess.py", line 522, in call
+    return Popen(*popenargs, **kwargs).wait()
+  File "/usr/lib/python2.7/subprocess.py", line 710, in __init__
+    errread, errwrite)
+  File "/usr/lib/python2.7/subprocess.py", line 1335, in _execute_child
+    raise child_exception
+OSError: [Errno 2] No such file or directory
+Traceback (most recent call last):
+  File "Interface.py", line 330, in desenharArquitetura
+    terminal.Terminal().subprocessTerminal(lista)
+  File "/home/targueriano/neuroIFC/neuro-ifc_1.0.16_amd64/usr/local/neuro-ifc/src/Terminal.py", line 25, in subprocessTerminal
+    subprocess.call(["python /usr/local/neuro-ifc/src/Desenho_cv2.py", lista ])
+  File "/usr/lib/python2.7/subprocess.py", line 522, in call
+    return Popen(*popenargs, **kwargs).wait()
+  File "/usr/lib/python2.7/subprocess.py", line 710, in __init__
+    errread, errwrite)
+  File "/usr/lib/python2.7/subprocess.py", line 1335, in _execute_child
+    raise child_exception
+OSError: [Errno 2] No such file or directory
+Traceback (most recent call last):
+  File "Interface.py", line 330, in desenharArquitetura
+    terminal.Terminal().subprocessTerminal(lista)
+  File "/home/targueriano/neuroIFC/neuro-ifc_1.0.16_amd64/usr/local/neuro-ifc/src/Terminal.py", line 25, in subprocessTerminal
+    subprocess.call(["python /usr/local/neuro-ifc/src/Desenho_cv2.py", lista ])
+  File "/usr/lib/python2.7/subprocess.py", line 522, in call
+    return Popen(*popenargs, **kwargs).wait()
+  File "/usr/lib/python2.7/subprocess.py", line 710, in __init__
+    errread, errwrite)
+  File "/usr/lib/python2.7/subprocess.py", line 1335, in _execute_child
+    raise child_exception
+OSError: [Errno 2] No such file or directory
+Traceback (most recent call last):
+  File "Interface.py", line 330, in desenharArquitetura
+    terminal.Terminal().subprocessTerminal(lista)
+  File "/home/targueriano/neuroIFC/neuro-ifc_1.0.16_amd64/usr/local/neuro-ifc/src/Terminal.py", line 25, in subprocessTerminal
+    subprocess.call(["python /usr/local/neuro-ifc/src/Desenho_cv2.py", lista ])
+  File "/usr/lib/python2.7/subprocess.py", line 522, in call
+    return Popen(*popenargs, **kwargs).wait()
+  File "/usr/lib/python2.7/subprocess.py", line 710, in __init__
+    errread, errwrite)
+  File "/usr/lib/python2.7/subprocess.py", line 1335, in _execute_child
+    raise child_exception
+OSError: [Errno 2] No such file or directory
+Traceback (most recent call last):
+  File "Interface.py", line 330, in desenharArquitetura
+    terminal.Terminal().subprocessTerminal(lista)
+  File "/home/targueriano/neuroIFC/neuro-ifc_1.0.16_amd64/usr/local/neuro-ifc/src/Terminal.py", line 25, in subprocessTerminal
+    subprocess.call(["python /usr/local/neuro-ifc/src/Desenho_cv2.py", lista ])
+  File "/usr/lib/python2.7/subprocess.py", line 522, in call
+    return Popen(*popenargs, **kwargs).wait()
+  File "/usr/lib/python2.7/subprocess.py", line 710, in __init__
+    errread, errwrite)
+  File "/usr/lib/python2.7/subprocess.py", line 1335, in _execute_child
+    raise child_exception
+OSError: [Errno 2] No such file or directory
+Traceback (most recent call last):
+  File "Interface.py", line 330, in desenharArquitetura
+    terminal.Terminal().subprocessTerminal(lista)
+  File "/home/targueriano/neuroIFC/neuro-ifc_1.0.16_amd64/usr/local/neuro-ifc/src/Terminal.py", line 25, in subprocessTerminal
+    subprocess.call(["python /usr/local/neuro-ifc/src/Desenho_cv2.py", lista ])
+  File "/usr/lib/python2.7/subprocess.py", line 522, in call
+    return Popen(*popenargs, **kwargs).wait()
+  File "/usr/lib/python2.7/subprocess.py", line 710, in __init__
+    errread, errwrite)
+  File "/usr/lib/python2.7/subprocess.py", line 1335, in _execute_child
+    raise child_exception
+OSError: [Errno 2] No such file or directory
+Traceback (most recent call last):
+  File "Interface.py", line 330, in desenharArquitetura
+    terminal.Terminal().subprocessTerminal(lista)
+  File "/home/targueriano/neuroIFC/neuro-ifc_1.0.16_amd64/usr/local/neuro-ifc/src/Terminal.py", line 25, in subprocessTerminal
+    subprocess.call(["python /usr/local/neuro-ifc/src/Desenho_cv2.py", lista ])
+  File "/usr/lib/python2.7/subprocess.py", line 522, in call
+    return Popen(*popenargs, **kwargs).wait()
+  File "/usr/lib/python2.7/subprocess.py", line 710, in __init__
+    errread, errwrite)
+  File "/usr/lib/python2.7/subprocess.py", line 1335, in _execute_child
+    raise child_exception
+OSError: [Errno 2] No such file or directory
+Traceback (most recent call last):
+  File "Interface.py", line 330, in desenharArquitetura
+    terminal.Terminal().subprocessTerminal(lista)
+  File "/home/targueriano/neuroIFC/neuro-ifc_1.0.16_amd64/usr/local/neuro-ifc/src/Terminal.py", line 25, in subprocessTerminal
+    subprocess.call(["python /usr/local/neuro-ifc/src/Desenho_cv2.py", lista ])
+  File "/usr/lib/python2.7/subprocess.py", line 522, in call
+    return Popen(*popenargs, **kwargs).wait()
+  File "/usr/lib/python2.7/subprocess.py", line 710, in __init__
+    errread, errwrite)
+  File "/usr/lib/python2.7/subprocess.py", line 1335, in _execute_child
+    raise child_exception
+OSError: [Errno 2] No such file or directory
+Traceback (most recent call last):
+  File "Interface.py", line 330, in desenharArquitetura
+    terminal.Terminal().subprocessTerminal(lista)
+  File "/home/targueriano/neuroIFC/neuro-ifc_1.0.16_amd64/usr/local/neuro-ifc/src/Terminal.py", line 25, in subprocessTerminal
+    subprocess.call(["python /usr/local/neuro-ifc/src/Desenho_cv2.py", lista ])
+  File "/usr/lib/python2.7/subprocess.py", line 522, in call
+    return Popen(*popenargs, **kwargs).wait()
+  File "/usr/lib/python2.7/subprocess.py", line 710, in __init__
+    errread, errwrite)
+  File "/usr/lib/python2.7/subprocess.py", line 1335, in _execute_child
+    raise child_exception
+OSError: [Errno 2] No such file or directory
+Traceback (most recent call last):
+  File "Interface.py", line 330, in desenharArquitetura
+    terminal.Terminal().subprocessTerminal(lista)
+  File "/home/targueriano/neuroIFC/neuro-ifc_1.0.16_amd64/usr/local/neuro-ifc/src/Terminal.py", line 25, in subprocessTerminal
+    subprocess.call(["python neuroIFC/neuro-ifc_1.0.16_amd64/usr/local/neuro-ifc/src/Desenho_cv2.py", lista ])
+  File "/usr/lib/python2.7/subprocess.py", line 522, in call
+    return Popen(*popenargs, **kwargs).wait()
+  File "/usr/lib/python2.7/subprocess.py", line 710, in __init__
+    errread, errwrite)
+  File "/usr/lib/python2.7/subprocess.py", line 1335, in _execute_child
+    raise child_exception
+OSError: [Errno 2] No such file or directory
+Traceback (most recent call last):
+  File "Interface.py", line 330, in desenharArquitetura
+    terminal.Terminal().subprocessTerminal(lista)
+  File "/home/targueriano/neuroIFC/neuro-ifc_1.0.16_amd64/usr/local/neuro-ifc/src/Terminal.py", line 25, in subprocessTerminal
+    subprocess.call(["python neuroIFC/neuro-ifc_1.0.16_amd64/usr/local/neuro-ifc/src/Desenho_cv2.py", lista ])
+  File "/usr/lib/python2.7/subprocess.py", line 522, in call
+    return Popen(*popenargs, **kwargs).wait()
+  File "/usr/lib/python2.7/subprocess.py", line 710, in __init__
+    errread, errwrite)
+  File "/usr/lib/python2.7/subprocess.py", line 1335, in _execute_child
+    raise child_exception
+OSError: [Errno 2] No such file or directory
+Traceback (most recent call last):
+  File "Interface.py", line 330, in desenharArquitetura
+    terminal.Terminal().subprocessTerminal(lista)
+  File "/home/targueriano/neuroIFC/neuro-ifc_1.0.16_amd64/usr/local/neuro-ifc/src/Terminal.py", line 25, in subprocessTerminal
+    subprocess.call(["python neuroIFC/neuro-ifc_1.0.16_amd64/usr/local/neuro-ifc/src/Desenho_cv2.py", lista ])
+  File "/usr/lib/python2.7/subprocess.py", line 522, in call
+    return Popen(*popenargs, **kwargs).wait()
+  File "/usr/lib/python2.7/subprocess.py", line 710, in __init__
+    errread, errwrite)
+  File "/usr/lib/python2.7/subprocess.py", line 1335, in _execute_child
+    raise child_exception
+OSError: [Errno 2] No such file or directory
+Traceback (most recent call last):
+  File "Interface.py", line 330, in desenharArquitetura
+    terminal.Terminal().subprocessTerminal(lista)
+  File "/home/targueriano/neuroIFC/neuro-ifc_1.0.16_amd64/usr/local/neuro-ifc/src/Terminal.py", line 25, in subprocessTerminal
+    subprocess.call(["python neuroIFC/neuro-ifc_1.0.16_amd64/usr/local/neuro-ifc/src/Desenho_cv2.py", lista ])
+  File "/usr/lib/python2.7/subprocess.py", line 522, in call
+    return Popen(*popenargs, **kwargs).wait()
+  File "/usr/lib/python2.7/subprocess.py", line 710, in __init__
+    errread, errwrite)
+  File "/usr/lib/python2.7/subprocess.py", line 1335, in _execute_child
+    raise child_exception
+OSError: [Errno 2] No such file or directory
+Traceback (most recent call last):
+  File "Interface.py", line 330, in desenharArquitetura
+    terminal.Terminal().subprocessTerminal(lista)
+  File "/home/targueriano/neuroIFC/neuro-ifc_1.0.16_amd64/usr/local/neuro-ifc/src/Terminal.py", line 25, in subprocessTerminal
+    subprocess.call(["python neuroIFC/neuro-ifc_1.0.16_amd64/usr/local/neuro-ifc/src/Desenho_cv2.py", lista ])
+  File "/usr/lib/python2.7/subprocess.py", line 522, in call
+    return Popen(*popenargs, **kwargs).wait()
+  File "/usr/lib/python2.7/subprocess.py", line 710, in __init__
+    errread, errwrite)
+  File "/usr/lib/python2.7/subprocess.py", line 1335, in _execute_child
+    raise child_exception
+OSError: [Errno 2] No such file or directory
+Traceback (most recent call last):
+  File "Interface.py", line 330, in desenharArquitetura
+    terminal.Terminal().subprocessTerminal(lista)
+  File "/home/targueriano/neuroIFC/neuro-ifc_1.0.16_amd64/usr/local/neuro-ifc/src/Terminal.py", line 25, in subprocessTerminal
+    subprocess.call(["python neuroIFC/neuro-ifc_1.0.16_amd64/usr/local/neuro-ifc/src/Desenho_cv2.py", lista ])
+  File "/usr/lib/python2.7/subprocess.py", line 522, in call
+    return Popen(*popenargs, **kwargs).wait()
+  File "/usr/lib/python2.7/subprocess.py", line 710, in __init__
+    errread, errwrite)
+  File "/usr/lib/python2.7/subprocess.py", line 1335, in _execute_child
+    raise child_exception
+OSError: [Errno 2] No such file or directory
+Traceback (most recent call last):
+  File "Interface.py", line 330, in desenharArquitetura
+    terminal.Terminal().subprocessTerminal(lista)
+  File "/home/targueriano/neuroIFC/neuro-ifc_1.0.16_amd64/usr/local/neuro-ifc/src/Terminal.py", line 25, in subprocessTerminal
+    subprocess.call(["python neuroIFC/neuro-ifc_1.0.16_amd64/usr/local/neuro-ifc/src/Desenho_cv2.py", lista ])
+  File "/usr/lib/python2.7/subprocess.py", line 522, in call
+    return Popen(*popenargs, **kwargs).wait()
+  File "/usr/lib/python2.7/subprocess.py", line 710, in __init__
+    errread, errwrite)
+  File "/usr/lib/python2.7/subprocess.py", line 1335, in _execute_child
+    raise child_exception
+OSError: [Errno 2] No such file or directory
+Traceback (most recent call last):
+  File "Interface.py", line 330, in desenharArquitetura
+    terminal.Terminal().subprocessTerminal(lista)
+  File "/home/targueriano/neuroIFC/neuro-ifc_1.0.16_amd64/usr/local/neuro-ifc/src/Terminal.py", line 25, in subprocessTerminal
+    subprocess.call(["python neuroIFC/neuro-ifc_1.0.16_amd64/usr/local/neuro-ifc/src/Desenho_cv2.py", lista ])
+  File "/usr/lib/python2.7/subprocess.py", line 522, in call
+    return Popen(*popenargs, **kwargs).wait()
+  File "/usr/lib/python2.7/subprocess.py", line 710, in __init__
+    errread, errwrite)
+  File "/usr/lib/python2.7/subprocess.py", line 1335, in _execute_child
+    raise child_exception
+OSError: [Errno 2] No such file or directory
+Traceback (most recent call last):
+  File "Interface.py", line 330, in desenharArquitetura
+    terminal.Terminal().subprocessTerminal(lista)
+  File "/home/targueriano/neuroIFC/neuro-ifc_1.0.16_amd64/usr/local/neuro-ifc/src/Terminal.py", line 25, in subprocessTerminal
+    subprocess.call(["python neuroIFC/neuro-ifc_1.0.16_amd64/usr/local/neuro-ifc/src/Desenho_cv2.py", lista ])
+  File "/usr/lib/python2.7/subprocess.py", line 522, in call
+    return Popen(*popenargs, **kwargs).wait()
+  File "/usr/lib/python2.7/subprocess.py", line 710, in __init__
+    errread, errwrite)
+  File "/usr/lib/python2.7/subprocess.py", line 1335, in _execute_child
+    raise child_exception
+OSError: [Errno 2] No such file or directory
+Traceback (most recent call last):
+  File "Interface.py", line 326, in desenharArquitetura
+    terminal.Terminal().subprocessTerminal(strTamEntradas)
+  File "/home/targueriano/neuroIFC/neuro-ifc_1.0.16_amd64/usr/local/neuro-ifc/src/Terminal.py", line 25, in subprocessTerminal
+    subprocess.call(["python neuroIFC/neuro-ifc_1.0.16_amd64/usr/local/neuro-ifc/src/Desenho_cv2.py", lista ])
+  File "/usr/lib/python2.7/subprocess.py", line 522, in call
+    return Popen(*popenargs, **kwargs).wait()
+  File "/usr/lib/python2.7/subprocess.py", line 710, in __init__
+    errread, errwrite)
+  File "/usr/lib/python2.7/subprocess.py", line 1335, in _execute_child
+    raise child_exception
+OSError: [Errno 2] No such file or directory
+Traceback (most recent call last):
+  File "Interface.py", line 326, in desenharArquitetura
+    terminal.Terminal().subprocessTerminal(strTamEntradas)
+  File "/home/targueriano/neuroIFC/neuro-ifc_1.0.16_amd64/usr/local/neuro-ifc/src/Terminal.py", line 25, in subprocessTerminal
+    subprocess.call(["python neuroIFC/neuro-ifc_1.0.16_amd64/usr/local/neuro-ifc/src/Desenho_cv2.py", lista ])
+  File "/usr/lib/python2.7/subprocess.py", line 522, in call
+    return Popen(*popenargs, **kwargs).wait()
+  File "/usr/lib/python2.7/subprocess.py", line 710, in __init__
+    errread, errwrite)
+  File "/usr/lib/python2.7/subprocess.py", line 1335, in _execute_child
+    raise child_exception
+OSError: [Errno 2] No such file or directory
+Traceback (most recent call last):
+  File "Interface.py", line 326, in desenharArquitetura
+    terminal.Terminal().subprocessTerminal(strTamEntradas)
+  File "/home/targueriano/neuroIFC/neuro-ifc_1.0.16_amd64/usr/local/neuro-ifc/src/Terminal.py", line 25, in subprocessTerminal
+    subprocess.call(["python neuroIFC/neuro-ifc_1.0.16_amd64/usr/local/neuro-ifc/src/Desenho_cv2.py", lista ])
+  File "/usr/lib/python2.7/subprocess.py", line 522, in call
+    return Popen(*popenargs, **kwargs).wait()
+  File "/usr/lib/python2.7/subprocess.py", line 710, in __init__
+    errread, errwrite)
+  File "/usr/lib/python2.7/subprocess.py", line 1335, in _execute_child
+    raise child_exception
+OSError: [Errno 2] No such file or directory
+Traceback (most recent call last):
+  File "Interface.py", line 326, in desenharArquitetura
+    terminal.Terminal().subprocessTerminal(strTamEntradas)
+  File "/home/targueriano/neuroIFC/neuro-ifc_1.0.16_amd64/usr/local/neuro-ifc/src/Terminal.py", line 25, in subprocessTerminal
+    subprocess.call(["python neuroIFC/neuro-ifc_1.0.16_amd64/usr/local/neuro-ifc/src/Desenho_cv2.py", lista ])
+  File "/usr/lib/python2.7/subprocess.py", line 522, in call
+    return Popen(*popenargs, **kwargs).wait()
+  File "/usr/lib/python2.7/subprocess.py", line 710, in __init__
+    errread, errwrite)
+  File "/usr/lib/python2.7/subprocess.py", line 1335, in _execute_child
+    raise child_exception
+OSError: [Errno 2] No such file or directory
+Traceback (most recent call last):
+  File "Interface.py", line 326, in desenharArquitetura
+    terminal.Terminal().subprocessTerminal(strTamEntradas)
+  File "/home/targueriano/neuroIFC/neuro-ifc_1.0.16_amd64/usr/local/neuro-ifc/src/Terminal.py", line 25, in subprocessTerminal
+    subprocess.call(["python neuroIFC/neuro-ifc_1.0.16_amd64/usr/local/neuro-ifc/src/Desenho_cv2.py", lista ])
+  File "/usr/lib/python2.7/subprocess.py", line 522, in call
+    return Popen(*popenargs, **kwargs).wait()
+  File "/usr/lib/python2.7/subprocess.py", line 710, in __init__
+    errread, errwrite)
+  File "/usr/lib/python2.7/subprocess.py", line 1335, in _execute_child
+    raise child_exception
+OSError: [Errno 2] No such file or directory
+Traceback (most recent call last):
+  File "Interface.py", line 326, in desenharArquitetura
+    terminal.Terminal().subprocessTerminal(strTamEntradas)
+  File "/home/targueriano/neuroIFC/neuro-ifc_1.0.16_amd64/usr/local/neuro-ifc/src/Terminal.py", line 25, in subprocessTerminal
+    subprocess.call(["python neuroIFC/neuro-ifc_1.0.16_amd64/usr/local/neuro-ifc/src/Desenho_cv2.py", lista ])
+  File "/usr/lib/python2.7/subprocess.py", line 522, in call
+    return Popen(*popenargs, **kwargs).wait()
+  File "/usr/lib/python2.7/subprocess.py", line 710, in __init__
+    errread, errwrite)
+  File "/usr/lib/python2.7/subprocess.py", line 1335, in _execute_child
+    raise child_exception
+OSError: [Errno 2] No such file or directory
+Traceback (most recent call last):
+  File "Interface.py", line 326, in desenharArquitetura
+    terminal.Terminal().subprocessTerminal(strTamEntradas)
+  File "/home/targueriano/neuroIFC/neuro-ifc_1.0.16_amd64/usr/local/neuro-ifc/src/Terminal.py", line 25, in subprocessTerminal
+    subprocess.call(["python neuroIFC/neuro-ifc_1.0.16_amd64/usr/local/neuro-ifc/src/Desenho_cv2.py", lista ])
+  File "/usr/lib/python2.7/subprocess.py", line 522, in call
+    return Popen(*popenargs, **kwargs).wait()
+  File "/usr/lib/python2.7/subprocess.py", line 710, in __init__
+    errread, errwrite)
+  File "/usr/lib/python2.7/subprocess.py", line 1335, in _execute_child
+    raise child_exception
+OSError: [Errno 2] No such file or directory
+Traceback (most recent call last):
+  File "Interface.py", line 326, in desenharArquitetura
+    terminal.Terminal().subprocessTerminal(strTamEntradas)
+  File "/home/targueriano/neuroIFC/neuro-ifc_1.0.16_amd64/usr/local/neuro-ifc/src/Terminal.py", line 25, in subprocessTerminal
+    subprocess.call(["python neuroIFC/neuro-ifc_1.0.16_amd64/usr/local/neuro-ifc/src/Desenho_cv2.py", lista ])
+  File "/usr/lib/python2.7/subprocess.py", line 522, in call
+    return Popen(*popenargs, **kwargs).wait()
+  File "/usr/lib/python2.7/subprocess.py", line 710, in __init__
+    errread, errwrite)
+  File "/usr/lib/python2.7/subprocess.py", line 1335, in _execute_child
+    raise child_exception
+OSError: [Errno 2] No such file or directory
+Traceback (most recent call last):
+  File "Interface.py", line 330, in desenharArquitetura
+    terminal.Terminal().subprocessTerminal(lista)
+  File "/home/targueriano/neuroIFC/neuro-ifc_1.0.16_amd64/usr/local/neuro-ifc/src/Terminal.py", line 26, in subprocessTerminal
+    neuro-ifc/src/Desenho_cv2.py lista""", "" ])
+  File "/usr/lib/python2.7/subprocess.py", line 522, in call
+    return Popen(*popenargs, **kwargs).wait()
+  File "/usr/lib/python2.7/subprocess.py", line 710, in __init__
+    errread, errwrite)
+  File "/usr/lib/python2.7/subprocess.py", line 1335, in _execute_child
+    raise child_exception
+OSError: [Errno 2] No such file or directory
+Traceback (most recent call last):
+  File "Interface.py", line 330, in desenharArquitetura
+    terminal.Terminal().subprocessTerminal(lista)
+  File "/home/targueriano/neuroIFC/neuro-ifc_1.0.16_amd64/usr/local/neuro-ifc/src/Terminal.py", line 26, in subprocessTerminal
+    neuro-ifc/src/Desenho_cv2.py lista""", "" ])
+  File "/usr/lib/python2.7/subprocess.py", line 522, in call
+    return Popen(*popenargs, **kwargs).wait()
+  File "/usr/lib/python2.7/subprocess.py", line 710, in __init__
+    errread, errwrite)
+  File "/usr/lib/python2.7/subprocess.py", line 1335, in _execute_child
+    raise child_exception
+OSError: [Errno 2] No such file or directory
+Traceback (most recent call last):
+  File "Interface.py", line 330, in desenharArquitetura
+    terminal.Terminal().subprocessTerminal(lista)
+  File "/home/targueriano/neuroIFC/neuro-ifc_1.0.16_amd64/usr/local/neuro-ifc/src/Terminal.py", line 26, in subprocessTerminal
+    neuro-ifc/src/Desenho_cv2.py""", lista ])
+  File "/usr/lib/python2.7/subprocess.py", line 522, in call
+    return Popen(*popenargs, **kwargs).wait()
+  File "/usr/lib/python2.7/subprocess.py", line 710, in __init__
+    errread, errwrite)
+  File "/usr/lib/python2.7/subprocess.py", line 1335, in _execute_child
+    raise child_exception
+OSError: [Errno 2] No such file or directory
+Traceback (most recent call last):
+  File "Interface.py", line 330, in desenharArquitetura
+    terminal.Terminal().subprocessTerminal(lista)
+  File "/home/targueriano/neuroIFC/neuro-ifc_1.0.16_amd64/usr/local/neuro-ifc/src/Terminal.py", line 26, in subprocessTerminal
+    neuro-ifc/src/Desenho_cv2.py""", lista ])
+  File "/usr/lib/python2.7/subprocess.py", line 522, in call
+    return Popen(*popenargs, **kwargs).wait()
+  File "/usr/lib/python2.7/subprocess.py", line 710, in __init__
+    errread, errwrite)
+  File "/usr/lib/python2.7/subprocess.py", line 1335, in _execute_child
+    raise child_exception
+OSError: [Errno 2] No such file or directory
+Traceback (most recent call last):
+  File "Interface.py", line 330, in desenharArquitetura
+    terminal.Terminal().subprocessTerminal(lista)
+  File "/home/targueriano/neuroIFC/neuro-ifc_1.0.16_amd64/usr/local/neuro-ifc/src/Terminal.py", line 26, in subprocessTerminal
+    neuro-ifc/src/Desenho_cv2.py""", lista ])
+  File "/usr/lib/python2.7/subprocess.py", line 522, in call
+    return Popen(*popenargs, **kwargs).wait()
+  File "/usr/lib/python2.7/subprocess.py", line 710, in __init__
+    errread, errwrite)
+  File "/usr/lib/python2.7/subprocess.py", line 1335, in _execute_child
+    raise child_exception
+OSError: [Errno 2] No such file or directory
+Traceback (most recent call last):
+  File "Interface.py", line 330, in desenharArquitetura
+    terminal.Terminal().subprocessTerminal(lista)
+  File "/home/targueriano/neuroIFC/neuro-ifc_1.0.16_amd64/usr/local/neuro-ifc/src/Terminal.py", line 26, in subprocessTerminal
+    neuro-ifc/src/Desenho_cv2.py""", lista ])
+  File "/usr/lib/python2.7/subprocess.py", line 522, in call
+    return Popen(*popenargs, **kwargs).wait()
+  File "/usr/lib/python2.7/subprocess.py", line 710, in __init__
+    errread, errwrite)
+  File "/usr/lib/python2.7/subprocess.py", line 1335, in _execute_child
+    raise child_exception
+OSError: [Errno 2] No such file or directory
+Traceback (most recent call last):
+  File "Interface.py", line 330, in desenharArquitetura
+    terminal.Terminal().subprocessTerminal(lista)
+  File "/home/targueriano/neuroIFC/neuro-ifc_1.0.16_amd64/usr/local/neuro-ifc/src/Terminal.py", line 26, in subprocessTerminal
+    neuro-ifc/src/Desenho_cv2.py""", lista ])
+  File "/usr/lib/python2.7/subprocess.py", line 522, in call
+    return Popen(*popenargs, **kwargs).wait()
+  File "/usr/lib/python2.7/subprocess.py", line 710, in __init__
+    errread, errwrite)
+  File "/usr/lib/python2.7/subprocess.py", line 1335, in _execute_child
+    raise child_exception
+OSError: [Errno 2] No such file or directory
+Traceback (most recent call last):
+  File "Interface.py", line 330, in desenharArquitetura
+    terminal.Terminal().subprocessTerminal(lista)
+  File "/home/targueriano/neuroIFC/neuro-ifc_1.0.16_amd64/usr/local/neuro-ifc/src/Terminal.py", line 26, in subprocessTerminal
+    neuro-ifc/src/Desenho_cv2.py""", lista ])
+  File "/usr/lib/python2.7/subprocess.py", line 522, in call
+    return Popen(*popenargs, **kwargs).wait()
+  File "/usr/lib/python2.7/subprocess.py", line 710, in __init__
+    errread, errwrite)
+  File "/usr/lib/python2.7/subprocess.py", line 1335, in _execute_child
+    raise child_exception
+OSError: [Errno 2] No such file or directory
+Traceback (most recent call last):
+  File "Interface.py", line 330, in desenharArquitetura
+    terminal.Terminal().subprocessTerminal(lista)
+  File "/home/targueriano/neuroIFC/neuro-ifc_1.0.16_amd64/usr/local/neuro-ifc/src/Terminal.py", line 26, in subprocessTerminal
+    neuro-ifc/src/Desenho_cv2.py""", lista ])
+  File "/usr/lib/python2.7/subprocess.py", line 522, in call
+    return Popen(*popenargs, **kwargs).wait()
+  File "/usr/lib/python2.7/subprocess.py", line 710, in __init__
+    errread, errwrite)
+  File "/usr/lib/python2.7/subprocess.py", line 1335, in _execute_child
+    raise child_exception
+OSError: [Errno 2] No such file or directory
+Traceback (most recent call last):
+  File "Interface.py", line 330, in desenharArquitetura
+    terminal.Terminal().subprocessTerminal(lista)
+  File "/home/targueriano/neuroIFC/neuro-ifc_1.0.16_amd64/usr/local/neuro-ifc/src/Terminal.py", line 26, in subprocessTerminal
+    neuro-ifc/src/Desenho_cv2.py""", lista ])
+  File "/usr/lib/python2.7/subprocess.py", line 522, in call
+    return Popen(*popenargs, **kwargs).wait()
+  File "/usr/lib/python2.7/subprocess.py", line 710, in __init__
+    errread, errwrite)
+  File "/usr/lib/python2.7/subprocess.py", line 1335, in _execute_child
+    raise child_exception
+OSError: [Errno 2] No such file or directory
+Traceback (most recent call last):
+  File "Interface.py", line 330, in desenharArquitetura
+    terminal.Terminal().subprocessTerminal(lista)
+  File "/home/targueriano/neuroIFC/neuro-ifc_1.0.16_amd64/usr/local/neuro-ifc/src/Terminal.py", line 26, in subprocessTerminal
+    neuro-ifc/src/Desenho_cv2.py""", lista ])
+  File "/usr/lib/python2.7/subprocess.py", line 522, in call
+    return Popen(*popenargs, **kwargs).wait()
+  File "/usr/lib/python2.7/subprocess.py", line 710, in __init__
+    errread, errwrite)
+  File "/usr/lib/python2.7/subprocess.py", line 1335, in _execute_child
+    raise child_exception
+OSError: [Errno 2] No such file or directory
+Traceback (most recent call last):
+  File "Interface.py", line 330, in desenharArquitetura
+    terminal.Terminal().subprocessTerminal(lista)
+  File "/home/targueriano/neuroIFC/neuro-ifc_1.0.16_amd64/usr/local/neuro-ifc/src/Terminal.py", line 26, in subprocessTerminal
+    neuro-ifc/src/Desenho_cv2.py""", lista ])
+  File "/usr/lib/python2.7/subprocess.py", line 522, in call
+    return Popen(*popenargs, **kwargs).wait()
+  File "/usr/lib/python2.7/subprocess.py", line 710, in __init__
+    errread, errwrite)
+  File "/usr/lib/python2.7/subprocess.py", line 1335, in _execute_child
+    raise child_exception
+OSError: [Errno 2] No such file or directory
+Traceback (most recent call last):
+  File "Interface.py", line 330, in desenharArquitetura
+    terminal.Terminal().subprocessTerminal(lista)
+  File "/home/targueriano/neuroIFC/neuro-ifc_1.0.16_amd64/usr/local/neuro-ifc/src/Terminal.py", line 26, in subprocessTerminal
+    neuro-ifc/src/Desenho_cv2.py""", lista ])
+  File "/usr/lib/python2.7/subprocess.py", line 522, in call
+    return Popen(*popenargs, **kwargs).wait()
+  File "/usr/lib/python2.7/subprocess.py", line 710, in __init__
+    errread, errwrite)
+  File "/usr/lib/python2.7/subprocess.py", line 1335, in _execute_child
+    raise child_exception
+OSError: [Errno 2] No such file or directory
+Traceback (most recent call last):
+  File "Interface.py", line 330, in desenharArquitetura
+    terminal.Terminal().subprocessTerminal(lista)
+  File "/home/targueriano/neuroIFC/neuro-ifc_1.0.16_amd64/usr/local/neuro-ifc/src/Terminal.py", line 26, in subprocessTerminal
+    neuro-ifc/src/Desenho_cv2.py""", lista ])
+  File "/usr/lib/python2.7/subprocess.py", line 522, in call
+    return Popen(*popenargs, **kwargs).wait()
+  File "/usr/lib/python2.7/subprocess.py", line 710, in __init__
+    errread, errwrite)
+  File "/usr/lib/python2.7/subprocess.py", line 1335, in _execute_child
+    raise child_exception
+OSError: [Errno 2] No such file or directory
+Traceback (most recent call last):
+  File "Interface.py", line 330, in desenharArquitetura
+    terminal.Terminal().subprocessTerminal(lista)
+  File "/home/targueriano/neuroIFC/neuro-ifc_1.0.16_amd64/usr/local/neuro-ifc/src/Terminal.py", line 26, in subprocessTerminal
+    neuro-ifc/src/Desenho_cv2.py""", lista ])
+  File "/usr/lib/python2.7/subprocess.py", line 522, in call
+    return Popen(*popenargs, **kwargs).wait()
+  File "/usr/lib/python2.7/subprocess.py", line 710, in __init__
+    errread, errwrite)
+  File "/usr/lib/python2.7/subprocess.py", line 1335, in _execute_child
+    raise child_exception
+OSError: [Errno 2] No such file or directory
+Traceback (most recent call last):
+  File "Interface.py", line 330, in desenharArquitetura
+    terminal.Terminal().subprocessTerminal(lista)
+  File "/home/targueriano/neuroIFC/neuro-ifc_1.0.16_amd64/usr/local/neuro-ifc/src/Terminal.py", line 26, in subprocessTerminal
+    neuro-ifc/src/Desenho_cv2.py""", lista ])
+  File "/usr/lib/python2.7/subprocess.py", line 522, in call
+    return Popen(*popenargs, **kwargs).wait()
+  File "/usr/lib/python2.7/subprocess.py", line 710, in __init__
+    errread, errwrite)
+  File "/usr/lib/python2.7/subprocess.py", line 1335, in _execute_child
+    raise child_exception
+OSError: [Errno 2] No such file or directory
+Traceback (most recent call last):
+  File "Interface.py", line 330, in desenharArquitetura
+    terminal.Terminal().subprocessTerminal(lista)
+  File "/home/targueriano/neuroIFC/neuro-ifc_1.0.16_amd64/usr/local/neuro-ifc/src/Terminal.py", line 26, in subprocessTerminal
+    neuro-ifc/src/Desenho_cv2.py""", lista ])
+  File "/usr/lib/python2.7/subprocess.py", line 522, in call
+    return Popen(*popenargs, **kwargs).wait()
+  File "/usr/lib/python2.7/subprocess.py", line 710, in __init__
+    errread, errwrite)
+  File "/usr/lib/python2.7/subprocess.py", line 1335, in _execute_child
+    raise child_exception
+OSError: [Errno 2] No such file or directory
+Traceback (most recent call last):
+  File "Interface.py", line 318, in desenharArquitetura
+    raise
+TypeError: exceptions must be old-style classes or derived from BaseException, not NoneType
+Traceback (most recent call last):
+  File "Interface.py", line 454, in pegarRedeSalva
+    self.net = neurolab.load(dialog.get_filename())
+  File "/usr/local/lib/python2.7/dist-packages/neurolab/tool.py", line 55, in load
+    net = load(file)
+  File "/usr/lib/python2.7/pickle.py", line 1378, in load
+    return Unpickler(file).load()
+  File "/usr/lib/python2.7/pickle.py", line 858, in load
+    dispatch[key](self)
+KeyError: '#'
+Traceback (most recent call last):
+  File "Interface.py", line 454, in pegarRedeSalva
+    self.net = neurolab.load(dialog.get_filename())
+  File "/usr/local/lib/python2.7/dist-packages/neurolab/tool.py", line 55, in load
+    net = load(file)
+  File "/usr/lib/python2.7/pickle.py", line 1378, in load
+    return Unpickler(file).load()
+  File "/usr/lib/python2.7/pickle.py", line 858, in load
+    dispatch[key](self)
+KeyError: '%'
+Traceback (most recent call last):
+  File "Interface.py", line 454, in pegarRedeSalva
+    self.net = neurolab.load(dialog.get_filename())
+  File "/usr/local/lib/python2.7/dist-packages/neurolab/tool.py", line 55, in load
+    net = load(file)
+  File "/usr/lib/python2.7/pickle.py", line 1378, in load
+    return Unpickler(file).load()
+  File "/usr/lib/python2.7/pickle.py", line 858, in load
+    dispatch[key](self)
+KeyError: '#'

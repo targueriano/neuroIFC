@@ -6,6 +6,7 @@ from gi.repository import GLib
 import os
 import subprocess
 
+
 class Terminal(Vte.Terminal):
 
     def terminalVTE(self):
@@ -20,5 +21,5 @@ class Terminal(Vte.Terminal):
             None,
             )
 
-    def subprocessTerminal(self):
-        subprocess.call(["gnome-terminal", "" ])
+    def subprocessTerminal(self, lista):
+        subprocess.call(["./Desenho_cv2.py", lista ])

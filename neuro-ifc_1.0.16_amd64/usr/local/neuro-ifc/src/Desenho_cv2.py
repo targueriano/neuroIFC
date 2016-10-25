@@ -6,6 +6,7 @@
 import traceback
 import cv2
 import numpy as np
+import sys
 
 class Desenho(object):
     def __init__(self, lista):
@@ -16,7 +17,7 @@ class Desenho(object):
         self.GRAY = (128,128,128)
         self.BLACK = (0,0,0)
         #canvas = np.ones((300,400,3))*255
-        canvas = np.zeros((700,800,3), np.uint8)
+        canvas = np.zeros((500,500,3), np.uint8)
         self.criarDesenho(canvas)
 
     def criarDesenho(self, canvas):
@@ -74,5 +75,6 @@ class Desenho(object):
             #salva em arquivo
             file("trace.log","a").write(trace)
 
-#lista = "3,4,5,10,1"
-#Desenho(lista)
+
+if __name__ == "__main__":
+    Desenho(sys.argv[1])

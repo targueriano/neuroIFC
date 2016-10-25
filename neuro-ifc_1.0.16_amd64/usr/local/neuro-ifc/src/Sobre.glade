@@ -9,12 +9,12 @@
     <property name="type_hint">dialog</property>
     <property name="program_name">neuroIFC</property>
     <property name="version">1.0.16</property>
-    <property name="comments" translatable="yes">Software com fins educacionais.</property>
+    <property name="comments" translatable="yes">Software Educacional para aprendizado de Redes Neurais Artificiais Feedforward.</property>
     <property name="website">https://github.com/targueriano/neuroIFC</property>
     <property name="website_label" translatable="yes">git_src: neuroIFC</property>
     <property name="authors">Taylan Branco Meurer</property>
     <property name="artists">Taylan Branco Meurer</property>
-    <property name="logo">../pictures/logo2.png</property>
+    <property name="logo">../icons/hicolor/128x128/app/neuro-ifc.png</property>
     <property name="license_type">gpl-3-0</property>
     <signal name="destroy-event" handler="gtk_main_quit" swapped="no"/>
     <child internal-child="vbox">

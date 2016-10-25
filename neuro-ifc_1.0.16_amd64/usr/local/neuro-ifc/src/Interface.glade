@@ -125,7 +125,7 @@
     <property name="window_position">center</property>
     <property name="default_width">1024</property>
     <property name="default_height">600</property>
-    <property name="icon">../pictures/logo2.png</property>
+    <property name="icon">../icons/hicolor/256x256/app/neuro-ifc.png</property>
     <signal name="destroy" handler="gtk_main_quit" swapped="no"/>
     <child>
       <object class="GtkBox" id="box1">
@@ -160,6 +160,7 @@
                       <object class="GtkImageMenuItem" id="menuSaveAs">
                         <property name="label">gtk-save-as</property>
                         <property name="visible">True</property>
+                        <property name="sensitive">False</property>
                         <property name="can_focus">False</property>
                         <property name="use_underline">True</property>
                         <property name="use_stock">True</property>
@@ -448,14 +449,17 @@ Objetivo: 0.02</property>
                     <property name="vexpand">True</property>
                     <property name="scrollable">True</property>
                     <child>
-                      <object class="GtkGrid" id="grid12">
+                      <object class="GtkGrid" id="fase1">
                         <property name="visible">True</property>
                         <property name="can_focus">False</property>
                         <child>
                           <object class="GtkFileChooserButton" id="butOpenEntradas">
                             <property name="visible">True</property>
                             <property name="can_focus">False</property>
-                            <property name="tooltip_text" translatable="yes">Esse botão gera o evento para a seleção do arquivo (.ods) que deverá fornecer entradas e alvos.  </property>
+                            <property name="tooltip_text" translatable="yes">Ex: 1 0 1
+      0 1 0
+
+Duas amostras com duas entradas (1 0; 0 1) e uma saída em cada amostra (1;0). </property>
                             <property name="margin_left">15</property>
                             <property name="margin_top">15</property>
                             <signal name="file-set" handler="on_butOpenEntradas_file_set" swapped="no"/>
@@ -471,7 +475,7 @@ Objetivo: 0.02</property>
                             <property name="can_focus">False</property>
                             <property name="margin_left">15</property>
                             <property name="margin_top">15</property>
-                            <property name="label" translatable="yes">Entradas + alvo (.ods)</property>
+                            <property name="label" translatable="yes">Inserir um arquivo do libreoffice calc (.ods) contendo valores de entrada + alvo. </property>
                           </object>
                           <packing>
                             <property name="left_attach">1</property>
@@ -492,7 +496,7 @@ Objetivo: 0.02</property>
                       </packing>
                     </child>
                     <child>
-                      <object class="GtkScrolledWindow" id="scrolledwindow5">
+                      <object class="GtkScrolledWindow" id="fase2">
                         <property name="visible">True</property>
                         <property name="can_focus">True</property>
                         <property name="shadow_type">in</property>
@@ -676,7 +680,7 @@ Objetivo: 0.02</property>
                       </packing>
                     </child>
                     <child>
-                      <object class="GtkScrolledWindow" id="scrolledwindow1">
+                      <object class="GtkScrolledWindow" id="fase3">
                         <property name="visible">True</property>
                         <property name="can_focus">True</property>
                         <property name="shadow_type">in</property>
@@ -1058,7 +1062,7 @@ Objetivo: 0.02</property>
                       </packing>
                     </child>
                     <child>
-                      <object class="GtkScrolledWindow" id="scrolledwindow3">
+                      <object class="GtkScrolledWindow" id="fase4">
                         <property name="visible">True</property>
                         <property name="can_focus">True</property>
                         <property name="shadow_type">in</property>
@@ -1189,7 +1193,7 @@ Objetivo: 0.02</property>
                       </packing>
                     </child>
                     <child>
-                      <object class="GtkGrid" id="grid13">
+                      <object class="GtkGrid" id="fase5">
                         <property name="visible">True</property>
                         <property name="can_focus">False</property>
                         <child>
@@ -1228,7 +1232,7 @@ Objetivo: 0.02</property>
                       </packing>
                     </child>
                     <child>
-                      <object class="GtkGrid" id="grid14">
+                      <object class="GtkGrid" id="fase6">
                         <property name="visible">True</property>
                         <property name="can_focus">False</property>
                         <child>
@@ -1265,6 +1269,7 @@ Objetivo: 0.02</property>
                         <child>
                           <object class="GtkSwitch" id="switch1">
                             <property name="visible">True</property>
+                            <property name="sensitive">False</property>
                             <property name="can_focus">True</property>
                             <property name="tooltip_text" translatable="yes">Ativa ou desativa uma animação do processo de treinamento. Desenhará o ajuste dos pesos somente quando houver um número de erros inferior a 101.  </property>
                             <property name="margin_left">115</property>
@@ -1312,7 +1317,7 @@ Objetivo: 0.02</property>
                       </packing>
                     </child>
                     <child>
-                      <object class="GtkGrid" id="grid8">
+                      <object class="GtkGrid" id="fase7">
                         <property name="visible">True</property>
                         <property name="can_focus">False</property>
                         <child>

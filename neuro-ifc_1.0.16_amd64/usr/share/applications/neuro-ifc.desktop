@@ -1,0 +1,20 @@
+[Desktop Entry]
+Version=1.0.16
+Type=Application
+Name=neuro-ifc
+GenericName=Education
+Comment=Educational software for artificial neural networks
+Exec=python /usr/local/neuro-ifc/src/Interface.py
+Terminal=false
+MimeType=text/plain;
+Icon=neuro-ifc
+Categories=Education;
+StartupNotify=true
+Actions=Window;Document;
+
+[Desktop Action Window]
+Name=New Window
+Exec=python /usr/local/neuro-ifc/src/Interface.py
+OnlyShowIn=Unity;
+
+

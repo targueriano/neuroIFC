@@ -16,7 +16,7 @@
 import traceback
 from __builtin__ import file
 import numpy as np
-import Desenho as desenho
+#import Desenho as desenho
 #import Desenho_cv2 as cv2
 import RNA as rna
 import Grafico as grafico
@@ -33,7 +33,7 @@ import Information as info
 try:
     import gi
     gi.require_version('Gtk', '3.0')
-    from gi.repository import Gtk
+    from gi.repository import Gtk, Gdk
     from gi.repository import Gio
     from pyexcel_ods import get_data
     from pyexcel_ods import save_data
@@ -83,18 +83,27 @@ class Interface (object):
             10:"Crie uma RNA e realize um treinamento.",
             11:"Treinando...",
             12:"Dados inseridos com sucesso!",
-            13:"O arquivo deve ter extensão .ods."
+            13:"O arquivo deve ter extensão .ods.",
+            14:"Arquivo incorreto, verifique a configuração da rede.",
+            15:"A rede deve possuir apenas um neurônio na camada de saída.",
+            16:"A RNA foi salva com sucesso!",
+            17:"Arquivo aberto com sucesso!"
+        }
+
+        self.novoContexto = 1
+        self.dir_context_path = {
+            0:"Desconhecido",
+            1:"Novo"
         }
 
         self.getVars(builder)
 
         #statusbar
         self.status = builder.get_object("statusbar1")
+        self.statusFile = builder.get_object("statusbar2")
         self._statusDefault()
 
-        self.statusFile = builder.get_object("statusbar2")
-        contexto = self.statusFile.get_context_id("desconhecido")
-        self.statusFile.push(contexto, "Desconhecido")
+        self._fontColor("black")
 
         #variaveis para arquitetura
         self.inputs = list()
@@ -137,6 +146,10 @@ class Interface (object):
                                  "on_radioBFGS_clicked": self.ativarBFGS,
                                  "on_sair_activate": Gtk.main_quit
                                  })
+
+
+    def _fontColor(self, cor):
+        self.status.modify_fg(Gtk.StateFlags.NORMAL, Gdk.color_parse(cor))
 
     def ativarBFGS(self, widget):
         self._desativarEntradas()
@@ -214,12 +227,24 @@ class Interface (object):
     def _statusDefault(self):
         contexto = self.status.get_context_id(self.dir_context[0])
         self.status.push(contexto,self.dir_context[0])
+        contexto = self.statusFile.get_context_id(self.dir_context_path[0])
+        self.statusFile.push(contexto, self.dir_context_path[0])
 
+    """
+    Descricao: Thread que recebe um dicionario de status,
+    altera-o conforme o parametro e dorme por 2 segundos.
+    Depois volta ao estado pronto.
+    """
     def _statusDinamico(self, dic):
         contexto = self.status.get_context_id(dic)
         self.status.push(contexto, dic)
         time.sleep(2)
         self.status.pop(contexto)
+        self._fontColor("black")
+
+    def _statusPathFile(self, caminho):
+        self.novoContexto = self.statusFile.get_context_id(self.dir_context_path[1])
+        self.statusFile.push(self.novoContexto, caminho)
 
     def verInformation(self, widget):
         info.DrawInformation()
@@ -238,9 +263,12 @@ class Interface (object):
         #imprimir Regra de Aprendizado em dados
         self.storeRA.append([str(self.net.trainf)])
         #atualizar pesos e bias
-        numTargets = [float(self.targets[i][j])
-                        for i in xrange(len(self.targets)) for j in xrange(1)]
-        self._setListStore(self.inputs, numTargets, True)
+
+        self._setStoreDados(self.targets)
+        self._setListPesosBias()
+
+        self._desativarFases()
+        self.butOpenSimulador.set_sensitive(True)
         #imprimir Erro
         for i in xrange(show-1, len(self.errors),show):
             self.storeErro.append((i+1, self.errors[i]))
@@ -263,9 +291,13 @@ class Interface (object):
         #imprimir Regra de Aprendizado em dados
         self.storeRA.append([str(self.net.trainf)])
         #atualizar pesos e bias
-        numTargets = [float(self.targets[i][j])
-                        for i in xrange(len(self.targets)) for j in xrange(1)]
-        self._setListStore(self.inputs, numTargets, True)
+
+        self._setStoreDados(self.targets)
+
+        self._desativarFases()
+        self.butOpenSimulador.set_sensitive(True)
+
+        self._setListPesosBias()
         #imprimir Erro
         for i in xrange(show-1, len(self.errors),show):
             self.storeErro.append((i+1, self.errors[i]))
@@ -280,37 +312,27 @@ class Interface (object):
     '''
     def desenharArquitetura(self, widget):
         try:
+            t = self.listaNeuronios.get_text().split(',')
+            for i in xrange(len(t)):
+                if int(t[i]) > 10:
+                    raise
+
+
             if self.inputs:
                 strTamEntradas = str(len(self.inputs[0]))
                 strTamEntradas += ","
                 strTamEntradas += self.listaNeuronios.get_text()
 
-                p = Process(target=desenho.Desenho, args=(strTamEntradas,))
-                p.start()
-                p.join()
+                terminal.Terminal().subprocessTerminal(strTamEntradas)
 
             else:
                 lista = self.listaNeuronios.get_text()
-                p = Process(target=desenho.Desenho, args=(lista,))
-                p.start()
-                p.join()
+                terminal.Terminal().subprocessTerminal(lista)
         except:
             trace = traceback.format_exc()
             file("trace.log","a").write(trace)
-        finally:
-            p.terminate()
+            #p.terminate()
 
-    def desenharRNA(self, widget):
-        try:
-            p = Process(target=anima.Animacao, args=(self.errors,))
-            p.start()
-            p.join()
-        except:
-            #pega a excecao gerada
-            trace = traceback.format_exc()
-            file("trace.log","a").write(trace)
-        finally:
-            p.terminate()
 
     def sobre(self,widget):
         sobre.Sobre()
@@ -318,6 +340,23 @@ class Interface (object):
     #terminal VTE
     def ativarTerminal(self, widget):
         self.t.terminalVTE()
+
+    def _desativarFases(self):
+        self.fase1.set_sensitive(False)
+        self.fase2.set_sensitive(False)
+        self.fase3.set_sensitive(False)
+        self.fase4.set_sensitive(False)
+        self.fase5.set_sensitive(False)
+        self.fase6.set_sensitive(False)
+
+    def _ativarFases(self):
+        self.fase1.set_sensitive(True)
+        self.fase2.set_sensitive(True)
+        self.fase3.set_sensitive(True)
+        self.fase4.set_sensitive(True)
+        self.fase5.set_sensitive(True)
+        self.fase6.set_sensitive(True)
+
 
 
     #Método para retornar ao estado inicial. Isso pode ser feito toda vez que
@@ -331,6 +370,10 @@ class Interface (object):
         self.butGraficoTreinar.set_sensitive(False)
         self.butGraficoSimulador.set_sensitive(False)
         self.butSaveFast.set_sensitive(False)
+        self.menuSaveAs.set_sensitive(False)
+        self.switchAnimacao.set_sensitive(False)
+
+        self._ativarFases()
 
         self.modelStore.clear()
         self.modelStoreErro.clear()
@@ -353,8 +396,10 @@ class Interface (object):
         self.saidaSimulador = list()
         #limpar variaveis do simulador
         #status do arquivo
-        contexto = self.statusFile.get_context_id("clear")
-        self.statusFile.push(contexto, "Desconhecido")
+        self.statusFile.pop(self.novoContexto)
+        c = self.statusFile.get_context_id(self.dir_context_path[0])
+        self.statusFile.push(c, self.dir_context_path[0])
+
 
 
     '''
@@ -366,8 +411,7 @@ class Interface (object):
     '''
     def salvar(self, widget):
         try:
-            self.dialog = Gtk.FileChooserDialog("""Selecione o local e
-                                     informe o nome do arquivo""",
+            self.dialog = Gtk.FileChooserDialog("Selecione o local e informe o nome do arquivo",
                                      None,
                                      Gtk.FileChooserAction.SAVE,
                                     (Gtk.STOCK_CANCEL, Gtk.ResponseType.CANCEL,
@@ -377,10 +421,12 @@ class Interface (object):
             if response == Gtk.ResponseType.OK:
                 nome = self.dialog.get_filename()+".net"
                 self.net.save(nome)
+                thread.start_new_thread(self._statusDinamico,(self.dir_context[16],))
+                #altera status para nome do arquivo
+                self.statusFile.pop(self.novoContexto)
+                self._statusPathFile(str(self.dialog.get_filename()))
 
-            #altera status para nome do arquivo
-            contexto = self.statusFile.get_context_id("fileSave")
-            self.statusFile.push(contexto,str(self.dialog.get_filename()))
+
             self.dialog.destroy()
 
         except:
@@ -407,19 +453,23 @@ class Interface (object):
                 #carrega o arquivo
                 self.net = neurolab.load(dialog.get_filename())
                 #extrai e coloca nos liststores
-                numTargets = [float(self.targets[i][j])
-                        for i in xrange(len(self.targets)) for j in xrange(1)]
-                self._setListStore(self.inputs, numTargets, True)
-                self.storeRA.append([str(self.net.trainf)])
-                #altera status para nome do arquivo
-                contexto = self.statusFile.get_context_id("fileAbrir")
-                self.statusFile.push(contexto,str(dialog.get_filename()))
 
+                self._setListPesosBias()
+                self.storeRA.append([str(self.net.trainf)])
+
+                #altera status para nome do arquivo
+                self.statusFile.pop(self.novoContexto)
+                self._statusPathFile(str(dialog.get_filename()))
+
+                self._desativarFases()
+
+                thread.start_new_thread(self._statusDinamico,(self.dir_context[17],))
                 self.butOpenSimulador.set_sensitive(True)
-                self.butSimular.set_sensitive(True)
+
 
 
         except:
+            self._fontColor("red")
             thread.start_new_thread(self._statusDinamico,(self.dir_context[5],))
             #pega a excecao gerada
             trace = traceback.format_exc()
@@ -443,26 +493,39 @@ class Interface (object):
         try:
             #criar o intervalo de entradas
             intervalo = [[-10, 10] for i in xrange(len(self.inputs[0]))]
-            #criar a rede neural artificial
-            rede = rna.Rede(intervalo, self.linear.get_active(),
-                                    self.heaviside.get_active(),
-                                    self.tangente.get_active(),
-                                    self.sigmoide.get_active(),
-                                            self.listaNeuronios)
-            self.net = rede.criarRede()
-            numTargets = [float(self.targets[i][j])
-                    for i in xrange(len(self.targets)) for j in xrange(1)]
 
-            self._setListStore(self.inputs, numTargets, True)
+            #validar rede - nao pode ter saida > 1
+            s =  self.listaNeuronios.get_text().split(',')
+            if s[-1] == '1':
+                #criar a rede neural artificial
+                rede = rna.Rede(intervalo, self.linear.get_active(),
+                                        self.heaviside.get_active(),
+                                        self.tangente.get_active(),
+                                        self.sigmoide.get_active(),
+                                                self.listaNeuronios)
+                self.net = rede.criarRede()
 
-            #ativar fase do treinamento
-            self.butTreinar.set_sensitive(True)
-            self.butGraficoTreinar.set_sensitive(True)
-            #status
-            thread.start_new_thread(self._statusDinamico,(self.dir_context[9],))
 
+                self._setListPesosBias()
+
+                #ativar fase do treinamento
+                self.butTreinar.set_sensitive(True)
+                self.butGraficoTreinar.set_sensitive(True)
+                if self.epocas.get_value_as_int() <= 100:
+                    self.switchAnimacao.set_sensitive(True)
+                else:
+                    self.switchAnimacao.set_sensitive(False)
+
+                #status
+                thread.start_new_thread(self._statusDinamico,(self.dir_context[9],))
+
+                thread.start_new_thread(self.desenharArquitetura, (widget,))
+            else:
+                self._fontColor("red")
+                thread.start_new_thread(self._statusDinamico,(self.dir_context[15],))
 
         except:
+            self._fontColor("red")
             thread.start_new_thread(self._statusDinamico,(self.dir_context[6],))
             #pega a excecao gerada
             trace = traceback.format_exc()
@@ -511,29 +574,31 @@ class Interface (object):
 
             #imprimir Regra de Aprendizado em dados
             self.storeRA.append([str(self.net.trainf)])
+
             #atualizar pesos e bias
-            numTargets = [float(self.targets[i][j])
-                        for i in xrange(len(self.targets)) for j in xrange(1)]
-            self._setListStore(self.inputs, numTargets, True)
+            self._setListPesosBias()
 
 
             self.butSaveFast.set_sensitive(True)
+            self.menuSaveAs.set_sensitive(True)
             self.butSimular.set_sensitive(True)
             self.butOpenSimulador.set_sensitive(True)
             self.butGraficoSimulador.set_sensitive(True)
 
             self.status.pop(self.status.get_context_id(self.dir_context[11]))
 
+
             if len(self.errors) < self.epocas.get_value_as_int():
                 thread.start_new_thread(self._statusDinamico,(self.dir_context[1],))
             else:
                 thread.start_new_thread(self._statusDinamico,(self.dir_context[2],))
 
-            if self.switchAnimacao.get_active() and len(self.errors) <= 100:
+            if self.switchAnimacao.get_active() and self.switchAnimacao.get_sensitive():
                 self._animarErro()
 
 
         except:
+            self._fontColor("red")
             thread.start_new_thread(self._statusDinamico,(self.dir_context[7],))
             #pega a excecao gerada
             trace = traceback.format_exc()
@@ -600,9 +665,13 @@ class Interface (object):
                     self.targets.append(novaf[i][-1])
                     del novaf[i][-1]
 
+                self.inputs = novaf
+
+                #converter para matriz por causa do RNA
                 self.targets = [[self.targets[i]]
                                         for i in xrange(len(self.targets))]
-                self.inputs = novaf
+
+                self._setStoreDados(self.targets)
 
                 self.butCriarRNA.set_sensitive(True)
 
@@ -627,17 +696,26 @@ class Interface (object):
 
             return nova
         except:
+            self._fontColor("red")
             thread.start_new_thread(self._statusDinamico,
                                             (self.dir_context[13],))
             trace = traceback.format_exc()
             file("trace.log","a").write(trace)
+            return None
 
 
     def tratarDadosSimulacao(self, widget):
         try:
             caminho = self.butOpenSimulador.get_filename()
             novaf = self.extrair_dados(caminho)
-            self.inputSimulador = novaf
+
+            if novaf and self.net.ci == len(novaf[0]):
+                self.inputSimulador = novaf
+                self.butSimular.set_sensitive(True)
+            else:
+                self._fontColor("red")
+                thread.start_new_thread(self._statusDinamico,
+                                                (self.dir_context[14],))
         except:
             #pega a excecao gerada
             trace = traceback.format_exc()
@@ -646,29 +724,36 @@ class Interface (object):
             #salva em arquivo
             file("trace.log","a").write(trace)
 
+
+    def _setStoreDados(self, targets ):
+        targets = [float(targets[i][j])
+                        for i in xrange(len(targets)) for j in xrange(1)]
+
+        #incluir storeDados da entrada e alvo
+        for i in xrange(len(targets)):
+            self.storeDados.append((str(self.inputs[i]),
+                                        float(targets[i])) )
+
+
     '''
     Descrição:
     Método privado para configurar e inserir os dados na tela.
     '''
-    def _setListStore(self, entradas, target, dados):
-        if dados:
-            for i in xrange(len(entradas)):
-                self.storeDados.append((str(entradas[i]), target[i]) )
-
-            pesos = self.net.layers[0].np['w']
-            pesos = [[str(pesos[i][j])] for i in xrange(len(pesos))
-                                            for j in xrange(len(pesos[0]))]
-            for i in xrange(len(pesos)):
-                self.storePesos.append(pesos[i])
+    def _setListPesosBias(self):
+        pesos = self.net.layers[0].np['w']
+        pesos = [[str(pesos[i][j])] for i in xrange(len(pesos))
+                                        for j in xrange(len(pesos[0]))]
+        for i in xrange(len(pesos)):
+            self.storePesos.append(pesos[i])
 
 
-            bias = self.net.layers[0].np['b']
-            bias = [[str(bias[i])] for i in xrange(len(bias))]
-            for i in range(len(bias)):
-                self.storeBias.append(bias[i])
+        bias = self.net.layers[0].np['b']
+        bias = [[str(bias[i])] for i in xrange(len(bias))]
+        for i in range(len(bias)):
+            self.storeBias.append(bias[i])
 
 
-        else:
+    def _setListSim(self, entradas, target):#tabela da simulacao
             sse = 0
             for i in xrange(len(self.saidaSimulador)):
                 erroQuad = (float(self.saidaSimulador[i]) - target[i])**2
@@ -689,17 +774,18 @@ class Interface (object):
             if self.butOpenSimulador.get_filename():
                 self.saidaSimulador = self.net.sim(self.inputSimulador)
                 numTargets = [0 for i in xrange(len(self.inputSimulador)) ]
-                self._setListStore(self.inputSimulador, numTargets, False)
+                self._setListSim(self.inputSimulador, numTargets)
             else:
                 self.saidaSimulador = self.net.sim(self.inputs)
                 numTargets = [float(self.targets[i][j])
                         for i in xrange(len(self.targets)) for j in xrange(1)]
-                self._setListStore(self.inputs, numTargets, False)
+                self._setListSim(self.inputs, numTargets)
 
             #self.feedStatus.gerarStatus(self.feedStatus.contexto_simulacao)
             thread.start_new_thread(self._statusDinamico,(self.dir_context[3],))
 
         except:
+            self._fontColor("red")
             #self.feedStatus.gerarStatus(self.feedStatus.contexto_erroSim)
             thread.start_new_thread(self._statusDinamico,(self.dir_context[8],))
             #pega a excecao gerada
@@ -777,6 +863,14 @@ class Interface (object):
         self.storeRA = builder.get_object("liststore6")
         self.storeSSE_MSE = builder.get_object("liststore7")
 
+        #fases
+        self.fase1 = builder.get_object("fase1")
+        self.fase2 = builder.get_object("fase2")
+        self.fase3 = builder.get_object("fase3")
+        self.fase4 = builder.get_object("fase4")
+        self.fase5 = builder.get_object("fase5")
+        self.fase6 = builder.get_object("fase6")
+        self.fase7 = builder.get_object("fase7")
 
         #textview
         self.modelStore = builder.get_object("treeview1").get_model()
@@ -789,6 +883,7 @@ class Interface (object):
 
         #variaveis do toolbar
         self.butSaveFast = builder.get_object("butSaveFast")
+        self.menuSaveAs = builder.get_object("menuSaveAs")
 
         #spinner
         self.spinner = builder.get_object("spinner1")
