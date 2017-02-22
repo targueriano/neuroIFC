@@ -8,7 +8,7 @@ import AnimarTrain as an
 
 class DrawInformation(object):
     def __init__(self):
-        gladeXML = "Information.glade"
+        gladeXML = "/usr/local/neuro-ifc/src/Information.glade"
         builder = Gtk.Builder()
         builder.add_from_file(gladeXML)
 

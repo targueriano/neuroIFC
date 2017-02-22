@@ -11,13 +11,13 @@ import sys
 class Desenho(object):
     def __init__(self, lista):
         self.lista = lista
-        self.BLUE = (255,0,0)
-        self.RED = (0, 0,255)
-        self.WHITE = (255,255,255)
-        self.GRAY = (128,128,128)
-        self.BLACK = (0,0,0)
+        self.BLUE = (255, 0, 0)
+        self.RED = (0, 0, 255)
+        self.WHITE = (255, 255, 255)
+        self.GRAY = (128, 128, 128)
+        self.BLACK = (0, 0, 0)
         #canvas = np.ones((300,400,3))*255
-        canvas = np.zeros((500,500,3), np.uint8)
+        canvas = np.zeros((500, 500,3), np.uint8)
         self.criarDesenho(canvas)
 
     def criarDesenho(self, canvas):

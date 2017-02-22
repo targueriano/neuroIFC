@@ -8,7 +8,7 @@ Current maintainer:  Taylan Branco Meurer <tbmeurer@gmail.com>
 
 O neuro-ifc é uma ferramenta gráfica para ensino de redes neurais artificiais com uma ou mais camadas de neurônios. Ela é capaz de simular e interpretar dados conforme API neurolab. 
 
-Se identificar algum bug, envie o arquivo trace.log para o email do autor.
+Se identificar algum bug, envie o arquivo trace.log para o email do autor.  
 
 
 Requirements
@@ -18,8 +18,28 @@ Requirements
   * python-gi
   * python-matplotlib
   * pyexcel_ods 0.1.1
-  * pygame
   * python-numpy
+  * python-opencv
+  
 
+
+How install
+===========
+
+# dpkg -i neuro-ifc_1.0.16_amd64.deb
+
+O dpkg não é capaz de resolver as dependências e o pacote não será totalmente configurado enquanto as dependências não forem 
+solucionadas. Para solucionar você terá que executar o seguinte comando:
+
+# apt-get -f install 
+
+
+O comando apt-get irá instalar os pacotes dependentes que estão presentes no repositório de sua distribuição. Se não existir ou se a versão for diferente, então você pode pegar esses pacotes no próprio instalador .deb, no caminho:
+
+usr/local/lib/python2.7/dist-packages/
+
+
+
+O pacote foi testado no GNU/Linux Debian 8.6, Fedora 24, Elementary OS, DeepinOS, Ubuntu. Para melhor aproveitamento e integração, aconselha-se instalar e executar no Gnome 3.14 a 3.22.
 
 

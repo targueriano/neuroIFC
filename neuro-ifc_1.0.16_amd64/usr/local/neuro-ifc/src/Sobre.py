@@ -7,7 +7,7 @@ from gi.repository import Gtk
 
 class Sobre(object):
     def __init__(self):
-        gladeSobre = "Sobre.glade"
+        gladeSobre = "/usr/local/neuro-ifc/src/Sobre.glade"
         builder = Gtk.Builder()
         builder.add_from_file(gladeSobre)
         win = builder.get_object("aboutdialog1")

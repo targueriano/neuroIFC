@@ -261,7 +261,6 @@
             <property name="toolbar_style">icons</property>
             <child>
               <object class="GtkToolButton" id="butOpenFast">
-                <property name="use_action_appearance">True</property>
                 <property name="visible">True</property>
                 <property name="can_focus">False</property>
                 <property name="tooltip_text" translatable="yes">Evento para abrir uma RNA salva. (arquivo .net)</property>
@@ -277,7 +276,6 @@
             </child>
             <child>
               <object class="GtkToolButton" id="butSaveFast">
-                <property name="use_action_appearance">True</property>
                 <property name="visible">True</property>
                 <property name="sensitive">False</property>
                 <property name="can_focus">False</property>
@@ -352,7 +350,6 @@ Objetivo: 0.02</property>
             </child>
             <child>
               <object class="GtkToolButton" id="butClearFast">
-                <property name="use_action_appearance">True</property>
                 <property name="visible">True</property>
                 <property name="can_focus">False</property>
                 <property name="tooltip_text" translatable="yes">Retorna ao estado inicial.</property>

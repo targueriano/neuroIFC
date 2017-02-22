@@ -29,7 +29,7 @@ import Terminal as terminal
 import Animacao as anima
 from multiprocessing import Process
 import Information as info
-
+import os
 try:
     import gi
     gi.require_version('Gtk', '3.0')
@@ -58,12 +58,13 @@ class Interface (object):
     python Interface.py
     '''
     def __init__(self):
-        gladeXML = "Interface.glade"
+        gladeXML = "/usr/local/neuro-ifc/src/Interface.glade"
         builder = Gtk.Builder()
         builder.add_from_file(gladeXML)
 
         win = builder.get_object("window1")
 
+        self.pathLog = "~/"
         box = builder.get_object("box2")
         self.t = terminal.Terminal()
         box.add(self.t)
@@ -163,6 +164,7 @@ class Interface (object):
         self._ativarFuncTrainMLP()
 
     def ativarGDX(self, widget):
+        self._desativarEntradas()
         self.impulso.set_sensitive(True)
         self.taxaRegularizacao.set_sensitive(True)
         self.taxaDecremento.set_sensitive(True)
@@ -315,7 +317,7 @@ class Interface (object):
             t = self.listaNeuronios.get_text().split(',')
             for i in xrange(len(t)):
                 if int(t[i]) > 10:
-                    raise
+                    raise Exception("Superou limite de neuronios.")
 
 
             if self.inputs:
@@ -328,9 +330,11 @@ class Interface (object):
             else:
                 lista = self.listaNeuronios.get_text()
                 terminal.Terminal().subprocessTerminal(lista)
-        except:
+        except Exception as e:
             trace = traceback.format_exc()
-            file("trace.log","a").write(trace)
+            tr = os.path.expanduser("~/trace.log")
+            file(tr,"a").write(trace)
+
             #p.terminate()
 
 
@@ -411,23 +415,23 @@ class Interface (object):
     '''
     def salvar(self, widget):
         try:
-            self.dialog = Gtk.FileChooserDialog("Selecione o local e informe o nome do arquivo",
+            dialog = Gtk.FileChooserDialog("Selecione o local e informe o nome do arquivo",
                                      None,
                                      Gtk.FileChooserAction.SAVE,
                                     (Gtk.STOCK_CANCEL, Gtk.ResponseType.CANCEL,
                                      Gtk.STOCK_SAVE, Gtk.ResponseType.OK))
 
-            response = self.dialog.run()
+            response = dialog.run()
             if response == Gtk.ResponseType.OK:
-                nome = self.dialog.get_filename()+".net"
+                nome = dialog.get_filename()+".net"
                 self.net.save(nome)
                 thread.start_new_thread(self._statusDinamico,(self.dir_context[16],))
                 #altera status para nome do arquivo
                 self.statusFile.pop(self.novoContexto)
-                self._statusPathFile(str(self.dialog.get_filename()))
+                self._statusPathFile(str(dialog.get_filename()))
 
 
-            self.dialog.destroy()
+            dialog.destroy()
 
         except:
             #pega a excecao gerada
@@ -435,8 +439,10 @@ class Interface (object):
             #imprime
             #print "Ocorreu um erro: \n",trace
             #salva em arquivo
-            file("trace.log","a").write(trace)
-            self.dialog.destroy()
+            tr = os.path.expanduser("~/trace.log")
+            file(tr,"a").write(trace)
+
+            dialog.destroy()
 
     #método para seleção de um arquivo .net, que contém dados referentes a uma
     #RNA salva.
@@ -476,7 +482,8 @@ class Interface (object):
             #imprime
             #print "Ocorreu um erro: \n",trace
             #salva em arquivo
-            file("trace.log","a").write(trace)
+            tr = os.path.expanduser("~/trace.log")
+            file(tr,"a").write(trace)
 
         finally:
             dialog.destroy()
@@ -532,7 +539,9 @@ class Interface (object):
             #imprime
             #print "Ocorreu um erro: \n",trace
             #salva em arquivo
-            file("trace.log","a").write(trace)
+            tr = os.path.expanduser("~/trace.log")
+            file(tr,"a").write(trace)
+
 
     def carregarSpinner(self):
         contexto = self.status.get_context_id(self.dir_context[11])
@@ -578,6 +587,7 @@ class Interface (object):
             #atualizar pesos e bias
             self._setListPesosBias()
 
+            #self.t.getTerminalVTE(self.errors)
 
             self.butSaveFast.set_sensitive(True)
             self.menuSaveAs.set_sensitive(True)
@@ -605,7 +615,9 @@ class Interface (object):
             #imprime
             #print "Ocorreu um erro: \n",trace
             #salva em arquivo
-            file("trace.log","a").write(trace)
+            tr = os.path.expanduser("~/trace.log")
+            file(tr,"a").write(trace)
+
         finally:
             self.spinner.stop()
 
@@ -625,7 +637,9 @@ class Interface (object):
         except:
             #pega a excecao gerada
             trace = traceback.format_exc()
-            file("trace.log","a").write(trace)
+            tr = os.path.expanduser("~/trace.log")
+            file(tr,"a").write(trace)
+
         finally:
             p.terminate()
 
@@ -684,7 +698,9 @@ class Interface (object):
             #imprime
             print "Ocorreu um erro: \n",trace
             #salva em arquivo
-            file("trace.log","a").write(trace)
+            tr = os.path.expanduser("~/trace.log")
+            file(tr,"a").write(trace)
+
 
     def extrair_dados(self, caminho):
         try:
@@ -700,7 +716,9 @@ class Interface (object):
             thread.start_new_thread(self._statusDinamico,
                                             (self.dir_context[13],))
             trace = traceback.format_exc()
-            file("trace.log","a").write(trace)
+            tr = os.path.expanduser("~/trace.log")
+            file(tr,"a").write(trace)
+
             return None
 
 
@@ -722,7 +740,8 @@ class Interface (object):
             #imprime
             print "Ocorreu um erro: \n",trace
             #salva em arquivo
-            file("trace.log","a").write(trace)
+            tr = os.path.expanduser("~/trace.log")
+            file(tr,"a").write(trace)
 
 
     def _setStoreDados(self, targets ):
@@ -793,7 +812,8 @@ class Interface (object):
             #imprime
             print "Ocorreu um erro: \n",trace
             #salva em arquivo
-            file("trace.log","a").write(trace)
+            tr = os.path.expanduser("~/trace.log")
+            file(tr,"a").write(trace)
 
 
     def montarGrafico(self, widget):

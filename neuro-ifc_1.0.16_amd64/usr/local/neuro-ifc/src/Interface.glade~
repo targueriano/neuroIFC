@@ -261,7 +261,6 @@
             <property name="toolbar_style">icons</property>
             <child>
               <object class="GtkToolButton" id="butOpenFast">
-                <property name="use_action_appearance">True</property>
                 <property name="visible">True</property>
                 <property name="can_focus">False</property>
                 <property name="tooltip_text" translatable="yes">Evento para abrir uma RNA salva. (arquivo .net)</property>
@@ -277,7 +276,6 @@
             </child>
             <child>
               <object class="GtkToolButton" id="butSaveFast">
-                <property name="use_action_appearance">True</property>
                 <property name="visible">True</property>
                 <property name="sensitive">False</property>
                 <property name="can_focus">False</property>
@@ -352,7 +350,6 @@ Objetivo: 0.02</property>
             </child>
             <child>
               <object class="GtkToolButton" id="butClearFast">
-                <property name="use_action_appearance">True</property>
                 <property name="visible">True</property>
                 <property name="can_focus">False</property>
                 <property name="tooltip_text" translatable="yes">Retorna ao estado inicial.</property>
@@ -550,7 +547,7 @@ Duas amostras com duas entradas (1 0; 0 1) e uma saída em cada amostra (1;0). <
                                             <property name="visible">True</property>
                                             <property name="can_focus">True</property>
                                             <property name="receives_default">False</property>
-                                            <property name="tooltip_text" translatable="yes">Gradiente descendente é a regra delta generalizada. O algoritmo é composto por duas fases. A primeira fase efetua funções de soma para cada neurônio e calcula o valor de erro na camada de saída (sigma). Este erro é retropopagado para as camadas anteriores, que após atualizar seus pesos, volta a repetir a primeira fase até o estado de parada.</property>
+                                            <property name="tooltip_text" translatable="yes">Gradiente descendente é a regra delta generalizada. O algoritmo é composto por duas fases. A primeira fase efetua funções de soma para cada neurônio e calcula o valor de erro na camada de saída (sigma). Este erro é propagado para as camadas anteriores, que atualizam seus pesos. Depois volta-se a repetir a primeira e a segunda fase até o estado de parada.</property>
                                             <property name="xalign">0</property>
                                             <property name="draw_indicator">True</property>
                                             <property name="group">radioDelta</property>
